@@ -4,17 +4,17 @@ import styled from "styled-components";
 export default function HomePage() {
   return (
     <StyledMain>
-      <StyledH2>Game List</StyledH2>
+      <StyledPageHeadline>Game List</StyledPageHeadline>
       <section>
-        <StyledH3>In progress</StyledH3>
+        <StyledListLabel>In progress</StyledListLabel>
         <GameList progress={"In Progress"} />
       </section>
       <section>
-        <StyledH3>Planned</StyledH3>
+        <StyledListLabel>Planned</StyledListLabel>
         <GameList progress={"Planned"} />
       </section>
       <section>
-        <StyledH3>Completed</StyledH3>
+        <StyledListLabel>Completed</StyledListLabel>
         <GameList progress={"Completed"} />
       </section>
     </StyledMain>
@@ -25,10 +25,10 @@ const StyledMain = styled.main`
   padding: 10px;
 `;
 
-const StyledH2 = styled.h2`
+const StyledPageHeadline = styled.h2`
   margin: 10px 0;
 `;
 
-const StyledH3 = styled.h3`
+const StyledListLabel = styled.h3`
   margin: 8px 0;
 `;
