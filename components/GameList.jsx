@@ -23,8 +23,9 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: space-between;
 `;
 
 const StyledListItem = styled.li`
-  flex: 40%;
+  flex: 1 1 calc(50% - 0.5rem);
 `;
