@@ -1,7 +1,7 @@
 export default function GameCard({ game }) {
   return (
     <div>
-      <h3>{game.title}</h3>
+      <h4>{game.title}</h4>
       <p>{game.rating}</p>
     </div>
   );

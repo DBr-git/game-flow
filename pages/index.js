@@ -1,7 +1,13 @@
+import GameList from "@/components/GameList";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <main>
+      <h2>GAME LIST</h2>
+      <section>
+        <h3>In progress</h3>
+        <GameList progress={"In Progress"} />
+      </section>
+    </main>
   );
 }

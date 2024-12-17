@@ -1,4 +1,4 @@
-export default intialGames = [
+const intialGames = [
   {
     id: "1",
     title: "Elden Ring",
@@ -70,3 +70,5 @@ export default intialGames = [
       "Hollow Knight is a critically acclaimed indie action-adventure game set in the mysterious, insect-filled kingdom of Hallownest. Players explore a vast, interconnected world filled with secrets, challenging enemies, and stunning hand-drawn visuals. The game is known for its atmospheric storytelling, tight combat mechanics, and a hauntingly beautiful soundtrack. With its emphasis on exploration and a rewarding sense of progression, Hollow Knight has become a modern classic in the Metroidvania genre.",
   },
 ];
+
+export default intialGames;
