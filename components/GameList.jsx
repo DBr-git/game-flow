@@ -1,8 +1,7 @@
 import GameCard from "./GameCard";
-import initialGames from "@/public/initialGames";
 import styled from "styled-components";
 
-export default function GameList({ progress }) {
+export default function GameList({ progress, initialGames }) {
   const filteredGames = initialGames.filter(
     (initialGame) => initialGame.progress === progress
   );

@@ -4,6 +4,7 @@ import styled from "styled-components";
 export default function HomePage() {
   return (
     <StyledMain>
+      <h1>Game Flow</h1>
       <StyledPageHeadline>Game List</StyledPageHeadline>
       <section>
         <StyledListLabel>In progress</StyledListLabel>
