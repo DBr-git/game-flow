@@ -1,4 +1,4 @@
-const intialGames = [
+const initialGames = [
   {
     id: "1",
     title: "Elden Ring",
@@ -81,4 +81,4 @@ const intialGames = [
   },
 ];
 
-export default intialGames;
+export default initialGames;
