@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 export default function GameForm({ onSubmit }) {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function GameForm({ onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>
       <input type="text" id="gameTitleInput" name="title" required></input>
       <label htmlFor="gameRatingInput">Your rating:</label>
@@ -26,13 +27,30 @@ export default function GameForm({ onSubmit }) {
       ></input>
       <label htmlFor="gameDescriptionInput">Description:</label>
       <textarea
+        rows="8"
         placeholder="Your description"
         id="gameDescriptionInput"
         name="description"
         required
       />
-      <button type="submit">Create</button>
-      <button onClick={() => router.push("/")}>Cancel</button>
-    </form>
+      <StyledButtonRow>
+        <button type="submit">Create</button>
+        <button onClick={() => router.push("/")}>Cancel</button>
+      </StyledButtonRow>
+    </StyledForm>
   );
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 0.5rem;
+`;
+
+const StyledButtonRow = styled.div`
+  display: flex;
+  button {
+    flex: 1;
+  }
+`;
