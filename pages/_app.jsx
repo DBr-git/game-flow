@@ -9,8 +9,9 @@ export default function App({ Component, pageProps }) {
   const [games, setGames] = useState(initialGames);
 
   function handleCreateGame(newGame) {
-    setGames([...games, { id: uid(), progress: "Planned", ...newGame }]);
-    router.push("/");
+    const id = uid();
+    setGames([...games, { id: id, progress: "Planned", ...newGame }]);
+    router.push(`/${id}/`);
   }
 
   return (

@@ -14,7 +14,7 @@ export default function GameForm({ onSubmit }) {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>
-      <input type="text" id="gameTitleInput" name="title" required></input>
+      <input type="text" id="gameTitleInput" name="title" required />
       <label htmlFor="gameRatingInput">Your rating:</label>
       <input
         type="range"
@@ -24,7 +24,7 @@ export default function GameForm({ onSubmit }) {
         id="gameRatingInput"
         name="rating"
         required
-      ></input>
+      />
       <label htmlFor="gameDescriptionInput">Description:</label>
       <textarea
         rows="8"
@@ -34,7 +34,9 @@ export default function GameForm({ onSubmit }) {
         required
       />
       <StyledButtonRow>
-        <button onClick={() => router.push("/")}>Cancel</button>
+        <button type="button" onClick={() => router.push("/")}>
+          Cancel
+        </button>
         <button type="submit">Create</button>
       </StyledButtonRow>
     </StyledForm>
