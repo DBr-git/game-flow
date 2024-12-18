@@ -1,6 +1,6 @@
 import GameList from "@/components/GameList";
 import styled from "styled-components";
-import Link from "next/link";
+import AddIcon from "@/components/AddIcon";
 
 export default function HomePage({ games }) {
   return (
@@ -21,29 +21,11 @@ export default function HomePage({ games }) {
           <GameList progressLabel={"Completed"} games={games} />
         </section>
       </StyledMain>
-      <StyledAddLink href="/add-game/">+</StyledAddLink>
+
+      <AddIcon />
     </>
   );
 }
-
-const StyledAddLink = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-
-  border-radius: 50%;
-  font-size: 40px;
-  width: 40px;
-  height: 40px;
-  position: fixed;
-  left: 50%;
-  background-color: black;
-  color: white;
-
-  transform: translateX(-50%);
-  bottom: 25px;
-`;
 
 const StyledMain = styled.main`
   padding: 10px;
