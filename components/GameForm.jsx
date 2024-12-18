@@ -12,13 +12,8 @@ export default function GameForm({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="gameTitleInput">Gametitle:</label>
-      <input
-        type="text"
-        id="gameTitleInput"
-        name="gameTitleInput"
-        required
-      ></input>
+      <label htmlFor="gameTitleInput">Title:</label>
+      <input type="text" id="gameTitleInput" name="title" required></input>
       <label htmlFor="gameRatingInput">Your rating:</label>
       <input
         type="range"
@@ -26,14 +21,14 @@ export default function GameForm({ onSubmit }) {
         max="10"
         step="1"
         id="gameRatingInput"
-        name="gameRatingInput"
+        name="rating"
         required
       ></input>
       <label htmlFor="gameDescriptionInput">Description:</label>
       <textarea
         placeholder="Your description"
         id="gameDescriptionInput"
-        name="gameDescriptionInput"
+        name="description"
         required
       />
       <button type="submit">Create</button>
