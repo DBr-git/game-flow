@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
 
-export default function GameDetails({ initialGames }) {
+export default function GameDetails({ games }) {
   const router = useRouter();
-  const { id } = router.query;
+  const { gameId } = router.query;
 
-  const selectedGame = initialGames.find((game) => game.id === id);
+  const selectedGame = games.find((game) => game.id === gameId);
 
   if (!selectedGame) {
     return <div>Loading...</div>;
