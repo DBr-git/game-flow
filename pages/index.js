@@ -8,15 +8,15 @@ export default function HomePage({ initialGames }) {
       <StyledPageHeadline>Game List</StyledPageHeadline>
       <section>
         <StyledListLabel>In progress</StyledListLabel>
-        <GameList progress={"In Progress"} initialGames={initialGames} />
+        <GameList progressLabel={"In Progress"} initialGames={initialGames} />
       </section>
       <section>
         <StyledListLabel>Planned</StyledListLabel>
-        <GameList progress={"Planned"} initialGames={initialGames} />
+        <GameList progressLabel={"Planned"} initialGames={initialGames} />
       </section>
       <section>
         <StyledListLabel>Completed</StyledListLabel>
-        <GameList progress={"Completed"} initialGames={initialGames} />
+        <GameList progressLabel={"Completed"} initialGames={initialGames} />
       </section>
     </StyledMain>
   );
