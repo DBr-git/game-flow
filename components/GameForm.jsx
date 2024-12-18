@@ -1,7 +1,7 @@
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 export default function GameForm({ onSubmit }) {
-  const router = Router();
+  const router = useRouter();
 
   function handleSubmit(event) {
     event.preventDefault();
