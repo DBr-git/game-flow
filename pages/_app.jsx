@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
     setGames([...games, { id: uid(), progress: "Planned", ...newGame }]);
     router.push("/");
   }
-  console.log(games);
+
   return (
     <>
       <GlobalStyle />

@@ -34,8 +34,8 @@ export default function GameForm({ onSubmit }) {
         required
       />
       <StyledButtonRow>
-        <button type="submit">Create</button>
         <button onClick={() => router.push("/")}>Cancel</button>
+        <button type="submit">Create</button>
       </StyledButtonRow>
     </StyledForm>
   );
