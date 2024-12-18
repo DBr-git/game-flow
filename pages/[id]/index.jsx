@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { Fragment } from "react";
+import BackButton from "@/components/BackButton";
 
 export default function GameDetails({ initialGames }) {
   const router = useRouter();
@@ -9,7 +10,7 @@ export default function GameDetails({ initialGames }) {
 
   return (
     <Fragment>
-      <button>back</button>
+      <BackButton href={"/"}></BackButton>
       <p>{selectedGame.title}</p>
       <p>{selectedGame.rating}</p>
       <p>{selectedGame.description}</p>
