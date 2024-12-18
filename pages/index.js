@@ -1,21 +1,22 @@
 import GameList from "@/components/GameList";
 import styled from "styled-components";
 
-export default function HomePage() {
+export default function HomePage({ initialGames }) {
   return (
     <StyledMain>
+      <h1>Game Flow</h1>
       <StyledPageHeadline>Game List</StyledPageHeadline>
       <section>
         <StyledListLabel>In progress</StyledListLabel>
-        <GameList progress={"In Progress"} />
+        <GameList progressLabel={"In Progress"} initialGames={initialGames} />
       </section>
       <section>
         <StyledListLabel>Planned</StyledListLabel>
-        <GameList progress={"Planned"} />
+        <GameList progressLabel={"Planned"} initialGames={initialGames} />
       </section>
       <section>
         <StyledListLabel>Completed</StyledListLabel>
-        <GameList progress={"Completed"} />
+        <GameList progressLabel={"Completed"} initialGames={initialGames} />
       </section>
     </StyledMain>
   );

@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function GameCard({ game }) {
   return (
-    <StyledDiv>
+    <StyledLink href={game.id}>
       <h4>{game.title}</h4>
       <p>Rating: {game.rating}</p>
-    </StyledDiv>
+    </StyledLink>
   );
 }
 
-const StyledDiv = styled.div`
+const StyledLink = styled(Link)`
   border: solid 0.2rem black;
   border-radius: 5px;
   height: 10rem;
@@ -20,4 +21,6 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  text-decoration: none;
 `;

@@ -1,10 +1,9 @@
 import GameCard from "./GameCard";
-import initialGames from "@/public/initialGames";
 import styled from "styled-components";
 
-export default function GameList({ progress }) {
+export default function GameList({ progressLabel, initialGames }) {
   const filteredGames = initialGames.filter(
-    (initialGame) => initialGame.progress === progress
+    (initialGame) => initialGame.progress === progressLabel
   );
 
   return (
@@ -23,8 +22,9 @@ const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: space-between;
 `;
 
 const StyledListItem = styled.li`
-  flex: 40%;
+  flex: 1 1 calc(50% - 0.5rem);
 `;
