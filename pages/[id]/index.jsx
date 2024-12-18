@@ -14,11 +14,11 @@ export default function GameDetails({ initialGames }) {
 
   return (
     <>
-      <BackButton href={"/"}></BackButton>
+      <BackButton href="/" />
       <StyledArticle>
         <StyledRowWrapper>
-          <StyledTitle>{selectedGame.title}</StyledTitle>
-          <StyledRating>Rating: {selectedGame.rating}</StyledRating>
+          <p>{selectedGame.title}</p>
+          <p>Rating: {selectedGame.rating}</p>
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
@@ -43,14 +43,6 @@ const StyledRowWrapper = styled.div`
   display: flex;
   gap: inherit;
   justify-content: space-between;
-`;
-
-const StyledTitle = styled.p`
-  align-content: center;
-`;
-
-const StyledRating = styled.p`
-  align-content: center;
 `;
 
 const StyledDescription = styled.p`
