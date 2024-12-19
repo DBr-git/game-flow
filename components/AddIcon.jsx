@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function AddIcon() {
   return (
     <StyledAddLink href="/add-game">
-      {" "}
       <AddIconSvg />
     </StyledAddLink>
   );
@@ -16,6 +15,8 @@ const StyledAddLink = styled(Link)`
   left: 50%;
   transform: translateX(-50%);
   bottom: 25px;
+  border-radius: 50%;
+  overflow: hidden;
   &:hover {
     cursor: pointer;
   }
