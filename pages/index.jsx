@@ -3,6 +3,10 @@ import styled from "styled-components";
 import AddIcon from "@/components/AddIcon";
 
 export default function HomePage({ games }) {
+  function isSectionEmpty(progress) {
+    return games.some((game) => game.progress === progress);
+  }
+
   return (
     <>
       <StyledMain>
@@ -11,17 +15,19 @@ export default function HomePage({ games }) {
         <section>
           <StyledListLabel>In progress</StyledListLabel>
           <GameList progressLabel={"In Progress"} games={games} />
+          {!isSectionEmpty("In Progress") && <p>There are no games here...</p>}
         </section>
         <section>
           <StyledListLabel>Planned</StyledListLabel>
           <GameList progressLabel={"Planned"} games={games} />
+          {!isSectionEmpty("Planned") && <p>There are no games here...</p>}
         </section>
         <section>
           <StyledListLabel>Completed</StyledListLabel>
           <GameList progressLabel={"Completed"} games={games} />
+          {!isSectionEmpty("Completed") && <p>There are no games here...</p>}
         </section>
       </StyledMain>
-
       <AddIcon />
     </>
   );
