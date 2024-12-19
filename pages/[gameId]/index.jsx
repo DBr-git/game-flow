@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
 
-export default function GameDetails({ games }) {
+export default function GameDetails({ games, onDelete }) {
   const router = useRouter();
   const { gameId } = router.query;
+
+  const [deleteButtonClicked, setDeleteButtonClicked] = useState(false);
 
   const selectedGame = games.find((game) => game.id === gameId);
 
@@ -22,6 +25,36 @@ export default function GameDetails({ games }) {
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
+      <StyledSectionWrapper>
+        {!deleteButtonClicked && (
+          <button type="button" onClick={() => setDeleteButtonClicked(true)}>
+            Delete
+          </button>
+        )}
+
+        {deleteButtonClicked && (
+          <>
+            <p>Do you really want to delete this Game?</p>
+            <StyledButtonWrapper>
+              <button
+                type="button"
+                onClick={() => setDeleteButtonClicked(false)}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onDelete(selectedGame);
+                  router.push("/");
+                }}
+              >
+                Delete
+              </button>
+            </StyledButtonWrapper>
+          </>
+        )}
+      </StyledSectionWrapper>
     </>
   );
 }
@@ -47,4 +80,17 @@ const StyledRowWrapper = styled.div`
 
 const StyledDescription = styled.p`
   flex-basis: 100%;
+`;
+
+const StyledSectionWrapper = styled.section`
+  margin: 10px;
+`;
+
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  button {
+    flex: 1;
+  }
 `;

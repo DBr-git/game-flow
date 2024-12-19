@@ -14,10 +14,19 @@ export default function App({ Component, pageProps }) {
     router.push(`/${id}/`);
   }
 
+  function handleDeleteGame(gameToRemove) {
+    setGames(games.filter((game) => game !== gameToRemove));
+  }
+
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} games={games} onSubmit={handleCreateGame} />
+      <Component
+        {...pageProps}
+        games={games}
+        onSubmit={handleCreateGame}
+        onDelete={handleDeleteGame}
+      />
     </>
   );
 }
