@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
 
-export default function GameDetails({ games }) {
+export default function GameDetails({ games, onDelete }) {
   const router = useRouter();
   const { gameId } = router.query;
+
+  const [deleteButtonClicked, setDeleteButtonClicked] = useState(false);
 
   const selectedGame = games.find((game) => game.id === gameId);
 
@@ -22,6 +25,28 @@ export default function GameDetails({ games }) {
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
+      {!deleteButtonClicked && (
+        <button type="button" onClick={() => setDeleteButtonClicked(true)}>
+          Delete Button
+        </button>
+      )}
+      {deleteButtonClicked && (
+        <>
+          <p>Do you really want to delete this Game?</p>
+          <button type="button" onClick={() => setDeleteButtonClicked(false)}>
+            CANCEL
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              onDelete(selectedGame);
+              router.push("/");
+            }}
+          >
+            OK
+          </button>
+        </>
+      )}
     </>
   );
 }

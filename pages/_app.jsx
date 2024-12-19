@@ -21,7 +21,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} games={games} onSubmit={handleCreateGame} />
+      <Component
+        {...pageProps}
+        games={games}
+        onSubmit={handleCreateGame}
+        onDelete={handleDeleteGame}
+      />
     </>
   );
 }
