@@ -25,28 +25,36 @@ export default function GameDetails({ games, onDelete }) {
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
+
       {!deleteButtonClicked && (
         <button type="button" onClick={() => setDeleteButtonClicked(true)}>
           Delete Button
         </button>
       )}
-      {deleteButtonClicked && (
-        <>
-          <p>Do you really want to delete this Game?</p>
-          <button type="button" onClick={() => setDeleteButtonClicked(false)}>
-            CANCEL
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              onDelete(selectedGame);
-              router.push("/");
-            }}
-          >
-            OK
-          </button>
-        </>
-      )}
+      <StyledSectionWrapper>
+        {deleteButtonClicked && (
+          <>
+            <p>Do you really want to delete this Game?</p>
+            <StyledButtonWrapper>
+              <button
+                type="button"
+                onClick={() => setDeleteButtonClicked(false)}
+              >
+                CANCEL
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onDelete(selectedGame);
+                  router.push("/");
+                }}
+              >
+                DELETE
+              </button>
+            </StyledButtonWrapper>
+          </>
+        )}
+      </StyledSectionWrapper>
     </>
   );
 }
@@ -72,4 +80,17 @@ const StyledRowWrapper = styled.div`
 
 const StyledDescription = styled.p`
   flex-basis: 100%;
+`;
+
+const StyledSectionWrapper = styled.section`
+  margin: 10px;
+`;
+
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  button {
+    flex: 1;
+  }
 `;
