@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-export default function GameForm({ onSubmit }) {
+export default function GameForm({ onSubmit, selectedGame, formMode }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -14,7 +14,13 @@ export default function GameForm({ onSubmit }) {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>
-      <input type="text" id="gameTitleInput" name="title" required />
+      <input
+        type="text"
+        id="gameTitleInput"
+        name="title"
+        required
+        value={formMode === "edit" && selectedGame.title}
+      />
       <label htmlFor="gameRatingInput">Your rating:</label>
       <input
         type="range"
@@ -24,6 +30,7 @@ export default function GameForm({ onSubmit }) {
         id="gameRatingInput"
         name="rating"
         required
+        value={formMode === "edit" && selectedGame.rating}
       />
       <label htmlFor="gameDescriptionInput">Description:</label>
       <textarea
@@ -32,12 +39,28 @@ export default function GameForm({ onSubmit }) {
         id="gameDescriptionInput"
         name="description"
         required
+        value={formMode === "edit" && selectedGame.description}
       />
       <StyledButtonRow>
-        <button type="button" onClick={() => router.push("/")}>
-          Cancel
-        </button>
-        <button type="submit">Create</button>
+        {formMode === "add" && (
+          <>
+            <button type="button" onClick={() => router.push("/")}>
+              Cancel
+            </button>
+            <button type="submit">Create</button>
+          </>
+        )}
+        {formMode === "edit" && (
+          <>
+            <button
+              type="button"
+              onClick={() => router.push(`/${selectedGame.id}`)}
+            >
+              Cancel
+            </button>
+            <button type="submit">Submit</button>
+          </>
+        )}
       </StyledButtonRow>
     </StyledForm>
   );
