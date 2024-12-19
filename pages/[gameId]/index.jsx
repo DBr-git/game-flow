@@ -28,7 +28,7 @@ export default function GameDetails({ games, onDelete }) {
       <StyledSectionWrapper>
         {!deleteButtonClicked && (
           <button type="button" onClick={() => setDeleteButtonClicked(true)}>
-            Delete Button
+            Delete
           </button>
         )}
 
@@ -40,7 +40,7 @@ export default function GameDetails({ games, onDelete }) {
                 type="button"
                 onClick={() => setDeleteButtonClicked(false)}
               >
-                CANCEL
+                Cancel
               </button>
               <button
                 type="button"
@@ -49,7 +49,7 @@ export default function GameDetails({ games, onDelete }) {
                   router.push("/");
                 }}
               >
-                DELETE
+                Delete
               </button>
             </StyledButtonWrapper>
           </>

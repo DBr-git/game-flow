@@ -3,6 +3,8 @@ import styled from "styled-components";
 import AddIcon from "@/components/AddIcon";
 
 export default function HomePage({ games }) {
+  const progressSections = ["In Progress", "Planned", "Completed"];
+
   function isSectionEmpty(progress) {
     return games.some((game) => game.progress === progress);
   }
@@ -12,21 +14,18 @@ export default function HomePage({ games }) {
       <StyledMain>
         <h1>Game Flow</h1>
         <StyledPageHeadline>Game List</StyledPageHeadline>
-        <section>
-          <StyledListLabel>In progress</StyledListLabel>
-          <GameList progressLabel={"In Progress"} games={games} />
-          {!isSectionEmpty("In Progress") && <p>There are no games here...</p>}
-        </section>
-        <section>
-          <StyledListLabel>Planned</StyledListLabel>
-          <GameList progressLabel={"Planned"} games={games} />
-          {!isSectionEmpty("Planned") && <p>There are no games here...</p>}
-        </section>
-        <section>
-          <StyledListLabel>Completed</StyledListLabel>
-          <GameList progressLabel={"Completed"} games={games} />
-          {!isSectionEmpty("Completed") && <p>There are no games here...</p>}
-        </section>
+        {/* Renders a list with a label for each progress status */}
+        {progressSections.map((progress) => {
+          return (
+            <section key={progress}>
+              <StyledListLabel>{progress}</StyledListLabel>
+              <GameList progressLabel={progress} games={games} />
+              {!isSectionEmpty(progress) && (
+                <p>No games at the moment, please add one!</p>
+              )}
+            </section>
+          );
+        })}
       </StyledMain>
       <AddIcon />
     </>
