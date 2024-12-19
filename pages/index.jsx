@@ -14,7 +14,7 @@ export default function HomePage({ games }) {
       <StyledMain>
         <h1>Game Flow</h1>
         <StyledPageHeadline>Game List</StyledPageHeadline>
-        {/* Renders a list with a label for each progress status */}
+
         {progressSections.map((progress) => {
           return (
             <section key={progress}>
