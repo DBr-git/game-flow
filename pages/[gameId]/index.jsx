@@ -25,13 +25,13 @@ export default function GameDetails({ games, onDelete }) {
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
-
-      {!deleteButtonClicked && (
-        <button type="button" onClick={() => setDeleteButtonClicked(true)}>
-          Delete Button
-        </button>
-      )}
       <StyledSectionWrapper>
+        {!deleteButtonClicked && (
+          <button type="button" onClick={() => setDeleteButtonClicked(true)}>
+            Delete Button
+          </button>
+        )}
+
         {deleteButtonClicked && (
           <>
             <p>Do you really want to delete this Game?</p>
