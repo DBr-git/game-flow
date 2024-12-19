@@ -31,13 +31,11 @@ export default function GameDetails({ games, onDelete }) {
           <button type="button" onClick={() => setButtonMode("delete")}>
             Delete
           </button>
-          <button type="button" onClick={() => setButtonMode("edit")}>
+          <button type="button" onClick={() => router.push(`/${gameId}/edit`)}>
             Edit
           </button>
         </StyledButtonWrapper>
       )}
-
-      {buttonMode === "edit" && router.push(`/${gameId}/edit`)}
 
       {buttonMode === "delete" && (
         <>

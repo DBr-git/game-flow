@@ -10,7 +10,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
     const data = Object.fromEntries(formData);
     onSubmit(data);
   }
-  console.log(selectedGame);
+
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>
@@ -19,7 +19,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         id="gameTitleInput"
         name="title"
         required
-        value={formMode === "edit" && selectedGame.title}
+        defaultValue={formMode === "edit" ? selectedGame.title : ""}
       />
       <label htmlFor="gameRatingInput">Your rating:</label>
       <input
@@ -30,7 +30,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         id="gameRatingInput"
         name="rating"
         required
-        value={formMode === "edit" && selectedGame.rating}
+        defaultValue={formMode === "edit" ? selectedGame.rating : ""}
       />
       <label htmlFor="gameDescriptionInput">Description:</label>
       <textarea
@@ -39,7 +39,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         id="gameDescriptionInput"
         name="description"
         required
-        value={formMode === "edit" && selectedGame.description}
+        defaultValue={formMode === "edit" ? selectedGame.description : ""}
       />
       <StyledButtonRow>
         {formMode === "add" && (
