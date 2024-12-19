@@ -1,10 +1,8 @@
 import GameCard from "./GameCard";
 import styled from "styled-components";
 
-export default function GameList({ progressLabel, initialGames }) {
-  const filteredGames = initialGames.filter(
-    (initialGame) => initialGame.progress === progressLabel
-  );
+export default function GameList({ progressLabel, games }) {
+  const filteredGames = games.filter((game) => game.progress === progressLabel);
 
   return (
     <StyledList>
