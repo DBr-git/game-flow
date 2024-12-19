@@ -10,7 +10,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
     const data = Object.fromEntries(formData);
     onSubmit(data);
   }
-
+  console.log(selectedGame);
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>

@@ -7,7 +7,7 @@ export default function GameDetails({ games, onDelete }) {
   const router = useRouter();
   const { gameId } = router.query;
 
-  const [deleteButtonClicked, setDeleteButtonClicked] = useState(false);
+  const [buttonMode, setButtonMode] = useState("default");
 
   const selectedGame = games.find((game) => game.id === gameId);
 
@@ -25,36 +25,39 @@ export default function GameDetails({ games, onDelete }) {
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
-      <StyledSectionWrapper>
-        {!deleteButtonClicked && (
-          <button type="button" onClick={() => setDeleteButtonClicked(true)}>
+
+      {buttonMode === "default" && (
+        <>
+          <button type="button" onClick={() => setButtonMode("delete")}>
             Delete
           </button>
-        )}
+          <button type="button" onClick={() => setButtonMode("edit")}>
+            Edit
+          </button>
+        </>
+      )}
 
-        {deleteButtonClicked && (
-          <>
-            <p>Do you really want to delete this Game?</p>
-            <StyledButtonWrapper>
-              <button
-                type="button"
-                onClick={() => setDeleteButtonClicked(false)}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  onDelete(selectedGame);
-                  router.push("/");
-                }}
-              >
-                Delete
-              </button>
-            </StyledButtonWrapper>
-          </>
-        )}
-      </StyledSectionWrapper>
+      {buttonMode === "edit" && router.push(`/${gameId}/edit`)}
+
+      {buttonMode === "delete" && (
+        <>
+          <p>Do you really want to delete this Game?</p>
+          <StyledButtonWrapper>
+            <button type="button" onClick={() => setButtonMode("default")}>
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                onDelete(selectedGame);
+                router.push("/");
+              }}
+            >
+              Delete
+            </button>
+          </StyledButtonWrapper>
+        </>
+      )}
     </>
   );
 }
@@ -80,10 +83,6 @@ const StyledRowWrapper = styled.div`
 
 const StyledDescription = styled.p`
   flex-basis: 100%;
-`;
-
-const StyledSectionWrapper = styled.section`
-  margin: 10px;
 `;
 
 const StyledButtonWrapper = styled.div`
