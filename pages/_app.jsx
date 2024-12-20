@@ -7,7 +7,6 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [games, setGames] = useState(initialGames);
-  const [formMode, setFormMode] = useState("add");
 
   function handleCreateGame(newGame) {
     const id = uid();
@@ -27,8 +26,6 @@ export default function App({ Component, pageProps }) {
         games={games}
         onAdd={handleCreateGame}
         onDelete={handleDeleteGame}
-        formMode={formMode}
-        setFormMode={setFormMode}
       />
     </>
   );
