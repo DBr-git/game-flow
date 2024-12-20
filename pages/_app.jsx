@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }) {
         return game;
       })
     );
+    router.push(`/${gameToEdit.id}`);
   }
 
   return (

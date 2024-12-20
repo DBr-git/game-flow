@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-
+import Link from "next/link";
 export default function GameForm({ onSubmit, selectedGame, formMode }) {
   const router = useRouter();
 
@@ -67,7 +67,23 @@ const StyledForm = styled.form`
 
 const StyledButtonRow = styled.div`
   display: flex;
+  a {
+    flex: 1;
+    text-decoration: none;
+    text-align: center;
+    border: solid 0.1rem grey;
+    border-radius: 5px;
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
   button {
     flex: 1;
+    border: solid 0.1rem grey;
+    border-radius: 5px;
+    background-color: white;
+    &:hover {
+      background-color: lightgrey;
+    }
   }
 `;
