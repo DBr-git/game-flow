@@ -47,32 +47,12 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         defaultValue={formMode === "edit" ? selectedGame.description : ""}
       />
       <StyledButtonRow>
-        {formMode === "add" && (
-          <>
-            <button type="button" onClick={() => router.push("/")}>
-              Cancel
-            </button>
-            <button type="submit">Create</button>
-          </>
-        )}
-        {formMode === "edit" && (
-          <>
-            <button
-              type="button"
-              onClick={() => {
-                router.push(`/${selectedGame.id}`);
-              }}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              onClick={() => router.push(`/${selectedGame.id}`)}
-            >
-              Submit
-            </button>
-          </>
-        )}
+        <Link href={formMode === "edit" ? `/${selectedGame.id}` : "/"}>
+          Cancel
+        </Link>
+        <button type="submit">
+          {formMode === "edit" ? "Submit" : "Create"}
+        </button>
       </StyledButtonRow>
     </StyledForm>
   );
