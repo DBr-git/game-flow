@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function GameDetails({ games, onDeleteGame }) {
   const router = useRouter();
@@ -31,9 +32,7 @@ export default function GameDetails({ games, onDeleteGame }) {
           <button type="button" onClick={() => setButtonMode("delete")}>
             Delete
           </button>
-          <button type="button" onClick={() => router.push(`/${gameId}/edit`)}>
-            Edit
-          </button>
+          <Link href={`/${gameId}/edit`}>Edit</Link>
         </StyledButtonWrapper>
       )}
 
