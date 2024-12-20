@@ -26,6 +26,7 @@ export default function EditGame({
       onSubmit={handleEditGame}
       selectedGame={selectedGame}
       formMode={formMode}
+      setFormMode={setFormMode}
     />
   );
 }
