@@ -1,20 +1,37 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import Link from "next/link";
+import {
+  StyledDefaultButton,
+  StyledLinkButton,
+  StyledButtonWrapper,
+} from "@/components/DefaultButtons";
 
-export default function GameForm({ onSubmit }) {
+export default function GameForm({ onSubmit, selectedGame, formMode }) {
   const router = useRouter();
 
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+    let data = Object.fromEntries(formData);
+
+    if (formMode === "edit") {
+      data = { id: selectedGame.id, progress: selectedGame.progress, ...data };
+    }
+
     onSubmit(data);
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>
-      <input type="text" id="gameTitleInput" name="title" required />
+      <input
+        type="text"
+        id="gameTitleInput"
+        name="title"
+        required
+        defaultValue={formMode === "edit" ? selectedGame.title : ""}
+      />
       <label htmlFor="gameRatingInput">Your rating:</label>
       <input
         type="range"
@@ -24,6 +41,7 @@ export default function GameForm({ onSubmit }) {
         id="gameRatingInput"
         name="rating"
         required
+        defaultValue={formMode === "edit" ? selectedGame.rating : ""}
       />
       <label htmlFor="gameDescriptionInput">Description:</label>
       <textarea
@@ -32,13 +50,18 @@ export default function GameForm({ onSubmit }) {
         id="gameDescriptionInput"
         name="description"
         required
+        defaultValue={formMode === "edit" ? selectedGame.description : ""}
       />
-      <StyledButtonRow>
-        <button type="button" onClick={() => router.push("/")}>
+      <StyledButtonWrapper>
+        <StyledLinkButton
+          href={formMode === "edit" ? `/${selectedGame.id}` : "/"}
+        >
           Cancel
-        </button>
-        <button type="submit">Create</button>
-      </StyledButtonRow>
+        </StyledLinkButton>
+        <StyledDefaultButton type="submit">
+          {formMode === "edit" ? "Submit" : "Create"}
+        </StyledDefaultButton>
+      </StyledButtonWrapper>
     </StyledForm>
   );
 }
@@ -48,11 +71,4 @@ const StyledForm = styled.form`
   flex-direction: column;
   padding: 10px;
   gap: 0.5rem;
-`;
-
-const StyledButtonRow = styled.div`
-  display: flex;
-  button {
-    flex: 1;
-  }
 `;

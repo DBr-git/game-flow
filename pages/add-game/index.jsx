@@ -1,5 +1,5 @@
 import GameForm from "@/components/GameForm";
 
-export default function AddGame({ onSubmit }) {
-  return <GameForm onSubmit={onSubmit} />;
+export default function AddGame({ onAddGame }) {
+  return <GameForm onSubmit={onAddGame} formMode={"add"} />;
 }

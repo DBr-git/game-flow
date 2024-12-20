@@ -18,14 +18,25 @@ export default function App({ Component, pageProps }) {
     setGames(games.filter((game) => game !== gameToRemove));
   }
 
+  function handleEditGame(gameToEdit) {
+    setGames(
+      games.map((game) => {
+        if (game.id === gameToEdit.id) return gameToEdit;
+        return game;
+      })
+    );
+    router.push(`/${gameToEdit.id}`);
+  }
+
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
         games={games}
-        onSubmit={handleCreateGame}
-        onDelete={handleDeleteGame}
+        onAddGame={handleCreateGame}
+        onDeleteGame={handleDeleteGame}
+        onEditGame={handleEditGame}
       />
     </>
   );
