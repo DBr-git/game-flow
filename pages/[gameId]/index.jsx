@@ -8,24 +8,37 @@ import {
   StyledButtonWrapper,
 } from "@/components/DefaultButtons";
 
-export default function GameDetails({ games, onDeleteGame }) {
+export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
   const { gameId } = router.query;
 
   const [buttonMode, setButtonMode] = useState("default");
 
-  const selectedGame = games.find((game) => game.id === gameId);
+  let selectedGame = games.find((game) => game.id === gameId);
 
   if (!selectedGame) {
     return <div>Game not found!</div>;
   }
 
+  function handleChange(event) {
+    selectedGame = { ...selectedGame, progress: event.target.value };
+    onEditGame(selectedGame);
+  }
   return (
     <>
       <BackButton href="/" />
       <StyledArticle>
         <StyledRowWrapper>
           <p>{selectedGame.title}</p>
+          <select
+            name="progress"
+            defaultValue={selectedGame.progress}
+            onChange={handleChange}
+          >
+            <option value="In Progress">In progress</option>
+            <option value="Planned">Planned</option>
+            <option value="Completed">Completed</option>
+          </select>
           <p>Rating: {selectedGame.rating}</p>
         </StyledRowWrapper>
         <StyledDescription>{selectedGame.description}</StyledDescription>
