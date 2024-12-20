@@ -8,14 +8,14 @@ export default function EditGame({ onEditGame, games }) {
   const selectedGame = games.find((game) => game.id === gameId);
 
   if (!selectedGame) {
-    return <div>Loading...</div>;
+    return <div>Game not found!</div>;
   }
 
   return (
     <GameForm
       onSubmit={onEditGame}
       selectedGame={selectedGame}
-      formMode={"edit"}
+      formMode="edit"
     />
   );
 }

@@ -13,7 +13,7 @@ export default function GameDetails({ games, onDeleteGame }) {
   const selectedGame = games.find((game) => game.id === gameId);
 
   if (!selectedGame) {
-    return <div>Loading...</div>;
+    return <div>Game not found!</div>;
   }
 
   return (
