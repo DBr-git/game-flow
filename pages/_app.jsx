@@ -24,8 +24,8 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         games={games}
-        onAdd={handleCreateGame}
-        onDelete={handleDeleteGame}
+        onAddGame={handleCreateGame}
+        onDeleteGame={handleDeleteGame}
       />
     </>
   );

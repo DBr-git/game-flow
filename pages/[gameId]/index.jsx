@@ -3,7 +3,7 @@ import { useState } from "react";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
 
-export default function GameDetails({ games, onDelete }) {
+export default function GameDetails({ games, onDeleteGame }) {
   const router = useRouter();
   const { gameId } = router.query;
 
@@ -47,7 +47,7 @@ export default function GameDetails({ games, onDelete }) {
             <button
               type="button"
               onClick={() => {
-                onDelete(selectedGame);
+                onDeleteGame(selectedGame);
                 router.push("/");
               }}
             >
