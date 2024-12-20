@@ -86,7 +86,23 @@ const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
+  a {
+    flex: 1;
+    text-decoration: none;
+    text-align: center;
+    border: solid 0.1rem grey;
+    border-radius: 5px;
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
   button {
     flex: 1;
+    border: solid 0.1rem grey;
+    border-radius: 5px;
+    background-color: white;
+    &:hover {
+      background-color: lightgrey;
+    }
   }
 `;
