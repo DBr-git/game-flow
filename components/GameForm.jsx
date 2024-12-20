@@ -1,6 +1,12 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
+import {
+  StyledDefaultButton,
+  StyledLinkButton,
+  StyledButtonWrapper,
+} from "@/components/DefaultButtons";
+
 export default function GameForm({ onSubmit, selectedGame, formMode }) {
   const router = useRouter();
 
@@ -46,14 +52,16 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         required
         defaultValue={formMode === "edit" ? selectedGame.description : ""}
       />
-      <StyledButtonRow>
-        <Link href={formMode === "edit" ? `/${selectedGame.id}` : "/"}>
+      <StyledButtonWrapper>
+        <StyledLinkButton
+          href={formMode === "edit" ? `/${selectedGame.id}` : "/"}
+        >
           Cancel
-        </Link>
-        <button type="submit">
+        </StyledLinkButton>
+        <StyledDefaultButton type="submit">
           {formMode === "edit" ? "Submit" : "Create"}
-        </button>
-      </StyledButtonRow>
+        </StyledDefaultButton>
+      </StyledButtonWrapper>
     </StyledForm>
   );
 }
@@ -63,27 +71,4 @@ const StyledForm = styled.form`
   flex-direction: column;
   padding: 10px;
   gap: 0.5rem;
-`;
-
-const StyledButtonRow = styled.div`
-  display: flex;
-  a {
-    flex: 1;
-    text-decoration: none;
-    text-align: center;
-    border: solid 0.1rem grey;
-    border-radius: 5px;
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
-  button {
-    flex: 1;
-    border: solid 0.1rem grey;
-    border-radius: 5px;
-    background-color: white;
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
 `;

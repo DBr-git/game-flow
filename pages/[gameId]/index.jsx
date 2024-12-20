@@ -2,7 +2,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
-import Link from "next/link";
+import {
+  StyledDefaultButton,
+  StyledLinkButton,
+  StyledButtonWrapper,
+} from "@/components/DefaultButtons";
 
 export default function GameDetails({ games, onDeleteGame }) {
   const router = useRouter();
@@ -29,10 +33,13 @@ export default function GameDetails({ games, onDeleteGame }) {
 
       {buttonMode === "default" && (
         <StyledButtonWrapper>
-          <button type="button" onClick={() => setButtonMode("delete")}>
+          <StyledDefaultButton
+            type="button"
+            onClick={() => setButtonMode("delete")}
+          >
             Delete
-          </button>
-          <Link href={`/${gameId}/edit`}>Edit</Link>
+          </StyledDefaultButton>
+          <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
         </StyledButtonWrapper>
       )}
 
@@ -40,10 +47,13 @@ export default function GameDetails({ games, onDeleteGame }) {
         <>
           <p>Do you really want to delete this Game?</p>
           <StyledButtonWrapper>
-            <button type="button" onClick={() => setButtonMode("default")}>
+            <StyledDefaultButton
+              type="button"
+              onClick={() => setButtonMode("default")}
+            >
               Cancel
-            </button>
-            <button
+            </StyledDefaultButton>
+            <StyledDefaultButton
               type="button"
               onClick={() => {
                 onDeleteGame(selectedGame);
@@ -51,7 +61,7 @@ export default function GameDetails({ games, onDeleteGame }) {
               }}
             >
               Delete
-            </button>
+            </StyledDefaultButton>
           </StyledButtonWrapper>
         </>
       )}
@@ -80,29 +90,4 @@ const StyledRowWrapper = styled.div`
 
 const StyledDescription = styled.p`
   flex-basis: 100%;
-`;
-
-const StyledButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-  a {
-    flex: 1;
-    text-decoration: none;
-    text-align: center;
-    border: solid 0.1rem grey;
-    border-radius: 5px;
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
-  button {
-    flex: 1;
-    border: solid 0.1rem grey;
-    border-radius: 5px;
-    background-color: white;
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
 `;
