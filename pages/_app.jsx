@@ -18,6 +18,15 @@ export default function App({ Component, pageProps }) {
     setGames(games.filter((game) => game !== gameToRemove));
   }
 
+  function handleEditGame(gameToEdit) {
+    setGames(
+      games.map((game) => {
+        if (game.id === gameToEdit.id) return gameToEdit;
+        return game;
+      })
+    );
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -26,6 +35,7 @@ export default function App({ Component, pageProps }) {
         games={games}
         onAddGame={handleCreateGame}
         onDeleteGame={handleDeleteGame}
+        onEditGame={handleEditGame}
       />
     </>
   );

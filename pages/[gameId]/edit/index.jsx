@@ -13,7 +13,7 @@ export default function EditGame({ onEditGame, games }) {
 
   return (
     <GameForm
-      onSubmit={onEditGame(selectedGame)}
+      onSubmit={onEditGame}
       selectedGame={selectedGame}
       formMode={"edit"}
     />

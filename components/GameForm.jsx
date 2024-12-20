@@ -7,7 +7,12 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+    let data = Object.fromEntries(formData);
+
+    if (formMode === "edit") {
+      data = { id: selectedGame.id, progress: selectedGame.progress, ...data };
+    }
+
     onSubmit(data);
   }
 
@@ -60,7 +65,12 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
             >
               Cancel
             </button>
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              onClick={() => router.push(`/${selectedGame.id}`)}
+            >
+              Submit
+            </button>
           </>
         )}
       </StyledButtonRow>
