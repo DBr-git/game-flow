@@ -1,13 +1,18 @@
 import GameList from "@/components/GameList";
 import styled from "styled-components";
 import AddIcon from "@/components/AddIcon";
+import { useEffect } from "react";
 
-export default function HomePage({ games }) {
+export default function HomePage({ games, setFormMode }) {
   const progressSections = ["In Progress", "Planned", "Completed"];
 
   function isSectionEmpty(progress) {
     return games.some((game) => game.progress === progress);
   }
+
+  useEffect(() => {
+    setFormMode("add");
+  }, [setFormMode]);
 
   return (
     <>

@@ -1,7 +1,9 @@
 import GameForm from "@/components/GameForm";
+import { useEffect } from "react";
 
 export default function AddGame({ onAdd, formMode, setFormMode }) {
-  setFormMode("add");
-
+  useEffect(() => {
+    setFormMode("add");
+  }, [setFormMode]);
   return <GameForm onSubmit={onAdd} formMode={formMode} />;
 }

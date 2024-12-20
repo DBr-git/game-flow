@@ -1,12 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-export default function GameForm({
-  onSubmit,
-  selectedGame,
-  formMode,
-  setFormMode,
-}) {
+export default function GameForm({ onSubmit, selectedGame, formMode }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -61,7 +56,6 @@ export default function GameForm({
               type="button"
               onClick={() => {
                 router.push(`/${selectedGame.id}`);
-                setFormMode("add");
               }}
             >
               Cancel
