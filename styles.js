@@ -29,6 +29,8 @@ export default createGlobalStyle`
 
   --borderRadius: 5px;
   --boxShadow: 1px 1px 0.2em 0.1px black;
+
+  --mainContentPadding: 0.75em;
 }
 
   *,

@@ -6,6 +6,7 @@ import {
   StyledDefaultButton,
   StyledLinkButton,
   StyledButtonWrapper,
+  StyledDeleteButton,
 } from "@/components/DefaultButtons";
 
 export default function GameDetails({ games, onDeleteGame, onEditGame }) {
@@ -34,49 +35,48 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
           defaultValue={selectedGame.progress}
           onChange={handleChange}
         >
-          <option value="In Progress">In progress</option>
+          <option value="In Progress">In Progress</option>
           <option value="Planned">Planned</option>
           <option value="Completed">Completed</option>
         </select>
         <p>Rating: {selectedGame.rating}</p>
 
         <StyledDescription>{selectedGame.description}</StyledDescription>
-      </StyledArticle>
 
-      {buttonMode === "default" && (
-        <StyledButtonWrapper>
-          <StyledDefaultButton
-            type="button"
-            onClick={() => setButtonMode("delete")}
-          >
-            Delete
-          </StyledDefaultButton>
-          <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
-        </StyledButtonWrapper>
-      )}
-
-      {buttonMode === "delete" && (
-        <>
-          <p>Do you really want to delete this Game?</p>
-          <StyledButtonWrapper>
-            <StyledDefaultButton
+        {buttonMode === "default" && (
+          <>
+            <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
+            <StyledDeleteButton
               type="button"
-              onClick={() => setButtonMode("default")}
-            >
-              Cancel
-            </StyledDefaultButton>
-            <StyledDefaultButton
-              type="button"
-              onClick={() => {
-                onDeleteGame(selectedGame);
-                router.push("/");
-              }}
+              onClick={() => setButtonMode("delete")}
             >
               Delete
-            </StyledDefaultButton>
-          </StyledButtonWrapper>
-        </>
-      )}
+            </StyledDeleteButton>
+          </>
+        )}
+        {buttonMode === "delete" && (
+          <>
+            <p>Do you really want to delete this Game?</p>
+            <StyledButtonWrapper>
+              <StyledDefaultButton
+                type="button"
+                onClick={() => setButtonMode("default")}
+              >
+                Cancel
+              </StyledDefaultButton>
+              <StyledDeleteButton
+                type="button"
+                onClick={() => {
+                  onDeleteGame(selectedGame);
+                  router.push("/");
+                }}
+              >
+                Delete
+              </StyledDeleteButton>
+            </StyledButtonWrapper>
+          </>
+        )}
+      </StyledArticle>
     </>
   );
 }
@@ -86,6 +86,7 @@ const StyledArticle = styled.article`
   flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: var(--mainContentPadding);
 
   h3 {
     margin-top: 1em;
@@ -105,7 +106,7 @@ const StyledArticle = styled.article`
 
   p {
     background-color: var(--primaryColor2);
-    padding: 1em;
+    padding: 0.5em 1em;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
   }

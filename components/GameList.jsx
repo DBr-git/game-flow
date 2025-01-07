@@ -16,7 +16,7 @@ export default function GameList({ progressLabel, games }) {
 }
 
 const StyledList = styled.ul`
-  padding: 0.75em;
+  padding: var(--mainContentPadding);
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
