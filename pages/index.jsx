@@ -11,13 +11,13 @@ export default function HomePage({ games }) {
 
   return (
     <>
-      <StyledMain>
-        <StyledPageHeadline>Game List</StyledPageHeadline>
+      <main>
+        <h1>Game List</h1>
 
         {progressSections.map((progress) => {
           return (
             <section key={progress}>
-              <StyledListLabel>{progress}</StyledListLabel>
+              <h2>{progress}</h2>
               <GameList progressLabel={progress} games={games} />
               {!isSectionEmpty(progress) && (
                 <p>No games at the moment, please add one!</p>
@@ -25,14 +25,8 @@ export default function HomePage({ games }) {
             </section>
           );
         })}
-      </StyledMain>
+      </main>
       <AddIcon />
     </>
   );
 }
-
-const StyledMain = styled.main``;
-
-const StyledPageHeadline = styled.h1``;
-
-const StyledListLabel = styled.h2``;

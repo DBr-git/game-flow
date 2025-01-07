@@ -20,6 +20,7 @@ const StyledLink = styled(Link)`
   align-items: center;
   justify-content: space-around;
   color: var(--secondaryColor2);
+  border-radius: var(--borderRadius);
   &:hover {
     color: var(--accentColor1);
   }

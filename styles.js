@@ -26,6 +26,9 @@ export default createGlobalStyle`
 
   --titleFont: ${roboto.style.fontFamily};
   --textFont: ${prozaLibre.style.fontFamily};
+
+  --borderRadius: 5px;
+  --boxShadow: 1px 1px 0.2em 0.1px black;
 }
 
   *,
@@ -41,7 +44,6 @@ export default createGlobalStyle`
     font-family: var(--titleFont);
     color: var(--secondaryColor1);
     background-color: var(--primaryColor1);
-    border-radius: 5px;
   }
 
   h1 {
@@ -50,6 +52,7 @@ export default createGlobalStyle`
   }
   h2 {
     font-size: 1.15em;
+    margin-top: 1em; 
   }
   h3 {
     font-size: 1em;
@@ -64,5 +67,6 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
     color: var(--secondaryColor1)
+    
   }
 `;

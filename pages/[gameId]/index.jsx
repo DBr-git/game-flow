@@ -28,19 +28,18 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
     <>
       <BackButton href="/" />
       <StyledArticle>
-        <StyledRowWrapper>
-          <p>{selectedGame.title}</p>
-          <select
-            name="progress"
-            defaultValue={selectedGame.progress}
-            onChange={handleChange}
-          >
-            <option value="In Progress">In progress</option>
-            <option value="Planned">Planned</option>
-            <option value="Completed">Completed</option>
-          </select>
-          <p>Rating: {selectedGame.rating}</p>
-        </StyledRowWrapper>
+        <h3>{selectedGame.title}</h3>
+        <select
+          name="progress"
+          defaultValue={selectedGame.progress}
+          onChange={handleChange}
+        >
+          <option value="In Progress">In progress</option>
+          <option value="Planned">Planned</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <p>Rating: {selectedGame.rating}</p>
+
         <StyledDescription>{selectedGame.description}</StyledDescription>
       </StyledArticle>
 
@@ -86,21 +85,33 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 10px;
-  p {
-    border: solid 0.2rem black;
-    border-radius: 5px;
-    padding: 5px;
-  }
-`;
+  gap: 1rem;
 
-const StyledRowWrapper = styled.div`
-  display: flex;
-  gap: inherit;
-  justify-content: space-between;
+  h3 {
+    margin-top: 1em;
+    color: var(--secondaryColor2);
+  }
+  select {
+    padding: 0.5em;
+    padding-left: 12px;
+    background-color: var(--primaryColor2);
+    color: var(--secondaryColor1);
+    border: none;
+    font-family: var(--textFont);
+    font-size: 1rem;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+  }
+
+  p {
+    background-color: var(--primaryColor2);
+    padding: 1em;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+  }
 `;
 
 const StyledDescription = styled.p`
   flex-basis: 100%;
+  margin-bottom: 1em;
 `;
