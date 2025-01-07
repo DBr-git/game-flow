@@ -16,10 +16,11 @@ export default function GameList({ progressLabel, games }) {
 }
 
 const StyledList = styled.ul`
+  padding: 0.75em;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: space-between;
 `;
 

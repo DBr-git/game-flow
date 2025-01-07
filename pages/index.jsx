@@ -31,14 +31,8 @@ export default function HomePage({ games }) {
   );
 }
 
-const StyledMain = styled.main`
-  padding: 10px;
-`;
+const StyledMain = styled.main``;
 
-const StyledPageHeadline = styled.h1`
-  margin: 10px 0;
-`;
+const StyledPageHeadline = styled.h1``;
 
-const StyledListLabel = styled.h2`
-  margin: 8px 0;
-`;
+const StyledListLabel = styled.h2``;

@@ -11,16 +11,16 @@ export default function GameCard({ game }) {
 }
 
 const StyledLink = styled(Link)`
-  border: solid 0.2rem black;
-  border-radius: 5px;
   height: 10rem;
-  padding: 0.5rem;
   min-width: 100px;
-
+  background-color: var(--primaryColor2);
+  box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
-  text-decoration: none;
+  color: var(--secondaryColor2);
+  &:hover {
+    color: var(--accentColor1);
+  }
 `;
