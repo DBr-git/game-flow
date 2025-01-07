@@ -39,15 +39,9 @@ export default createGlobalStyle`
   body {
     padding: 1em;
     font-family: var(--titleFont);
-    
     color: var(--secondaryColor1);
     background-color: var(--primaryColor1);
-  }
-
-  p{
-    font-family: var(--textFont);
-    font-size: 1rem;
-    color: var(--secondaryColor1);
+    border-radius: 5px;
   }
 
   h1 {
@@ -62,5 +56,15 @@ export default createGlobalStyle`
   h4 {
     font-size: 1em;
   }
-  
+
+  p{
+    font-family: var(--textFont);
+    font-size: 1rem;
+    color: var(--secondaryColor1);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--secondaryColor1)
+  }
 `;
