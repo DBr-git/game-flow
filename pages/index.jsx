@@ -12,7 +12,6 @@ export default function HomePage({ games }) {
   return (
     <>
       <StyledMain>
-        <h1>Game Flow</h1>
         <StyledPageHeadline>Game List</StyledPageHeadline>
 
         {progressSections.map((progress) => {
@@ -36,10 +35,10 @@ const StyledMain = styled.main`
   padding: 10px;
 `;
 
-const StyledPageHeadline = styled.h2`
+const StyledPageHeadline = styled.h1`
   margin: 10px 0;
 `;
 
-const StyledListLabel = styled.h3`
+const StyledListLabel = styled.h2`
   margin: 8px 0;
 `;

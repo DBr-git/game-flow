@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function GameCard({ game }) {
   return (
     <StyledLink href={game.id}>
-      <h4>{game.title}</h4>
+      <h3>{game.title}</h3>
       <p>Rating: {game.rating}</p>
     </StyledLink>
   );
