@@ -27,8 +27,8 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   }
   return (
     <>
-      <BackButton href="/" />
       <StyledArticle>
+        <BackButton href="/" />
         <h3>{selectedGame.title}</h3>
         <select
           name="progress"
@@ -89,7 +89,6 @@ const StyledArticle = styled.article`
   padding: var(--mainContentPadding);
 
   h3 {
-    margin-top: 1em;
     color: var(--secondaryColor2);
   }
   select {
