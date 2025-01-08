@@ -1,5 +1,4 @@
 import GameList from "@/components/GameList";
-import styled from "styled-components";
 import MenuButton from "@/components/MenuButton";
 import { useState } from "react";
 import MenuOption from "@/components/MenuOption";
@@ -7,7 +6,7 @@ import MenuOption from "@/components/MenuOption";
 export default function HomePage({ games }) {
   const progressSections = ["In Progress", "Planned", "Completed"];
   const [menuMode, setMenuMode] = useState("closed");
-  console.log(menuMode);
+
   function isSectionEmpty(progress) {
     return games.some((game) => game.progress === progress);
   }
