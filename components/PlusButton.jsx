@@ -1,26 +1,23 @@
-import AddIconSvg from "@/public/circle-plus.svg";
 import styled from "styled-components";
 import Link from "next/link";
-import MenuIconSvg from "@/public/menu-button.svg";
-export default function AddIcon() {
+import PlusSvg from "./PlusSvg";
+
+export default function PlusButton() {
   return (
     <StyledAddLink href="/add-game">
-      <AddIconSvg />
+      <PlusSvg width="50" height="50" />
     </StyledAddLink>
   );
 }
 
 const StyledAddLink = styled(Link)`
+  display: flex;
+  color: var(--accentColor3);
+  background-color: var(--primaryColor2);
+  box-shadow: var(--boxShadow);
   text-decoration: none;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 25px;
-  border-radius: 50%;
   overflow: hidden;
   &:hover {
     cursor: pointer;
   }
 `;
-
-const

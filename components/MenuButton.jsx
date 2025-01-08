@@ -1,9 +1,9 @@
 import MenuIconSvg from "@/public/menu-button.svg";
 import styled from "styled-components";
 
-export default function MenuButton() {
+export default function MenuButton({ setMenuMode }) {
   return (
-    <StyledMenuButton type="button">
+    <StyledMenuButton type="button" onClick={() => setMenuMode("opened")}>
       <MenuIconSvg />
     </StyledMenuButton>
   );
