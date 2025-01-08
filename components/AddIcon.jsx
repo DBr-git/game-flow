@@ -1,6 +1,7 @@
 import AddIconSvg from "@/public/circle-plus.svg";
 import styled from "styled-components";
 import Link from "next/link";
+import MenuIconSvg from "@/public/menu-button.svg";
 export default function AddIcon() {
   return (
     <StyledAddLink href="/add-game">
@@ -21,3 +22,5 @@ const StyledAddLink = styled(Link)`
     cursor: pointer;
   }
 `;
+
+const

@@ -1,6 +1,6 @@
 import GameList from "@/components/GameList";
 import styled from "styled-components";
-import AddIcon from "@/components/AddIcon";
+import MenuButton from "@/components/MenuButton";
 
 export default function HomePage({ games }) {
   const progressSections = ["In Progress", "Planned", "Completed"];
@@ -26,7 +26,7 @@ export default function HomePage({ games }) {
           );
         })}
       </main>
-      <AddIcon />
+      <MenuButton />
     </>
   );
 }
