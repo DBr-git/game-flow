@@ -93,20 +93,8 @@ const StyledTitleInput = styled.input`
   }
 `;
 
-const StyledRatingInput = styled.input`
-  background-color: var(--backgroundSubSection);
-  color: var(--headingColor);
-  border-radius: var(--borderRadius);
-  border: 2px solid var(--headingColor);
-  box-shadow: var(--boxShadow);
-  font-family: var(--textFont);
-  font-size: 1rem;
-  padding: 0.3em;
+const StyledRatingInput = styled(StyledTitleInput)`
   align-self: flex-start;
-  outline: none;
-  &:focus {
-    border-color: var(--menuColor);
-  }
 `;
 
 const StyledTextareaInput = styled.textarea`
