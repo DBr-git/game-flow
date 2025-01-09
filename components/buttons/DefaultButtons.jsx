@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
   flex: 1;
   padding: 0.5em;
   padding-left: 12px;
-  background-color: var(--primaryCards);
+  background-color: var(--backgroundSubSection);
   color: var(--headingColor);
   border: none;
   font-family: var(--textFont);
@@ -27,7 +27,7 @@ export const StyledLinkButton = styled(Link)`
   text-align: center;
   padding: 0.5em;
   padding-left: 12px;
-  background-color: var(--primaryCards);
+  background-color: var(--backgroundSubSection);
   color: var(--headingColor);
   border: none;
   font-family: var(--textFont);

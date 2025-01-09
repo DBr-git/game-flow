@@ -3,7 +3,11 @@ import styled from "styled-components";
 
 export default function MenuButton({ setMenuMode }) {
   return (
-    <StyledMenuButton type="button" onClick={() => setMenuMode("opened")}>
+    <StyledMenuButton
+      aria-label="menu"
+      type="button"
+      onClick={() => setMenuMode("opened")}
+    >
       <MenuIconSvg />
     </StyledMenuButton>
   );

@@ -5,9 +5,10 @@ import BackSvg from "./BackSvg";
 export default function MenuOption({ setMenuMode }) {
   return (
     <StyledMenuOptionContainer>
-      <PlusButton />
+      <PlusButton aria-label="add game" />
       <StyledCloseMenuButton
         type="button"
+        aria-label="close menu"
         onClick={() => setMenuMode("closed")}
       >
         <BackSvg />
