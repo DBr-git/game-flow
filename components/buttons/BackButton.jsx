@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BackSvg from "./BackSvg";
+import BackSvg from "../BackSvg";
 import styled from "styled-components";
 export default function BackButton({ href }) {
   return (

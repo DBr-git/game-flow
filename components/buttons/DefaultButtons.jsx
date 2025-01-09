@@ -46,26 +46,3 @@ export const StyledButtonWrapper = styled.div`
   margin-top: 5px;
   gap: 5px;
 `;
-
-export default function Button ({type}) {
-  return (
-
-  )
-}
-
-  const StyledButton = styled.button`
-  flex: 1;
-  padding: 0.5em;
-  padding-left: 12px;
-  background-color: var(--primaryColor2);
-  color: var(--secondaryColor1);
-  border: none;
-  font-family: var(--textFont);
-  font-size: 1rem;
-  border-radius: var(--borderRadius);
-  border: 1px solid var(--primaryColor1);
-  box-shadow: var(--boxShadow);
-  &:hover {
-    border: 1px solid var(--secondaryColor2);
-  }
-`;

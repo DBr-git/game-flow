@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import PlusSvg from "./PlusSvg";
+import PlusSvg from "../PlusSvg";
 
 export default function PlusButton() {
   return (

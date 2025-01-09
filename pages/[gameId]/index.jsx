@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import BackButton from "@/components/BackButton";
+import BackButton from "@/components/buttons/BackButton";
 import styled from "styled-components";
 import {
   StyledButton,
   StyledLinkButton,
   StyledButtonWrapper,
   StyledDeleteButton,
-} from "@/components/DefaultButtons";
+} from "@/components/buttons/DefaultButtons";
 
 export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();

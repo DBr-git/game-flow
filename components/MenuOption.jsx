@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PlusButton from "./PlusButton";
+import PlusButton from "./buttons/PlusButton";
 import BackSvg from "./BackSvg";
 
 export default function MenuOption({ setMenuMode }) {

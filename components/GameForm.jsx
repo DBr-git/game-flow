@@ -4,7 +4,7 @@ import {
   StyledButton,
   StyledLinkButton,
   StyledButtonWrapper,
-} from "@/components/DefaultButtons";
+} from "@/components/buttons/DefaultButtons";
 
 export default function GameForm({ onSubmit, selectedGame, formMode }) {
   const router = useRouter();
