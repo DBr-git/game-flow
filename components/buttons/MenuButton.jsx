@@ -23,4 +23,5 @@ const StyledMenuButton = styled.button`
   color: var(--menuColor);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
+  cursor: pointer;
 `;

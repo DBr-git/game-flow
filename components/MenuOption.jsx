@@ -40,4 +40,5 @@ const StyledCloseMenuButton = styled.button`
   border: none;
   width: 50px;
   height: 50px;
+  cursor: pointer;
 `;

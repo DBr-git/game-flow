@@ -1,5 +1,5 @@
 import GameList from "@/components/GameList";
-import MenuButton from "@/components/MenuButton";
+import MenuButton from "@/components/buttons/MenuButton";
 import { useState } from "react";
 import MenuOption from "@/components/MenuOption";
 

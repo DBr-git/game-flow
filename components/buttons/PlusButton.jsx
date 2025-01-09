@@ -17,7 +17,5 @@ const StyledAddLink = styled(Link)`
   box-shadow: var(--boxShadow);
   text-decoration: none;
   overflow: hidden;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
