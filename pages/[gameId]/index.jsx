@@ -89,13 +89,13 @@ const StyledArticle = styled.article`
   padding: var(--mainContentPadding);
 
   h1 {
-    color: var(--secondaryColor2);
+    color: var(--headingColor);
   }
   select {
     padding: 0.5em;
     padding-left: 12px;
-    background-color: var(--primaryColor2);
-    color: var(--secondaryColor1);
+    background-color: var(--backgroundSubSection);
+    color: var(--headingColor);
     border: none;
     font-family: var(--textFont);
     font-size: 1rem;
@@ -104,7 +104,7 @@ const StyledArticle = styled.article`
   }
 
   p {
-    background-color: var(--primaryColor2);
+    background-color: var(--backgroundSubSection);
     padding: 0.5em 1em;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);

@@ -74,30 +74,30 @@ const StyledForm = styled.form`
     font-family: var(--titleFont);
     font-size: 1em;
     font-weight: 700;
-    color: var(--secondaryColor2);
+    color: var(--subHeadingColor);
   }
 `;
 
 const StyledTitleInput = styled.input`
-  background-color: var(--primaryColor2);
-  color: var(--secondaryColor1);
+  background-color: var(--backgroundSubSection);
+  color: var(--headingColor);
   border-radius: var(--borderRadius);
-  border: 2px solid var(--secondaryColor1);
+  border: 2px solid var(--headingColor);
   box-shadow: var(--boxShadow);
   font-family: var(--textFont);
   font-size: 1rem;
   padding: 0.3em;
   outline: none;
   &:focus {
-    border-color: var(--accentColor3);
+    border-color: var(--menuColor);
   }
 `;
 
 const StyledRatingInput = styled.input`
-  background-color: var(--primaryColor2);
-  color: var(--secondaryColor1);
+  background-color: var(--backgroundSubSection);
+  color: var(--headingColor);
   border-radius: var(--borderRadius);
-  border: 2px solid var(--secondaryColor1);
+  border: 2px solid var(--headingColor);
   box-shadow: var(--boxShadow);
   font-family: var(--textFont);
   font-size: 1rem;
@@ -105,15 +105,15 @@ const StyledRatingInput = styled.input`
   align-self: flex-start;
   outline: none;
   &:focus {
-    border-color: var(--accentColor3);
+    border-color: var(--menuColor);
   }
 `;
 
 const StyledTextareaInput = styled.textarea`
-  background-color: var(--primaryColor2);
-  color: var(--secondaryColor1);
+  background-color: var(--backgroundSubSection);
+  color: var(--headingColor);
   border-radius: var(--borderRadius);
-  border: 2px solid var(--secondaryColor1);
+  border: 2px solid var(--headingColor);
   box-shadow: var(--boxShadow);
   font-family: var(--textFont);
   font-size: 1rem;
@@ -121,6 +121,6 @@ const StyledTextareaInput = styled.textarea`
   resize: none;
   outline: none;
   &:focus {
-    border-color: var(--accentColor3);
+    border-color: var(--menuColor);
   }
 `;

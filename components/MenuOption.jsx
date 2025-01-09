@@ -17,12 +17,12 @@ export default function MenuOption({ setMenuMode }) {
 }
 
 const StyledMenuOptionContainer = styled.div`
-  background-color: var(--primaryColor3);
+  background-color: var(--primaryBackground2);
   position: fixed;
   right: 15px;
   bottom: 25px;
   padding: 1rem;
-  border: 2px solid var(--accentColor3);
+  border: 2px solid var(--menuColor);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
   display: flex;
@@ -32,8 +32,8 @@ const StyledMenuOptionContainer = styled.div`
 const StyledCloseMenuButton = styled.button`
   display: flex;
   align-self: flex-end;
-  background-color: var(--primaryColor2);
-  color: var(--accentColor3);
+  background-color: var(--backgroundSubSection);
+  color: var(--menuColor);
   box-shadow: var(--boxShadow);
   border-radius: var(--borderRadius);
   border: none;

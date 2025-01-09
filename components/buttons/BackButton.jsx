@@ -12,7 +12,7 @@ export default function BackButton({ href }) {
 const StyledLink = styled(Link)`
   display: flex;
   align-self: flex-end;
-  background-color: var(--primaryColor2);
+  background-color: var(--backgroundSubSection);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
 `;

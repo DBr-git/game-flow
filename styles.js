@@ -14,15 +14,15 @@ export const prozaLibre = Proza_Libre({
 export default createGlobalStyle`
 
 :root {
-  --primaryColor1: #0B1622;
-  --primaryColor2: #151F2E;
-  --primaryColor3: #11161D;
-  --secondaryColor1: #9FADBD;
-  --secondaryColor2: #D3D5F3;
-  --secondaryColor3: #EDF1F5;
-  --accentColor1: #DA4127;
-  --accentColor2: #F57885;
-  --accentColor3: #00AAFF;
+  --primaryBackground: #0B1622;
+  --backgroundSubSection: #151F2E;
+  --primaryBackground2: #11161D;
+  --headingColor: #9FADBD;
+  --subHeadingColor: #EDF1F5;
+  --subHeadingHighlight: #D3D5F3;
+  --alertColor: #DA4127;
+  --alertHighlight: #F57885;
+  --menuColor: #00AAFF;
 
   --titleFont: ${roboto.style.fontFamily};
   --textFont: ${prozaLibre.style.fontFamily};
@@ -44,8 +44,8 @@ export default createGlobalStyle`
   body {
     padding: 0.5em 1.75em;
     font-family: var(--titleFont);
-    color: var(--secondaryColor1);
-    background-color: var(--primaryColor1);
+    color: var(--headingColor);
+    background-color: var(--primaryBackground);
   }
 
   h1 {
@@ -68,7 +68,7 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: var(--secondaryColor1)
+    color: var(--headingColor)
     
   }
 `;

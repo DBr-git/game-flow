@@ -12,8 +12,8 @@ export default function PlusButton() {
 
 const StyledAddLink = styled(Link)`
   display: flex;
-  color: var(--accentColor3);
-  background-color: var(--primaryColor2);
+  color: var(--menuColor);
+  background-color: var(--backgroundSubSection);
   box-shadow: var(--boxShadow);
   text-decoration: none;
   overflow: hidden;

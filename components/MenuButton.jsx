@@ -14,9 +14,9 @@ const StyledMenuButton = styled.button`
   position: fixed;
   right: 15px;
   bottom: 25px;
-  border: 2px solid var(--accentColor3);
-  background-color: var(--primaryColor3);
-  color: var(--accentColor3);
+  border: 2px solid var(--menuColor);
+  background-color: var(--primaryBackground2);
+  color: var(--menuColor);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
 `;

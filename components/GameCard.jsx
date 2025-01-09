@@ -13,15 +13,15 @@ export default function GameCard({ game }) {
 const StyledLink = styled(Link)`
   height: 10rem;
   min-width: 100px;
-  background-color: var(--primaryColor2);
+  background-color: var(--backgroundSubSection);
   box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  color: var(--secondaryColor2);
+  color: var(--subHeadingColor);
   border-radius: var(--borderRadius);
   &:hover {
-    color: var(--accentColor1);
+    color: var(--alertColor);
   }
 `;
