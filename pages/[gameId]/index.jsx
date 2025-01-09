@@ -3,7 +3,7 @@ import { useState } from "react";
 import BackButton from "@/components/BackButton";
 import styled from "styled-components";
 import {
-  StyledDefaultButton,
+  StyledButton,
   StyledLinkButton,
   StyledButtonWrapper,
   StyledDeleteButton,
@@ -58,12 +58,12 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
           <>
             <p>Do you really want to delete this Game?</p>
             <StyledButtonWrapper>
-              <StyledDefaultButton
+              <StyledButton
                 type="button"
                 onClick={() => setButtonMode("default")}
               >
                 Cancel
-              </StyledDefaultButton>
+              </StyledButton>
               <StyledDeleteButton
                 type="button"
                 onClick={() => {

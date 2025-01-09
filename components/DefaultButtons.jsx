@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export const StyledDefaultButton = styled.button`
+export const StyledButton = styled.button`
   flex: 1;
   padding: 0.5em;
   padding-left: 12px;
@@ -18,21 +18,8 @@ export const StyledDefaultButton = styled.button`
   }
 `;
 
-export const StyledDeleteButton = styled.button`
-  flex: 1;
-  padding: 0.5em;
-  padding-left: 12px;
-  background-color: var(--primaryColor2);
+export const StyledDeleteButton = styled(StyledButton)`
   color: var(--accentColor1);
-  border: none;
-  font-family: var(--textFont);
-  font-size: 1rem;
-  border-radius: var(--borderRadius);
-  border: 1px solid var(--primaryColor1);
-  box-shadow: var(--boxShadow);
-  &:hover {
-    border: 1px solid var(--secondaryColor2);
-  }
 `;
 
 export const StyledLinkButton = styled(Link)`
@@ -58,4 +45,27 @@ export const StyledButtonWrapper = styled.div`
   justify-content: space-between;
   margin-top: 5px;
   gap: 5px;
+`;
+
+export default function Button ({type}) {
+  return (
+
+  )
+}
+
+  const StyledButton = styled.button`
+  flex: 1;
+  padding: 0.5em;
+  padding-left: 12px;
+  background-color: var(--primaryColor2);
+  color: var(--secondaryColor1);
+  border: none;
+  font-family: var(--textFont);
+  font-size: 1rem;
+  border-radius: var(--borderRadius);
+  border: 1px solid var(--primaryColor1);
+  box-shadow: var(--boxShadow);
+  &:hover {
+    border: 1px solid var(--secondaryColor2);
+  }
 `;

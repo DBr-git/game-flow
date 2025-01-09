@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
-  StyledDefaultButton,
+  StyledButton,
   StyledLinkButton,
   StyledButtonWrapper,
 } from "@/components/DefaultButtons";
@@ -57,9 +57,9 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         >
           Cancel
         </StyledLinkButton>
-        <StyledDefaultButton type="submit">
+        <StyledButton type="submit">
           {formMode === "edit" ? "Submit" : "Create"}
-        </StyledDefaultButton>
+        </StyledButton>
       </StyledButtonWrapper>
     </StyledForm>
   );
