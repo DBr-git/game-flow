@@ -3,6 +3,7 @@ import initialGames from "@/public/initialGames.js";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { uid } from "uid";
+import { randomColor } from "@/utils/randomColor.js";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -10,7 +11,10 @@ export default function App({ Component, pageProps }) {
 
   function handleCreateGame(newGame) {
     const id = uid();
-    setGames([...games, { id: id, progress: "Planned", ...newGame }]);
+    setGames([
+      ...games,
+      { id: id, progress: "Planned", color: randomColor(), ...newGame },
+    ]);
     router.push(`/${id}/`);
   }
 
