@@ -78,7 +78,7 @@ const initialGames = [
     description:
       "Cyberpunk 2077 is a futuristic RPG set in Night City, a sprawling metropolis teeming with cyber-enhanced characters and dark secrets. Players assume the role of V, a mercenary navigating a world filled with advanced technology and moral ambiguity. With a branching narrative, dynamic combat, and an open world brimming with detail, the game offers an immersive experience. Despite its initial challenges, Cyberpunk 2077 has grown to be a richly layered and ambitious RPG.",
     rating: "5",
-    color: "#64e9a0",
+    color: "#53bd83",
   },
   {
     id: "10",
