@@ -90,9 +90,9 @@ const StyledArticle = styled.article`
   gap: 1rem;
   padding: var(--mainContentPadding);
   overflow-wrap: anywhere;
- 
-    color: var(--headingColor);
-  }
+
+  color: var(--headingColor);
+
   select {
     padding: 0.5em;
     padding-left: 12px;
