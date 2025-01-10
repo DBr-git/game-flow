@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function GameCard({ game }) {
   return (
-    <StyledLink href={game.id} color={game.color}>
+    <StyledLink href={game.id} $color={game.color}>
       <h3>{game.title}</h3>
       <p>Rating: {game.rating}</p>
     </StyledLink>
@@ -13,7 +13,7 @@ export default function GameCard({ game }) {
 const StyledLink = styled(Link)`
   height: 10rem;
   min-width: 100px;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.$color};
   box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
   flex-direction: column;

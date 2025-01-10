@@ -27,7 +27,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   }
   return (
     <>
-      <StyledDiv color={selectedGame.color}>
+      <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
         <h1>{selectedGame.title}</h1>
       </StyledDiv>
@@ -118,7 +118,7 @@ const StyledDescription = styled.p`
   margin-bottom: 1em;
 `;
 const StyledDiv = styled.div`
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.$color};
   height: 150px;
   margin: -0.5em -1.75em 0 -1.75em;
   display: flex;
