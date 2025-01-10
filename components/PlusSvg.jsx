@@ -10,7 +10,6 @@ export default function PlusSvg({ width, height }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-plus"
     >
       <path d="M5 12h14" />
       <path d="M12 5v14" />
