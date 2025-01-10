@@ -17,10 +17,16 @@ const StyledLink = styled(Link)`
   box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
   justify-content: space-around;
   color: var(--subHeadingColor);
   border-radius: var(--borderRadius);
+  padding: 1em;
+  h3 {
+    overflow-wrap: anywhere;
+    overflow: scroll;
+    margin-bottom: 1em;
+  }
   &:hover {
     color: var(--alertColor);
   }

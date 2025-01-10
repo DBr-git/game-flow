@@ -87,7 +87,7 @@ const StyledArticle = styled.article`
   flex-wrap: wrap;
   gap: 1rem;
   padding: var(--mainContentPadding);
-
+  overflow-wrap: anywhere;
   h1 {
     color: var(--headingColor);
   }
