@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import BackButton from "@/components/BackButton";
+import BackButton from "@/components/buttons/BackButton";
 import styled from "styled-components";
 import {
-  StyledDefaultButton,
+  StyledButton,
   StyledLinkButton,
   StyledButtonWrapper,
-} from "@/components/DefaultButtons";
+  StyledDeleteButton,
+} from "@/components/buttons/DefaultButtons";
 
 export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
@@ -26,58 +27,56 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   }
   return (
     <>
-      <BackButton href="/" />
       <StyledArticle>
-        <StyledRowWrapper>
-          <p>{selectedGame.title}</p>
-          <select
-            name="progress"
-            defaultValue={selectedGame.progress}
-            onChange={handleChange}
-          >
-            <option value="In Progress">In progress</option>
-            <option value="Planned">Planned</option>
-            <option value="Completed">Completed</option>
-          </select>
-          <p>Rating: {selectedGame.rating}</p>
-        </StyledRowWrapper>
+        <BackButton href="/" />
+        <h1>{selectedGame.title}</h1>
+        <select
+          name="progress"
+          defaultValue={selectedGame.progress}
+          onChange={handleChange}
+        >
+          <option value="In Progress">In Progress</option>
+          <option value="Planned">Planned</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <p>Rating: {selectedGame.rating}</p>
+
         <StyledDescription>{selectedGame.description}</StyledDescription>
-      </StyledArticle>
 
-      {buttonMode === "default" && (
-        <StyledButtonWrapper>
-          <StyledDefaultButton
-            type="button"
-            onClick={() => setButtonMode("delete")}
-          >
-            Delete
-          </StyledDefaultButton>
-          <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
-        </StyledButtonWrapper>
-      )}
-
-      {buttonMode === "delete" && (
-        <>
-          <p>Do you really want to delete this Game?</p>
-          <StyledButtonWrapper>
-            <StyledDefaultButton
+        {buttonMode === "default" && (
+          <>
+            <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
+            <StyledDeleteButton
               type="button"
-              onClick={() => setButtonMode("default")}
-            >
-              Cancel
-            </StyledDefaultButton>
-            <StyledDefaultButton
-              type="button"
-              onClick={() => {
-                onDeleteGame(selectedGame);
-                router.push("/");
-              }}
+              onClick={() => setButtonMode("delete")}
             >
               Delete
-            </StyledDefaultButton>
-          </StyledButtonWrapper>
-        </>
-      )}
+            </StyledDeleteButton>
+          </>
+        )}
+        {buttonMode === "delete" && (
+          <>
+            <p>Do you really want to delete this Game?</p>
+            <StyledButtonWrapper>
+              <StyledButton
+                type="button"
+                onClick={() => setButtonMode("default")}
+              >
+                Cancel
+              </StyledButton>
+              <StyledDeleteButton
+                type="button"
+                onClick={() => {
+                  onDeleteGame(selectedGame);
+                  router.push("/");
+                }}
+              >
+                Delete
+              </StyledDeleteButton>
+            </StyledButtonWrapper>
+          </>
+        )}
+      </StyledArticle>
     </>
   );
 }
@@ -86,21 +85,33 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 10px;
-  p {
-    border: solid 0.2rem black;
-    border-radius: 5px;
-    padding: 5px;
+  gap: 1rem;
+  padding: var(--mainContentPadding);
+  overflow-wrap: anywhere;
+  h1 {
+    color: var(--headingColor);
   }
-`;
+  select {
+    padding: 0.5em;
+    padding-left: 12px;
+    background-color: var(--backgroundSubSection);
+    color: var(--headingColor);
+    border: none;
+    font-family: var(--textFont);
+    font-size: 1rem;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+  }
 
-const StyledRowWrapper = styled.div`
-  display: flex;
-  gap: inherit;
-  justify-content: space-between;
+  p {
+    background-color: var(--backgroundSubSection);
+    padding: 0.5em 1em;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+  }
 `;
 
 const StyledDescription = styled.p`
   flex-basis: 100%;
+  margin-bottom: 1em;
 `;

@@ -4,23 +4,30 @@ import Link from "next/link";
 export default function GameCard({ game }) {
   return (
     <StyledLink href={game.id}>
-      <h4>{game.title}</h4>
+      <h3>{game.title}</h3>
       <p>Rating: {game.rating}</p>
     </StyledLink>
   );
 }
 
 const StyledLink = styled(Link)`
-  border: solid 0.2rem black;
-  border-radius: 5px;
   height: 10rem;
-  padding: 0.5rem;
   min-width: 100px;
-
+  background-color: var(--backgroundSubSection);
+  box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
   justify-content: space-around;
-
-  text-decoration: none;
+  color: var(--subHeadingColor);
+  border-radius: var(--borderRadius);
+  padding: 1em;
+  h3 {
+    overflow-wrap: anywhere;
+    overflow: auto;
+    margin-bottom: 1em;
+  }
+  &:hover {
+    color: var(--alertColor);
+  }
 `;

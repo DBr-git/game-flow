@@ -1,9 +1,11 @@
 import GameList from "@/components/GameList";
-import styled from "styled-components";
-import AddIcon from "@/components/AddIcon";
+import MenuButton from "@/components/buttons/MenuButton";
+import { useState } from "react";
+import MenuOption from "@/components/MenuOption";
 
 export default function HomePage({ games }) {
   const progressSections = ["In Progress", "Planned", "Completed"];
+  const [menuMode, setMenuMode] = useState("closed");
 
   function isSectionEmpty(progress) {
     return games.some((game) => game.progress === progress);
@@ -11,14 +13,13 @@ export default function HomePage({ games }) {
 
   return (
     <>
-      <StyledMain>
-        <h1>Game Flow</h1>
-        <StyledPageHeadline>Game List</StyledPageHeadline>
+      <main>
+        <h1>Game List</h1>
 
         {progressSections.map((progress) => {
           return (
             <section key={progress}>
-              <StyledListLabel>{progress}</StyledListLabel>
+              <h2>{progress}</h2>
               <GameList progressLabel={progress} games={games} />
               {!isSectionEmpty(progress) && (
                 <p>No games at the moment, please add one!</p>
@@ -26,20 +27,9 @@ export default function HomePage({ games }) {
             </section>
           );
         })}
-      </StyledMain>
-      <AddIcon />
+        <MenuButton setMenuMode={setMenuMode} />
+        {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
+      </main>
     </>
   );
 }
-
-const StyledMain = styled.main`
-  padding: 10px;
-`;
-
-const StyledPageHeadline = styled.h2`
-  margin: 10px 0;
-`;
-
-const StyledListLabel = styled.h3`
-  margin: 8px 0;
-`;

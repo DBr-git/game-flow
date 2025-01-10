@@ -7,22 +7,18 @@ export default function GameList({ progressLabel, games }) {
   return (
     <StyledList>
       {filteredGames.map((game) => (
-        <StyledListItem key={game.id}>
+        <li key={game.id}>
           <GameCard game={game} />
-        </StyledListItem>
+        </li>
       ))}
     </StyledList>
   );
 }
 
 const StyledList = styled.ul`
+  padding: var(--mainContentPadding);
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: space-between;
-`;
-
-const StyledListItem = styled.li`
-  flex: 1 1 calc(50% - 0.5rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
 `;
