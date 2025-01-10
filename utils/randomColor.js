@@ -1,6 +1,7 @@
 export function randomColor() {
-  const maxDarkValue = 0x7f7f7f;
-  return `#${Math.floor(Math.random() * maxDarkValue)
-    .toString(16)
-    .padStart(6, "0")}`;
+  const randomChannel = () => Math.floor(Math.random() * 160);
+  const r = randomChannel().toString(16).padStart(2, "0");
+  const g = randomChannel().toString(16).padStart(2, "0");
+  const b = randomChannel().toString(16).padStart(2, "0");
+  return `#${r}${g}${b}`;
 }
