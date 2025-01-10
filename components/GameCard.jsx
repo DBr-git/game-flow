@@ -24,7 +24,7 @@ const StyledLink = styled(Link)`
   padding: 1em;
   h3 {
     overflow-wrap: anywhere;
-    overflow: scroll;
+    overflow: auto;
     margin-bottom: 1em;
   }
   &:hover {
