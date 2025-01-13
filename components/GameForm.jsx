@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
   StyledButton,
@@ -7,15 +6,17 @@ import {
 } from "@/components/buttons/DefaultButtons";
 
 export default function GameForm({ onSubmit, selectedGame, formMode }) {
-  const router = useRouter();
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     let data = Object.fromEntries(formData);
-
     if (formMode === "edit") {
-      data = { id: selectedGame.id, progress: selectedGame.progress, ...data };
+      data = {
+        id: selectedGame.id,
+        progress: selectedGame.progress,
+        color: selectedGame.color,
+        ...data,
+      };
     }
 
     onSubmit(data);

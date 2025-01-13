@@ -27,9 +27,11 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   }
   return (
     <>
-      <StyledArticle>
+      <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
         <h1>{selectedGame.title}</h1>
+      </StyledDiv>
+      <StyledArticle>
         <select
           name="progress"
           defaultValue={selectedGame.progress}
@@ -88,9 +90,9 @@ const StyledArticle = styled.article`
   gap: 1rem;
   padding: var(--mainContentPadding);
   overflow-wrap: anywhere;
-  h1 {
-    color: var(--headingColor);
-  }
+
+  color: var(--headingColor);
+
   select {
     padding: 0.5em;
     padding-left: 12px;
@@ -114,4 +116,12 @@ const StyledArticle = styled.article`
 const StyledDescription = styled.p`
   flex-basis: 100%;
   margin-bottom: 1em;
+`;
+const StyledDiv = styled.div`
+  background-color: ${(props) => props.$color};
+  height: 150px;
+  margin: -0.5em -1.75em 0 -1.75em;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1.75em;
 `;
