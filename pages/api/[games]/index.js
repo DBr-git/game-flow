@@ -14,7 +14,7 @@ export default async function handler(request, response) {
           "Client-ID": CLIENT_ID,
           Authorization: `Bearer ${API_KEY}`,
         },
-        body: `fields name; limit 20; offset ${offset}; sort total_rating desc; where version_parent = null & cover != null & themes != (42);`,
+        body: `fields name, summary, cover.image_id, cover.width, cover.height, artworks.url; limit 20; offset ${offset}; sort total_rating desc; where version_parent = null & cover != null & themes != (42);`,
       });
 
       if (!fetchedGames.ok) {

@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function GameCard({ game, source }) {
   return (
     <>
       {source === "api" ? (
-        <StyledLink href={game.id.toString()} />
+        <StyledLink href={game.id.toString()}>
+          <Image
+            alt={game.name}
+            src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+            width={250}
+            height={350}
+          ></Image>
+        </StyledLink>
       ) : (
         <StyledLink href={game.id.toString()} $color={game.color}>
           <h3>{game.name}</h3>
