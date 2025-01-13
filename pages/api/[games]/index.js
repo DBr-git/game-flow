@@ -5,6 +5,8 @@ export default async function handler(request, response) {
   console.log("Incoming request:", request.method);
   if (request.method === "GET") {
     try {
+      const { games: offset } = request.query;
+
       const fetchedGames = await fetch("https://api.igdb.com/v4/games", {
         method: "POST",
         headers: {
@@ -12,7 +14,7 @@ export default async function handler(request, response) {
           "Client-ID": CLIENT_ID,
           Authorization: `Bearer ${API_KEY}`,
         },
-        body: `fields name; limit 20; offset ${request.query} sort total_rating desc; where version_parent = null & cover != null & themes != (42);`,
+        body: `fields name; limit 20; offset ${offset}; sort total_rating desc; where version_parent = null & cover != null & themes != (42);`,
       });
 
       if (!fetchedGames.ok) {

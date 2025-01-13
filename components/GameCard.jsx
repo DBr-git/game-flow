@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function GameCard({ game }) {
+export default function GameCard({ game, source }) {
   return (
-    <StyledLink href={game.id} $color={game.color}>
-      <h3>{game.title}</h3>
-      <p>Rating: {game.rating}</p>
-    </StyledLink>
+    <>
+      {source === "api" ? (
+        <StyledLink href={game.id.toString()} />
+      ) : (
+        <StyledLink href={game.id.toString()} $color={game.color}>
+          <h3>{game.name}</h3>
+          <p>Rating: {game.rating}</p>
+        </StyledLink>
+      )}
+    </>
   );
 }
 
