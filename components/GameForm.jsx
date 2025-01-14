@@ -22,6 +22,16 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
     onSubmit(data);
   }
 
+  function handleProgressChange() {
+    const sliderValue = document.querySelector("#sliderValue");
+    const sliderInput = document.querySelector("#sliderInput");
+    sliderValue.textContent = sliderInput.value;
+
+    sliderInput.addEventListener("sliderInput", (event) => {
+      sliderValue.textContent = event.target.value;
+    });
+  }
+
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="gameTitleInput">Title:</label>
@@ -52,6 +62,20 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         required
         defaultValue={formMode === "edit" ? selectedGame.description : ""}
       />
+
+      <label for="sliderInput">Choose your progress:</label>
+      <StyledRange
+        id="sliderInput"
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        onChange={handleProgressChange}
+      ></StyledRange>
+      <p>
+        Value: <output id="sliderValue"></output>%
+      </p>
+
       <StyledButtonWrapper>
         <StyledLinkButton
           href={formMode === "edit" ? `/${selectedGame.id}` : "/"}
@@ -112,4 +136,10 @@ const StyledTextareaInput = styled.textarea`
   &:focus {
     border-color: var(--menuColor);
   }
+`;
+
+const StyledRange = styled.input`
+  width: 100%;
+  background-color: var(--backgroundSubSection);
+  color: var(--headingColor);
 `;
