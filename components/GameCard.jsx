@@ -6,14 +6,14 @@ export default function GameCard({ game, source }) {
   return (
     <>
       {source === "api" ? (
-        <StyledLink2 href={game.id.toString()}>
+        <StyledApiLink href={game.id.toString()}>
           <StyledImage
             alt={game.name}
             src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
             width={game.cover.width}
-            height={game.cover.width}
+            height={game.cover.height}
           ></StyledImage>
-        </StyledLink2>
+        </StyledApiLink>
       ) : (
         <StyledLink href={game.id.toString()} $color={game.color}>
           <h3>{game.name}</h3>
@@ -51,13 +51,13 @@ const StyledImage = styled(Image)`
   height: 100%;
   width: 100%;
   box-shadow: 1px 1px 0.2em 0.1px black;
+  border-radius: var(--borderRadius);
 `;
 
-const StyledLink2 = styled(Link)`
+const StyledApiLink = styled(Link)`
   overflow: hidden;
   display: box;
   color: var(--subHeadingColor);
-  border-radius: var(--borderRadius);
   &:hover {
     color: var(--alertColor);
   }

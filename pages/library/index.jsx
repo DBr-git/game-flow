@@ -2,32 +2,37 @@ import useSWR from "swr";
 import { useState } from "react";
 import GameCard from "@/components/GameCard";
 import styled from "styled-components";
+import Pagination from "@/components/Pagination";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function Library() {
   const [page, setPage] = useState(0);
-  const { data, error, isLoading, mutate } = useSWR(`/api/${page}`, fetcher);
+  console.log(page);
+  const { data, error, isLoading } = useSWR(`/api/${page * 50}`, fetcher);
 
   if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div>
+    <>
       <h1>Library</h1>
       {data ? (
-        <StyledList>
-          {data.map((game) => (
-            <li key={game.id}>
-              <GameCard game={game} source={"api"} />
-            </li>
-          ))}
-        </StyledList>
+        <>
+          <StyledList>
+            {data.map((game) => (
+              <li key={game.id}>
+                <GameCard game={game} source={"api"} />
+              </li>
+            ))}
+          </StyledList>
+          <Pagination page={page} setPage={setPage} />
+        </>
       ) : (
         <div>No games found.</div>
       )}
-    </div>
+    </>
   );
 }
 

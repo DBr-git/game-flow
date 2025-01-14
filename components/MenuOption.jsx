@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import PlusButton from "./buttons/PlusButton";
 import BackSvg from "./BackSvg";
+import LibraryButton from "./buttons/LibraryButton";
 
 export default function MenuOption({ setMenuMode }) {
   return (
     <StyledMenuOptionContainer>
+      <LibraryButton aria-label="view library" />
       <PlusButton aria-label="add game" />
       <StyledCloseMenuButton
         type="button"
