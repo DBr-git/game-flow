@@ -7,9 +7,9 @@ import Pagination from "@/components/Pagination";
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function Library() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
-  const { data, error, isLoading } = useSWR(`/api/${page * 50}`, fetcher);
+  const { data, error, isLoading } = useSWR(`/api/${page}`, fetcher);
 
   if (isLoading) return <div>Loading...</div>;
 

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function LibraryButton() {
   return (
-    <StyledLibraryLink href="/library">
+    <StyledLibraryLink href="/library" aria-label="view library">
       <LibrarySvg />
     </StyledLibraryLink>
   );

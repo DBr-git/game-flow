@@ -6,7 +6,7 @@ import LibraryButton from "./buttons/LibraryButton";
 export default function MenuOption({ setMenuMode }) {
   return (
     <StyledMenuOptionContainer>
-      <LibraryButton aria-label="view library" />
+      <LibraryButton />
       <PlusButton aria-label="add game" />
       <StyledCloseMenuButton
         type="button"

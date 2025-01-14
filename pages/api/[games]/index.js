@@ -2,7 +2,6 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const API_KEY = process.env.API_KEY;
 
 export default async function handler(request, response) {
-  console.log("Incoming request:", request.method);
   if (request.method === "GET") {
     try {
       const { games: offset } = request.query;
@@ -14,7 +13,9 @@ export default async function handler(request, response) {
           "Client-ID": CLIENT_ID,
           Authorization: `Bearer ${API_KEY}`,
         },
-        body: `fields name, summary, cover.image_id, cover.width, cover.height, artworks.url; limit 50; offset ${offset}; sort total_rating desc; where parent_game = null & cover != null & themes != (42);`,
+        body: `fields name, summary, cover.image_id, cover.width, cover.height, artworks.url; limit 50; offset ${
+          (offset - 1) * 50
+        }; sort total_rating desc; where parent_game = null & cover != null & themes != (42);`,
       });
 
       if (!fetchedGames.ok) {

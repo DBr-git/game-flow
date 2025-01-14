@@ -7,12 +7,12 @@ export default function Pagination({ page, setPage }) {
     <StyledDiv>
       <StyledButton
         type="button"
-        disabled={page <= 0}
+        disabled={page <= 1}
         onClick={() => setPage(page - 1)}
       >
         <ChevronLeft />
       </StyledButton>
-      <p>{page + 1}</p>
+      <p>{page}</p>
       <StyledButton type="button" onClick={() => setPage(page + 1)}>
         <ChevronRight />
       </StyledButton>

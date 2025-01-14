@@ -6,9 +6,9 @@ export default function GameCard({ game, source }) {
   return (
     <>
       {source === "api" ? (
-        <StyledApiLink href={game.id.toString()}>
+        <StyledApiLink href={"#"}>
           <StyledImage
-            alt={game.name}
+            alt={`cover of ${game.name}`}
             src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
             width={game.cover.width}
             height={game.cover.height}
