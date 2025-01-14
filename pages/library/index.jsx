@@ -8,7 +8,7 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function Library() {
   const [page, setPage] = useState(0);
-  console.log(page);
+
   const { data, error, isLoading } = useSWR(`/api/${page * 50}`, fetcher);
 
   if (isLoading) return <div>Loading...</div>;
