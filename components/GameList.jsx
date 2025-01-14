@@ -8,7 +8,7 @@ export default function GameList({ progressLabel, games }) {
     <StyledList>
       {filteredGames.map((game) => (
         <li key={game.id}>
-          <GameCard game={game} />
+          <GameCard game={game} source={"personalList"} />
         </li>
       ))}
     </StyledList>
