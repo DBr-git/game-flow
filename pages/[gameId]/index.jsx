@@ -16,15 +16,24 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const [buttonMode, setButtonMode] = useState("default");
 
   let selectedGame = games.find((game) => game.id === gameId);
+  const [sliderValue, setSliderValue] = useState(selectedGame.progress);
 
   if (!selectedGame) {
     return <div>Game not found!</div>;
   }
 
   function handleChange(event) {
-    selectedGame = { ...selectedGame, progress: event.target.value };
+    selectedGame = { ...selectedGame, status: event.target.value };
     onEditGame(selectedGame);
   }
+
+  function handleProgressChange() {
+    sliderValue === 100 &&
+      (selectedGame = { ...selectedGame, status: "Completed" });
+    setSliderValue();
+    onEditGame(selectedGame);
+  }
+
   return (
     <>
       <StyledDiv $color={selectedGame.color}>
@@ -33,8 +42,8 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
       </StyledDiv>
       <StyledArticle>
         <select
-          name="progress"
-          defaultValue={selectedGame.progress}
+          name="status"
+          defaultValue={selectedGame.status}
           onChange={handleChange}
         >
           <option value="In Progress">In Progress</option>
@@ -42,8 +51,18 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
           <option value="Completed">Completed</option>
         </select>
         <p>Rating: {selectedGame.rating}</p>
-
         <StyledDescription>{selectedGame.description}</StyledDescription>
+        <label htmlFor="sliderInput">Choose your progress:</label>
+        <StyledRange
+          id="sliderInput"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          defaultValue={sliderValue}
+          onChange={handleProgressChange}
+        ></StyledRange>
+        <p>Value: {sliderValue}%</p>
 
         {buttonMode === "default" && (
           <>
@@ -124,4 +143,10 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.5em 1.75em;
+`;
+
+const StyledRange = styled.input`
+  width: 100%;
+  background-color: var(--backgroundSubSection);
+  color: var(--headingColor);
 `;

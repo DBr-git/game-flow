@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
     const id = uid();
     setGames([
       ...games,
-      { id: id, progress: "Planned", color: randomColor(), ...newGame },
+      { id: id, status: "Planned", color: randomColor(), ...newGame },
     ]);
     router.push(`/${id}/`);
   }
