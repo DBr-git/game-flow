@@ -26,7 +26,7 @@ export default function LibraryGameDetails() {
           width={data[0].artworks[0].width}
           height={data[0].artworks[0].height}
           alt={`artwork of ${data[0].name}`}
-        ></StyledBackgroundImage>
+        />
         <StyledContent>
           <BackButton href="/library" />
           <h1>{data[0].name}</h1>
@@ -43,6 +43,11 @@ export default function LibraryGameDetails() {
 const StyledDescription = styled.p`
   flex-basis: 100%;
   margin-bottom: 1em;
+  background-color: var(--backgroundSubSection);
+  padding: 0.5em 1em;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--boxShadow);
+  z-index: 1;
 `;
 
 const StyledArticle = styled.article`
@@ -51,13 +56,6 @@ const StyledArticle = styled.article`
   gap: 1rem;
   padding: var(--mainContentPadding);
   color: var(--headingColor);
-  p {
-    background-color: var(--backgroundSubSection);
-    padding: 0.5em 1em;
-    border-radius: var(--borderRadius);
-    box-shadow: var(--boxShadow);
-    z-index: 1;
-  }
 `;
 
 const StyledContainer = styled.div`
