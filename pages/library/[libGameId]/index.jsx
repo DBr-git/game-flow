@@ -1,19 +1,36 @@
 import styled from "styled-components";
 import BackButton from "@/components/buttons/BackButton";
+import { useRouter } from "next/router";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function LibraryGameDetails() {
+  const router = useRouter();
+  // const { gameId } = router.query.libGameId;
+  // console.log(gameId);
+
+  const { data, error, isLoading } = useSWR(
+    `/api/details/${router.query.libGameId}`,
+    fetcher
+  );
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <>
       <StyledContainer>
         <StyledBackground></StyledBackground>
         <StyledContent>
           <BackButton href="/library" />
-          <h1>Name of the Game</h1>
+          <h1>{data.name}</h1>
         </StyledContent>
       </StyledContainer>
 
       <StyledArticle>
-        <StyledDescription>{"sdsdsdad"}</StyledDescription>
+        <StyledDescription>{data.summary}</StyledDescription>
       </StyledArticle>
     </>
   );
