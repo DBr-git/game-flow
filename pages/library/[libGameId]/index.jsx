@@ -1,15 +1,13 @@
-// import { useRouter } from "next/router";
 import styled from "styled-components";
 import BackButton from "@/components/buttons/BackButton";
 
 export default function LibraryGameDetails() {
-  // const router = useRouter();
   return (
     <>
       <StyledContainer>
         <StyledBackground></StyledBackground>
         <StyledContent>
-          <BackButton href="/libray/" />
+          <BackButton href="/library" />
           <h1>Name of the Game</h1>
         </StyledContent>
       </StyledContainer>
