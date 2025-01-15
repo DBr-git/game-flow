@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import PlusButton from "./buttons/PlusButton";
 import BackSvg from "./BackSvg";
+import LibraryButton from "./buttons/LibraryButton";
+import PersonalListButton from "./buttons/PersonalListButton";
 
 export default function MenuOption({ setMenuMode }) {
   return (
     <StyledMenuOptionContainer>
-      <PlusButton aria-label="add game" />
+      <LibraryButton />
+      <PlusButton />
+      <PersonalListButton />
       <StyledCloseMenuButton
         type="button"
         aria-label="close menu"
@@ -38,7 +42,7 @@ const StyledCloseMenuButton = styled.button`
   box-shadow: var(--boxShadow);
   border-radius: var(--borderRadius);
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 `;

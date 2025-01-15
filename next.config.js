@@ -4,6 +4,9 @@ const nextConfig = {
     styledComponents: true,
   },
   reactStrictMode: true,
+  images: {
+    domains: ["images.igdb.com"],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

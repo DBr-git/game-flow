@@ -29,7 +29,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
     <>
       <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
-        <h1>{selectedGame.title}</h1>
+        <h1>{selectedGame.name}</h1>
       </StyledDiv>
       <StyledArticle>
         <select
@@ -43,7 +43,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
         </select>
         <p>Rating: {selectedGame.rating}</p>
 
-        <StyledDescription>{selectedGame.description}</StyledDescription>
+        <StyledDescription>{selectedGame.summary}</StyledDescription>
 
         {buttonMode === "default" && (
           <>
