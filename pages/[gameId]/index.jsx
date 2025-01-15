@@ -8,6 +8,7 @@ import {
   StyledButtonWrapper,
   StyledDeleteButton,
 } from "@/components/buttons/DefaultButtons";
+import CommentSection from "@/components/CommentSection";
 
 export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
@@ -44,7 +45,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
         <p>Rating: {selectedGame.rating}</p>
 
         <StyledDescription>{selectedGame.description}</StyledDescription>
-
+        <CommentSection />
         {buttonMode === "default" && (
           <>
             <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
@@ -109,7 +110,6 @@ const StyledArticle = styled.article`
     background-color: var(--backgroundSubSection);
     padding: 0.5em 1em;
     border-radius: var(--borderRadius);
-    box-shadow: var(--boxShadow);
   }
 `;
 
