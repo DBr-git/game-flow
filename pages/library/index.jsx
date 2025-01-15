@@ -8,7 +8,7 @@ import MenuOption from "@/components/MenuOption";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function Library({ menuMode, setMenuMode }) {
+export default function Library({ menuMode, setMenuMode, setLibGames }) {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -20,6 +20,8 @@ export default function Library({ menuMode, setMenuMode }) {
   if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error.message}</div>;
+
+  setLibGames(data);
 
   return (
     <>

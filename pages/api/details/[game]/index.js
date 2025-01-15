@@ -20,9 +20,9 @@ export default async function handler(request, response) {
         throw new Error(`Error: ${fetchedGames.statusText}`);
       }
 
-      const gamesData = await fetchedGames.json();
+      const gameData = await fetchedGames.json();
 
-      return response.status(200).json(gamesData);
+      return response.status(200).json(gameData);
     } catch (error) {
       return response.status(500).json({ error: error.message });
     }

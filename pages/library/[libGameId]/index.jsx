@@ -5,10 +5,19 @@ import useSWR from "swr";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function LibraryGameDetails() {
+export default function LibraryGameDetails({ libGames }) {
   const router = useRouter();
   // const { gameId } = router.query.libGameId;
-  // console.log(gameId);
+  // console.log(typeof libGames[0].id);
+
+  // let selectedGame = libGames.find(
+  //   (game) => game.id === Number(router.query.libGameId)
+  // );
+  // console.log(libGames);
+
+  // if (!selectedGame) {
+  //   return <div>Game not found!</div>;
+  // }
 
   const { data, error, isLoading } = useSWR(
     `/api/details/${router.query.libGameId}`,
@@ -18,6 +27,7 @@ export default function LibraryGameDetails() {
   if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error.message}</div>;
+  console.log(data);
 
   return (
     <>
@@ -25,12 +35,12 @@ export default function LibraryGameDetails() {
         <StyledBackground></StyledBackground>
         <StyledContent>
           <BackButton href="/library" />
-          <h1>{data.name}</h1>
+          <h1>{data[0].name}</h1>
         </StyledContent>
       </StyledContainer>
 
       <StyledArticle>
-        <StyledDescription>{data.summary}</StyledDescription>
+        <StyledDescription>{data[0].summary}</StyledDescription>
       </StyledArticle>
     </>
   );
