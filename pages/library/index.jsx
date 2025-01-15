@@ -1,13 +1,19 @@
 import useSWR from "swr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GameCard from "@/components/GameCard";
 import styled from "styled-components";
 import Pagination from "@/components/Pagination";
+import MenuButton from "@/components/buttons/MenuButton";
+import MenuOption from "@/components/MenuOption";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function Library() {
+export default function Library({ menuMode, setMenuMode }) {
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    setMenuMode("closed");
+  }, [setMenuMode]);
 
   const { data, error, isLoading } = useSWR(`/api/${page}`, fetcher);
 
@@ -28,6 +34,8 @@ export default function Library() {
             ))}
           </StyledList>
           <Pagination page={page} setPage={setPage} />
+          <MenuButton setMenuMode={setMenuMode} />
+          {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
         </>
       ) : (
         <div>No games found.</div>
