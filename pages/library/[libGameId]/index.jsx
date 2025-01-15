@@ -2,22 +2,12 @@ import styled from "styled-components";
 import BackButton from "@/components/buttons/BackButton";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Image from "next/image";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function LibraryGameDetails({ libGames }) {
+export default function LibraryGameDetails() {
   const router = useRouter();
-  // const { gameId } = router.query.libGameId;
-  // console.log(typeof libGames[0].id);
-
-  // let selectedGame = libGames.find(
-  //   (game) => game.id === Number(router.query.libGameId)
-  // );
-  // console.log(libGames);
-
-  // if (!selectedGame) {
-  //   return <div>Game not found!</div>;
-  // }
 
   const { data, error, isLoading } = useSWR(
     `/api/details/${router.query.libGameId}`,
@@ -27,12 +17,16 @@ export default function LibraryGameDetails({ libGames }) {
   if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
 
   return (
     <>
       <StyledContainer>
-        <StyledBackground></StyledBackground>
+        <StyledBackgroundImage
+          src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${data[0].artworks[0].image_id}.jpg`}
+          width={data[0].artworks[0].width}
+          height={data[0].artworks[0].height}
+          alt={`artwork of ${data[0].name}`}
+        ></StyledBackgroundImage>
         <StyledContent>
           <BackButton href="/library" />
           <h1>{data[0].name}</h1>
@@ -73,15 +67,16 @@ const StyledContainer = styled.div`
   padding: 0.5em 1.75em;
 `;
 
-const StyledBackground = styled.div`
+const StyledBackgroundImage = styled(Image)`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/the-witcher-artwork.jpg");
-  background-size: cover;
-  background-position: center;
+  overflow: none;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
   mask: linear-gradient(
     330deg,
     var(--primaryBackground),
