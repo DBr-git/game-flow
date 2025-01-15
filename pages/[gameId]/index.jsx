@@ -13,24 +13,48 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
   const { gameId } = router.query;
 
-  const [buttonMode, setButtonMode] = useState("default");
-
   let selectedGame = games.find((game) => game.id === gameId);
-  const [sliderValue, setSliderValue] = useState(selectedGame.progress);
-
-  if (!selectedGame) {
-    return <div>Game not found!</div>;
+  if (selectedGame) {
+    return (
+      <GameDetailsDetails
+        selectedGame={selectedGame}
+        onEditGame={onEditGame}
+        onDeleteGame={onDeleteGame}
+        gameId={gameId}
+      />
+    );
   }
+}
+
+function GameDetailsDetails({
+  selectedGame,
+  onEditGame,
+  onDeleteGame,
+  gameId,
+}) {
+  const router = useRouter();
+  const [buttonMode, setButtonMode] = useState("default");
+  const [sliderValue, setSliderValue] = useState(selectedGame.progress);
 
   function handleChange(event) {
     selectedGame = { ...selectedGame, status: event.target.value };
     onEditGame(selectedGame);
   }
 
-  function handleProgressChange() {
-    sliderValue === 100 &&
-      (selectedGame = { ...selectedGame, status: "Completed" });
-    setSliderValue();
+  function handleProgressChange(event) {
+    const newValue = parseInt(event.target.value, 10);
+    setSliderValue(newValue);
+    if (newValue === 100) {
+      selectedGame = { ...selectedGame, status: "Completed", progress: 100 };
+    } else if (newValue === 0) {
+      selectedGame = { ...selectedGame, status: "Planned", progress: 0 };
+    } else {
+      selectedGame = {
+        ...selectedGame,
+        status: "In Progress",
+        progress: newValue,
+      };
+    }
     onEditGame(selectedGame);
   }
 
@@ -38,7 +62,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
     <>
       <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
-        <h1>{selectedGame.title}</h1>
+        <h1>{selectedGame?.title}</h1>
       </StyledDiv>
       <StyledArticle>
         <select
@@ -52,6 +76,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
         </select>
         <p>Rating: {selectedGame.rating}</p>
         <StyledDescription>{selectedGame.description}</StyledDescription>
+
         <label htmlFor="sliderInput">Choose your progress:</label>
         <StyledRange
           id="sliderInput"
@@ -59,7 +84,7 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
           min="0"
           max="100"
           step="1"
-          defaultValue={sliderValue}
+          value={sliderValue}
           onChange={handleProgressChange}
         ></StyledRange>
         <p>Value: {sliderValue}%</p>
