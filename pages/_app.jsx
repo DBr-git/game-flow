@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }) {
         return game;
       })
     );
-    router.push(`/${gameToEdit.id}`, undefined, { scroll: false });
+    router.push(`/${gameToEdit.id}`, { scroll: false });
   }
 
   return (
