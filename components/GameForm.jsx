@@ -30,9 +30,9 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
       <StyledTitleInput
         type="text"
         id="gameTitleInput"
-        name="title"
+        name="name"
         required
-        defaultValue={formMode === "edit" ? selectedGame.title : ""}
+        defaultValue={formMode === "edit" ? selectedGame.name : ""}
       />
       <label htmlFor="gameRatingInput">Your rating:</label>
       <StyledRatingInput
@@ -50,9 +50,9 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         rows="8"
         placeholder="Your description"
         id="gameDescriptionInput"
-        name="description"
+        name="summary"
         required
-        defaultValue={formMode === "edit" ? selectedGame.description : ""}
+        defaultValue={formMode === "edit" ? selectedGame.summary : ""}
       />
 
       <StyledButtonWrapper>

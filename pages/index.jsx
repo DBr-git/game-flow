@@ -1,11 +1,14 @@
 import GameList from "@/components/GameList";
 import MenuButton from "@/components/buttons/MenuButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
 
-export default function HomePage({ games }) {
+export default function HomePage({ games, menuMode, setMenuMode }) {
   const statusSections = ["In Progress", "Planned", "Completed"];
-  const [menuMode, setMenuMode] = useState("closed");
+
+  useEffect(() => {
+    setMenuMode("closed");
+  }, [setMenuMode]);
 
   function isSectionEmpty(status) {
     return games.some((game) => game.status === status);

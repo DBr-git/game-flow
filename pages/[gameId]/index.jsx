@@ -62,7 +62,7 @@ function GameDetailsDetails({
     <>
       <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
-        <h1>{selectedGame?.title}</h1>
+        <h1>{selectedGame.name}</h1>
       </StyledDiv>
       <StyledArticle>
         <select
@@ -75,7 +75,7 @@ function GameDetailsDetails({
           <option value="Completed">Completed</option>
         </select>
         <p>Rating: {selectedGame.rating}</p>
-        <StyledDescription>{selectedGame.description}</StyledDescription>
+        <StyledSummary>{selectedGame.summary}</StyledSummary>
 
         <label htmlFor="sliderInput">Choose your progress:</label>
         <StyledRange
@@ -157,7 +157,7 @@ const StyledArticle = styled.article`
   }
 `;
 
-const StyledDescription = styled.p`
+const StyledSummary = styled.p`
   flex-basis: 100%;
   margin-bottom: 1em;
 `;

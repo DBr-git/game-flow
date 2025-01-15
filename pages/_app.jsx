@@ -8,6 +8,7 @@ import { randomColor } from "@/utils/randomColor.js";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [games, setGames] = useState(initialGames);
+  const [menuMode, setMenuMode] = useState("closed");
 
   function handleCreateGame(newGame) {
     const id = uid();
@@ -41,6 +42,8 @@ export default function App({ Component, pageProps }) {
         onAddGame={handleCreateGame}
         onDeleteGame={handleDeleteGame}
         onEditGame={handleEditGame}
+        menuMode={menuMode}
+        setMenuMode={setMenuMode}
       />
     </>
   );
