@@ -14,7 +14,13 @@ export default function App({ Component, pageProps }) {
     const id = uid();
     setGames([
       ...games,
-      { id: id, status: "Planned", color: randomColor(), ...newGame },
+      {
+        id: id,
+        status: "Planned",
+        color: randomColor(),
+        progress: 0,
+        ...newGame,
+      },
     ]);
     router.push(`/${id}/`);
   }
@@ -30,7 +36,7 @@ export default function App({ Component, pageProps }) {
         return game;
       })
     );
-    router.push(`/${gameToEdit.id}`);
+    router.push(`/${gameToEdit.id}`, undefined, { scroll: false });
   }
 
   return (

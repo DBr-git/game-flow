@@ -57,7 +57,7 @@ export default function GameDetailsView({
           <option value="Planned">Planned</option>
           <option value="Completed">Completed</option>
         </select>
-        <p>Rating: {selectedGame.rating}</p>
+        <StyledParagraph>Rating: {selectedGame.rating}</StyledParagraph>
         <StyledSummary>{selectedGame.summary}</StyledSummary>
 
         <label htmlFor="sliderInput">Choose your progress:</label>
@@ -70,7 +70,21 @@ export default function GameDetailsView({
           value={sliderValue}
           onChange={handleProgressChange}
         ></StyledRange>
-        <p>Value: {sliderValue}%</p>
+        <StyledValueParagarph>
+          Progress: {sliderValue}%
+          {sliderValue === 0 && (
+            <StyledOptionsParagarph>
+              {" "}
+              - No progress made yet.
+            </StyledOptionsParagarph>
+          )}
+          {sliderValue === 100 && (
+            <StyledOptionsParagarph>
+              {" "}
+              complete – Congratulations!
+            </StyledOptionsParagarph>
+          )}
+        </StyledValueParagarph>
 
         {buttonMode === "default" && (
           <>
@@ -131,16 +145,18 @@ const StyledArticle = styled.article`
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
   }
-
-  p {
-    background-color: var(--backgroundSubSection);
-    padding: 0.5em 1em;
-    border-radius: var(--borderRadius);
-    box-shadow: var(--boxShadow);
-  }
 `;
-
+const StyledParagraph = styled.p`
+  background-color: var(--backgroundSubSection);
+  padding: 0.5em 1em;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--boxShadow);
+`;
 const StyledSummary = styled.p`
+  background-color: var(--backgroundSubSection);
+  padding: 0.5em 1em;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--boxShadow);
   flex-basis: 100%;
   margin-bottom: 1em;
 `;
@@ -154,7 +170,48 @@ const StyledDiv = styled.div`
 `;
 
 const StyledRange = styled.input`
+  -webkit-appearance: none; /* Entfernt das Standard-Aussehen */
   width: 100%;
-  background-color: var(--backgroundSubSection);
-  color: var(--headingColor);
+  height: 0.5em;
+  border-radius: 5px;
+  background: var(--backgroundSubSection);
+  margin: 0.5em;
+  outline: none;
+  opacity: 0.9;
+
+  &[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 25px;
+    border-radius: 20%;
+    background: var(--menuColor);
+    cursor: pointer;
+  }
+
+  &[type="range"]:hover {
+    height: 0.6em;
+    background: #224466;
+  }
+
+  &[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 25px;
+    border-radius: 20%;
+    background: var(--menuColor);
+    cursor: pointer;
+  }
+`;
+
+const StyledValueParagarph = styled.p`
+  padding: 0.5em;
+  display: inline-block;
+  box-shadow: none;
+  background: none;
+`;
+const StyledOptionsParagarph = styled.p`
+  padding-left: 0.3em;
+  display: inline-block;
+  box-shadow: none;
+  background: none;
 `;
