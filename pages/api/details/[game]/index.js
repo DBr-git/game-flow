@@ -4,7 +4,7 @@ const API_KEY = process.env.API_KEY;
 export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
-      const { games: offset } = request.query;
+      const { game: id } = request.query;
 
       const fetchedGames = await fetch("https://api.igdb.com/v4/games", {
         method: "POST",
@@ -13,18 +13,16 @@ export default async function handler(request, response) {
           "Client-ID": CLIENT_ID,
           Authorization: `Bearer ${API_KEY}`,
         },
-        body: `fields name, summary, cover.image_id, cover.width, cover.height, artworks.url; limit 50; offset ${
-          (offset - 1) * 50
-        }; sort total_rating desc; where parent_game = null & cover != null & themes != (42) & artworks !=null;`,
+        body: `fields name, summary, artworks.image_id, artworks.height, artworks.width; where id=${id};`,
       });
 
       if (!fetchedGames.ok) {
         throw new Error(`Error: ${fetchedGames.statusText}`);
       }
 
-      const gamesData = await fetchedGames.json();
+      const gameData = await fetchedGames.json();
 
-      return response.status(200).json(gamesData);
+      return response.status(200).json(gameData);
     } catch (error) {
       return response.status(500).json({ error: error.message });
     }
