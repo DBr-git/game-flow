@@ -28,17 +28,11 @@ export default function GameDetailsView({
     const newValue = parseInt(event.target.value, 10);
     setSliderValue(newValue);
     let updatedGame = {};
-    if (newValue === 100) {
-      updatedGame = { ...selectedGame, status: "Completed", progress: 100 };
-    } else if (newValue === 0) {
-      updatedGame = { ...selectedGame, status: "Planned", progress: 0 };
-    } else {
-      updatedGame = {
-        ...selectedGame,
-        status: "In Progress",
-        progress: newValue,
-      };
-    }
+
+    updatedGame = {
+      ...selectedGame,
+      progress: newValue,
+    };
     onEditGame(updatedGame);
   }
 
