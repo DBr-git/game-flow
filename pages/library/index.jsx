@@ -15,6 +15,27 @@ export default function Library({ menuMode, setMenuMode }) {
     setMenuMode("closed");
   }, [setMenuMode]);
 
+  async function searchGame(searchTerm) {
+    try {
+      const searchResponse = await fetch("api/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ searchTerm }),
+      });
+
+      if (!searchResponse.ok) {
+        throw new Error(`Error: ${searchResponse.status}`);
+      }
+
+      const searchData = await searchResponse.json();
+      return searchData;
+    } catch (error) {
+      console.error("Error during game search:", error);
+    }
+  }
+
   const { data, error, isLoading } = useSWR(`/api/${page}`, fetcher);
 
   if (isLoading) return <div>Loading...</div>;
