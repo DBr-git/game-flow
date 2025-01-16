@@ -68,16 +68,16 @@ export default function GameDetailsView({
         <StyledValueParagraph>
           Progress: {sliderValue}%
           {sliderValue === 0 && (
-            <StyledOptionsParagarph>
+            <StyledOptionsParagraph>
               {" "}
               - No progress made yet.
-            </StyledOptionsParagarph>
+            </StyledOptionsParagraph>
           )}
           {sliderValue === 100 && (
-            <StyledOptionsParagarph>
+            <StyledOptionsParagraph>
               {" "}
               complete – Congratulations!
-            </StyledOptionsParagarph>
+            </StyledOptionsParagraph>
           )}
         </StyledValueParagraph>
 
@@ -204,7 +204,7 @@ const StyledValueParagraph = styled.p`
   box-shadow: none;
   background: none;
 `;
-const StyledOptionsParagarph = styled.p`
+const StyledOptionsParagraph = styled.p`
   padding-left: 0.3em;
   display: inline-block;
   box-shadow: none;
