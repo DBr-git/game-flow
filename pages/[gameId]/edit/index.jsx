@@ -13,7 +13,10 @@ export default function EditGame({ onEditGame, games }) {
 
   return (
     <GameForm
-      onSubmit={onEditGame}
+      onSubmit={(updatedGame) => {
+        onEditGame({ ...selectedGame, ...updatedGame });
+        router.push(`/${selectedGame.id}`);
+      }}
       selectedGame={selectedGame}
       formMode="edit"
     />

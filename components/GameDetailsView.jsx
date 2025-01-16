@@ -13,9 +13,9 @@ export default function GameDetailsView({
   selectedGame,
   onEditGame,
   onDeleteGame,
-  gameId,
 }) {
   const router = useRouter();
+  const { gameId } = router.query;
   const [buttonMode, setButtonMode] = useState("default");
   const [sliderValue, setSliderValue] = useState(selectedGame.progress);
 
@@ -27,18 +27,19 @@ export default function GameDetailsView({
   function handleProgressChange(event) {
     const newValue = parseInt(event.target.value, 10);
     setSliderValue(newValue);
+    let updatedGame = {};
     if (newValue === 100) {
-      selectedGame = { ...selectedGame, status: "Completed", progress: 100 };
+      updatedGame = { ...selectedGame, status: "Completed", progress: 100 };
     } else if (newValue === 0) {
-      selectedGame = { ...selectedGame, status: "Planned", progress: 0 };
+      updatedGame = { ...selectedGame, status: "Planned", progress: 0 };
     } else {
-      selectedGame = {
+      updatedGame = {
         ...selectedGame,
         status: "In Progress",
         progress: newValue,
       };
     }
-    onEditGame(selectedGame);
+    onEditGame(updatedGame);
   }
 
   return (
@@ -70,7 +71,7 @@ export default function GameDetailsView({
           value={sliderValue}
           onChange={handleProgressChange}
         ></StyledRange>
-        <StyledValueParagarph>
+        <StyledValueParagraph>
           Progress: {sliderValue}%
           {sliderValue === 0 && (
             <StyledOptionsParagarph>
@@ -84,7 +85,7 @@ export default function GameDetailsView({
               complete – Congratulations!
             </StyledOptionsParagarph>
           )}
-        </StyledValueParagarph>
+        </StyledValueParagraph>
 
         {buttonMode === "default" && (
           <>
@@ -203,7 +204,7 @@ const StyledRange = styled.input`
   }
 `;
 
-const StyledValueParagarph = styled.p`
+const StyledValueParagraph = styled.p`
   padding: 0.5em;
   display: inline-block;
   box-shadow: none;
