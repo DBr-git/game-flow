@@ -10,14 +10,18 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function Library({ menuMode, setMenuMode }) {
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setMenuMode("closed");
   }, [setMenuMode]);
 
-  async function searchGame(searchTerm) {
+  async function searchGame(searchTerm, page) {
+    setLoading(true);
     try {
-      const searchResponse = await fetch("api/search", {
+      const searchResponse = await fetch(`api/${page}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,22 +37,60 @@ export default function Library({ menuMode, setMenuMode }) {
       return searchData;
     } catch (error) {
       console.error("Error during game search:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
-  const { data, error, isLoading } = useSWR(`/api/${page}`, fetcher);
+  async function handleSearch(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    let searchFormData = Object.fromEntries(formData);
+    setSearchTerm(searchFormData.searchInput);
+    setPage(1);
+    setSearchResults(null);
+  }
 
-  if (isLoading) return <div>Loading...</div>;
+  useEffect(() => {
+    async function fetchData() {
+      if (searchTerm) {
+        const results = await searchGame(searchTerm, page);
+        setSearchResults(results);
+      }
+    }
+    if (searchTerm) {
+      fetchData();
+    }
+  }, [searchTerm, page]);
+
+  const { data, error } = useSWR(searchTerm ? null : `/api/${page}`, fetcher);
+
+  if (loading || (!searchTerm && !data)) {
+    return <div>Loading...</div>;
+  }
 
   if (error) return <div>Error: {error.message}</div>;
+
+  const displayData = searchResults || data;
 
   return (
     <>
       <h1>Library</h1>
-      {data ? (
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          aria-label="search input"
+          placeholder="Type your search"
+          name="searchInput"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      {displayData && displayData.length > 0 ? (
         <>
           <StyledList>
-            {data.map((game) => (
+            {displayData.map((game) => (
               <li key={game.id}>
                 <GameCard game={game} source={"api"} />
               </li>

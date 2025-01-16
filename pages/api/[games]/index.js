@@ -16,7 +16,7 @@ export default async function handler(request, response) {
         body: `fields name, summary, cover.image_id, cover.width, cover.height; 
         limit 50; 
         offset ${(offset - 1) * 50}; 
-        sort total_rating desc; where parent_game = null & cover != null & themes != (42) & artworks !=null & category = 0;`,
+        sort total_rating desc; where parent_game = null & cover != null & themes != (42) & artworks !=null & category = 0 & summary != null;`,
       });
 
       if (!fetchedGames.ok) {
@@ -32,6 +32,13 @@ export default async function handler(request, response) {
   }
   if (request.method === "POST") {
     try {
+      const searchTerm = request.body?.searchTerm || "";
+      const { games: offset } = request.query;
+
+      if (!searchTerm) {
+        return response.status(400).json({ error: "Search term is required." });
+      }
+
       const searchedGames = await fetch("https://api.igdb.com/v4/games", {
         method: "POST",
         headers: {
@@ -41,7 +48,8 @@ export default async function handler(request, response) {
         },
         body: `fields name, summary, cover.image_id, cover.width, cover.height; 
         limit 50; 
-        where version_parent = null & cover != null & artworks != null & themes != (42) & category = 0; & name ~ *"${request.body}"*`,
+        offset ${(offset - 1) * 50}; 
+        where version_parent = null & cover != null & artworks != null & themes != (42) & category = 0 & summary != null & name ~ *"${searchTerm}"*;`,
       });
 
       if (!searchedGames.ok) {
