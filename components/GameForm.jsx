@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import {
   StyledButton,
@@ -7,7 +6,6 @@ import {
 } from "@/components/buttons/DefaultButtons";
 
 export default function GameForm({ onSubmit, selectedGame, formMode }) {
-  console.log(selectedGame);
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);

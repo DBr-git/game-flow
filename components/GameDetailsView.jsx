@@ -19,7 +19,7 @@ export default function GameDetailsView({
   const [buttonMode, setButtonMode] = useState("default");
   const [sliderValue, setSliderValue] = useState(selectedGame.progress);
 
-  function handleChange(event) {
+  function handleStatusChange(event) {
     selectedGame = { ...selectedGame, status: event.target.value };
     onEditGame(selectedGame);
   }
@@ -46,7 +46,7 @@ export default function GameDetailsView({
         <select
           name="status"
           defaultValue={selectedGame.status}
-          onChange={handleChange}
+          onChange={handleStatusChange}
         >
           <option value="In Progress">In Progress</option>
           <option value="Planned">Planned</option>

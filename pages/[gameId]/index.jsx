@@ -1,11 +1,7 @@
 import { useRouter } from "next/router";
 import GameDetailsView from "@/components/GameDetailsView";
 
-export default function GameDetailsWrapper({
-  games,
-  onDeleteGame,
-  onEditGame,
-}) {
+export default function GameDetailsPage({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
   const { gameId } = router.query;
 
@@ -16,7 +12,6 @@ export default function GameDetailsWrapper({
         selectedGame={selectedGame}
         onEditGame={onEditGame}
         onDeleteGame={onDeleteGame}
-        gameId={gameId}
       />
     );
   }
