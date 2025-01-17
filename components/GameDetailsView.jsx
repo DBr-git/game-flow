@@ -166,7 +166,8 @@ const StyledDiv = styled.div`
 `;
 
 const StyledRange = styled.input`
-  -webkit-appearance: none; /* Entfernt das Standard-Aussehen */
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 0.5em;
   border-radius: 5px;
@@ -191,6 +192,7 @@ const StyledRange = styled.input`
 
   &[type="range"]::-moz-range-thumb {
     -webkit-appearance: none;
+    appearance: none;
     width: 10px;
     height: 25px;
     border-radius: 20%;
