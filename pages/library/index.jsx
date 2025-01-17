@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Pagination from "@/components/Pagination";
 import MenuButton from "@/components/buttons/MenuButton";
 import MenuOption from "@/components/MenuOption";
+import SearchSvg from "@/public/search.svg";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
@@ -76,17 +77,23 @@ export default function Library({ menuMode, setMenuMode }) {
   return (
     <>
       <h1>Library</h1>
-      <form onSubmit={handleSearch}>
-        <input
+      <StyledForm onSubmit={handleSearch}>
+        <StyledSearchInput
           type="text"
           aria-label="search input"
           placeholder="Type your search"
           name="searchInput"
           required
         />
-        <button type="submit">Search</button>
-      </form>
-
+        <StyledSubmitButton type="submit">
+          <SearchSvg />
+        </StyledSubmitButton>
+      </StyledForm>
+      {searchTerm && (
+        <StyledSearchTerm>
+          You searched for: <strong>{searchTerm}</strong>
+        </StyledSearchTerm>
+      )}
       {displayData && displayData.length > 0 ? (
         <>
           <StyledList>
@@ -101,7 +108,9 @@ export default function Library({ menuMode, setMenuMode }) {
           {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
         </>
       ) : (
-        <div>No games found.</div>
+        <StyledErrorMessage>
+          <strong>No games found !</strong>
+        </StyledErrorMessage>
       )}
     </>
   );
@@ -113,4 +122,54 @@ const StyledList = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
+`;
+
+const StyledSearchInput = styled.input`
+  background-color: var(--backgroundSubSection);
+  color: var(--headingColor);
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--backgroundSubSection);
+  box-shadow: var(--boxShadow);
+  font-family: var(--textFont);
+  font-size: 1rem;
+  padding: 0.3em;
+  outline: none;
+  flex: 1;
+  &:focus {
+    border: 2px solid var(--menuColor);
+  }
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+  padding: var(--mainContentPadding);
+`;
+
+const StyledSubmitButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--backgroundSubSection);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--backgroundSubSection);
+  width: 35px;
+  color: var(--menuColor);
+  &:hover {
+    border: 2px solid var(--menuColor);
+  }
+`;
+
+const StyledSearchTerm = styled.p`
+  padding: var(--mainContentPadding);
+  padding-top: 0;
+  font-size: 0.9em;
+`;
+
+const StyledErrorMessage = styled.div`
+  padding: var(--mainContentPadding);
+  padding-top: 6.5em;
+  text-align: center;
 `;
