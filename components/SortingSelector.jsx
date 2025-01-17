@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import arrowDown01 from "@/public/sortingMenu/arrow-down-0-1.svg";
 
 export default function SortingSelector({ setSortingOrder }) {
   function handleSortingOrder(event) {
@@ -8,15 +7,14 @@ export default function SortingSelector({ setSortingOrder }) {
 
   return (
     <StyledDiv>
-      <select
-        name="sortingOrder"
-        defaultValue="alphabetically"
-        onChange={handleSortingOrder}
-      >
-        <option value="alphabetically-ascending">sort by rating</option>
-        <option value="alphabetically-descending">sort alphabetically</option>
-        <option value="byRating-ascending">test</option>
-        <option value="byRating-descending">test</option>
+      <select name="sortingOrder" defaultValue="" onChange={handleSortingOrder}>
+        <option value="" disabled>
+          -- Choose your sorting option --
+        </option>
+        <option value="alphabetically-A-to-Z">by name: from A - Z</option>
+        <option value="alphabetically-Z-to-A">by name: from Z - A</option>
+        <option value="byRating-1-to-10">by rating: from 1 - 10</option>
+        <option value="byRating-10-to-1">by rating: from 10 - 1</option>
       </select>
     </StyledDiv>
   );
@@ -42,3 +40,7 @@ const StyledDiv = styled.div`
     box-shadow: var(--boxShadow);
   }
 `;
+
+// const StyledArrowDown = styled(arrowDown01)`
+//   color: white;
+// `;

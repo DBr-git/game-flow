@@ -8,30 +8,25 @@ import {
 export default function GameList({ statusLabel, games, sortingOrder }) {
   const filteredGames = games.filter((game) => game.status === statusLabel);
 
-  let sortedGames = sortedGamesByAlphabet(filteredGames);
+  let sortedGames = filteredGames;
 
   switch (sortingOrder) {
-    case "alphabetically-ascending":
+    case "alphabetically-A-to-Z":
       sortedGames = sortedGamesByAlphabet(filteredGames, "ascending");
       break;
-    case "alphabetically-descending":
+    case "alphabetically-Z-to-A":
       sortedGames = sortedGamesByAlphabet(filteredGames, "descending");
       break;
-    case "byRating-ascending":
+    case "byRating-1-to-10":
       sortedGames = sortedGamesByRating(filteredGames, "ascending");
       break;
-    case "byRating-descending":
+    case "byRating-10-to-1":
       sortedGames = sortedGamesByRating(filteredGames, "descending");
       break;
     default:
-      sortedGames = sortedGamesByAlphabet(filteredGames, "descending");
+      "alphabetically-A-to-Z";
+      break;
   }
-
-  // if (sortingOrder === "alphabetically-") {
-  //   sortedGames = sortedGamesByAlphabet(filteredGames);
-  // } else if (sortingOrder === "byRating") {
-  //   sortedGames = sortedGamesByRating(filteredGames);
-  // }
 
   return (
     <StyledList>
