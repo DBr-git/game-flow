@@ -10,11 +10,28 @@ export default function GameList({ statusLabel, games, sortingOrder }) {
 
   let sortedGames = sortedGamesByAlphabet(filteredGames);
 
-  if (sortingOrder === "alphabetically") {
-    sortedGames = sortedGamesByAlphabet(filteredGames);
-  } else if (sortingOrder === "byRating") {
-    sortedGames = sortedGamesByRating(filteredGames);
+  switch (sortingOrder) {
+    case "alphabetically-ascending":
+      sortedGames = sortedGamesByAlphabet(filteredGames, "ascending");
+      break;
+    case "alphabetically-descending":
+      sortedGames = sortedGamesByAlphabet(filteredGames, "descending");
+      break;
+    case "byRating-ascending":
+      sortedGames = sortedGamesByRating(filteredGames, "ascending");
+      break;
+    case "byRating-descending":
+      sortedGames = sortedGamesByRating(filteredGames, "descending");
+      break;
+    default:
+      sortedGames = sortedGamesByAlphabet(filteredGames, "descending");
   }
+
+  // if (sortingOrder === "alphabetically-") {
+  //   sortedGames = sortedGamesByAlphabet(filteredGames);
+  // } else if (sortingOrder === "byRating") {
+  //   sortedGames = sortedGamesByRating(filteredGames);
+  // }
 
   return (
     <StyledList>

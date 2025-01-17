@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [games, setGames] = useState(initialGames);
   const [menuMode, setMenuMode] = useState("closed");
-  const [sortingOrder, setSortingOrder] = useState("alphabetically");
+  const [sortingOrder, setSortingOrder] = useState("alphabetically-descending");
 
   function handleSortingOrder(order) {
     setSortingOrder(order);
