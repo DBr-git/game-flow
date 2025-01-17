@@ -19,30 +19,6 @@ export default function Library({ menuMode, setMenuMode }) {
     setMenuMode("closed");
   }, [setMenuMode]);
 
-  const searchGame = useCallback(async () => {
-    setLoading(true);
-    try {
-      const searchResponse = await fetch(`api/${page}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ searchTerm }),
-      });
-
-      if (!searchResponse.ok) {
-        throw new Error(`Error: ${searchResponse.status}`);
-      }
-
-      const searchData = await searchResponse.json();
-      return searchData;
-    } catch (error) {
-      console.error("Error during game search:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, [page, searchTerm]);
-
   async function handleSearch(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -53,14 +29,33 @@ export default function Library({ menuMode, setMenuMode }) {
   }
 
   useEffect(() => {
-    async function fetchData() {
-      const results = await searchGame();
-      setSearchResults(results);
+    async function searchGame() {
+      setLoading(true);
+      try {
+        const searchResponse = await fetch(`api/${page}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ searchTerm }),
+        });
+
+        if (!searchResponse.ok) {
+          throw new Error(`Error: ${searchResponse.status}`);
+        }
+
+        const searchData = await searchResponse.json();
+        setSearchResults(searchData);
+      } catch (error) {
+        console.error("Error during game search:", error);
+      } finally {
+        setLoading(false);
+      }
     }
     if (searchTerm) {
-      fetchData();
+      searchGame();
     }
-  }, [searchTerm, page, searchGame]);
+  }, [searchTerm, page]);
 
   const { data, error } = useSWR(searchTerm ? null : `/api/${page}`, fetcher);
 
