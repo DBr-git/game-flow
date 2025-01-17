@@ -1,12 +1,22 @@
 import GameCard from "./GameCard";
 import styled from "styled-components";
+import sortGames from "@/utils/sortingGames";
 
 export default function GameList({ statusLabel, games }) {
   const filteredGames = games.filter((game) => game.status === statusLabel);
 
+  // const firstItem = "a";
+  // const secondItem = "b";
+  // const sortedGames = sortGames(filteredGames, firstItem, secondItem);
+
+  const sortedGames = filteredGames.toSorted((a, b) =>
+    b.name.localeCompare(b.name)
+  );
+  console.log("sortedGames", sortedGames);
+
   return (
     <StyledList>
-      {filteredGames.map((game) => (
+      {sortedGames.map((game) => (
         <li key={game.id}>
           <GameCard game={game} source={"personalList"} />
         </li>
