@@ -24,7 +24,7 @@ export default function CommentSection({ game, onEditGame }) {
   const handleDeleteComment = (id) => {
     const updatedGame = {
       ...game,
-      comments: game.comments.filter((comment) => comment.id !== id),
+      comments: (game.comments || []).filter((comment) => comment.id !== id),
     };
     onEditGame(updatedGame);
   };
@@ -34,14 +34,16 @@ export default function CommentSection({ game, onEditGame }) {
   return (
     <section>
       <h2>Comments:</h2>
-      <InputArea as="form" onSubmit={handleAddComment}>
-        <StyledTextareaInput
-          name="comment"
-          placeholder="Write a comment..."
-          required
-        />
-        <StyledButton type="submit">Submit</StyledButton>
-      </InputArea>
+      <form onSubmit={handleAddComment}>
+        <InputArea>
+          <StyledTextareaInput
+            name="comment"
+            placeholder="Write a comment..."
+            required
+          />
+          <StyledButton type="submit">Submit</StyledButton>
+        </InputArea>
+      </form>
       <CommentList>
         {gameComments.map(({ id, text }) => (
           <CommentItem key={id}>
