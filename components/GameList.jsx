@@ -1,18 +1,20 @@
 import GameCard from "./GameCard";
 import styled from "styled-components";
-import sortGames from "@/utils/sortingGames";
+import {
+  sortedGamesByAlphabet,
+  sortedGamesByRating,
+} from "@/utils/sortingGames";
 
-export default function GameList({ statusLabel, games }) {
+export default function GameList({ statusLabel, games, sortingOrder }) {
   const filteredGames = games.filter((game) => game.status === statusLabel);
 
-  // const firstItem = "a";
-  // const secondItem = "b";
-  // const sortedGames = sortGames(filteredGames, firstItem, secondItem);
+  let sortedGames = sortedGamesByAlphabet(filteredGames);
 
-  const sortedGames = filteredGames.toSorted((a, b) =>
-    b.name.localeCompare(b.name)
-  );
-  console.log("sortedGames", sortedGames);
+  if (sortingOrder === "alphabetically") {
+    sortedGames = sortedGamesByAlphabet(filteredGames);
+  } else if (sortingOrder === "byRating") {
+    sortedGames = sortedGamesByRating(filteredGames);
+  }
 
   return (
     <StyledList>

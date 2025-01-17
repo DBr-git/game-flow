@@ -2,8 +2,15 @@ import GameList from "@/components/GameList";
 import MenuButton from "@/components/buttons/MenuButton";
 import { useState, useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
+import SortingSelector from "@/components/SortingSelector";
 
-export default function HomePage({ games, menuMode, setMenuMode }) {
+export default function HomePage({
+  games,
+  menuMode,
+  setMenuMode,
+  setSortingOrder,
+  sortingOrder,
+}) {
   const statusSections = ["In Progress", "Planned", "Completed"];
 
   useEffect(() => {
@@ -18,12 +25,17 @@ export default function HomePage({ games, menuMode, setMenuMode }) {
     <>
       <main>
         <h1>Game List</h1>
+        <SortingSelector setSortingOrder={setSortingOrder} />
 
         {statusSections.map((status) => {
           return (
             <section key={status}>
               <h2>{status}</h2>
-              <GameList statusLabel={status} games={games} />
+              <GameList
+                statusLabel={status}
+                games={games}
+                sortingOrder={sortingOrder}
+              />
               {!isSectionEmpty(status) && (
                 <p>No games at the moment, please add one!</p>
               )}

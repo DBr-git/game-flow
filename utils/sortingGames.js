@@ -1,11 +1,13 @@
-export default function sortGames({ filteredGames, firstItem, secondItem }) {
-  const filteredAlphabetically = filteredGames.sort(
-    (a, b) => firstItem.name - secondItem.name
+export function sortedGamesByAlphabet(filteredGames) {
+  const sortedGames = filteredGames.toSorted((a, b) =>
+    a.name.localeCompare(b.name)
   );
-  return filteredAlphabetically;
+  return sortedGames;
 }
 
-export function sortGamesAscending({ filteredGames }) {
-  const filteredAlphabetically = filteredGames.sort((a, b) => b.name - a.name);
-  return filteredAlphabetically;
+export function sortedGamesByRating(filteredGames) {
+  const sortedGames = filteredGames.toSorted(
+    (a, b) => Number(a.rating) - Number(b.rating)
+  );
+  return sortedGames;
 }
