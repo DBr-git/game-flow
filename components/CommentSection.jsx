@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { StyledButton } from "@/components/buttons/DefaultButtons";
 import BackSvg from "./BackSvg";
 import useLocalStorageState from "use-local-storage-state";
+import { useRouter } from "next/router";
 
 export default function CommentSection() {
+  const router = useRouter();
+  const { gameId } = router.query;
   const [comments, setComments] = useLocalStorageState("comments", {
-    defaultValue: [],
+    defaultValue: {},
   });
 
   const handleAddComment = (event) => {
@@ -15,18 +17,27 @@ export default function CommentSection() {
     const newComment = formData.get("comment").trim();
 
     if (newComment) {
-      const updatedComments = [
-        { id: Date.now(), text: newComment },
+      const updatedComments = {
         ...comments,
-      ];
+        [gameId]: [
+          { id: Date.now(), text: newComment },
+          ...(comments[gameId] || []),
+        ],
+      };
       setComments(updatedComments);
       event.target.reset();
     }
   };
 
   const handleDeleteComment = (id) => {
-    setComments(comments.filter((comment) => comment.id !== id));
+    const updatedComments = {
+      ...comments,
+      [gameId]: comments[gameId].filter((comment) => comment.id !== id),
+    };
+    setComments(updatedComments);
   };
+
+  const gameComments = comments[gameId] || [];
 
   return (
     <section>
@@ -40,7 +51,7 @@ export default function CommentSection() {
         <StyledButton type="submit">Submit</StyledButton>
       </InputArea>
       <CommentList>
-        {comments.map(({ id, text }) => (
+        {gameComments.map(({ id, text }) => (
           <CommentItem key={id}>
             <p>{text}</p>
             <StyledDeleteButton onClick={() => handleDeleteComment(id)}>
@@ -86,7 +97,6 @@ const CommentItem = styled.li`
   justify-content: space-between;
   border-radius: var(--borderRadius);
   margin-bottom: 8px;
-
   p {
     flex: 1;
     margin: 0;
@@ -103,6 +113,5 @@ const StyledDeleteButton = styled.button`
   border-radius: var(--borderRadius);
   background-color: var(--backgroundSubSection);
   color: var(--alertColor);
-
   border: none;
 `;
