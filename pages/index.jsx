@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
 
 export default function HomePage({ games, menuMode, setMenuMode }) {
-  const progressSections = ["In Progress", "Planned", "Completed"];
+  const statusSections = ["In Progress", "Planned", "Completed"];
 
   useEffect(() => {
     setMenuMode("closed");
   }, [setMenuMode]);
 
-  function isSectionEmpty(progress) {
-    return games.some((game) => game.progress === progress);
+  function isSectionEmpty(status) {
+    return games.some((game) => game.status === status);
   }
 
   return (
@@ -19,12 +19,12 @@ export default function HomePage({ games, menuMode, setMenuMode }) {
       <main>
         <h1>Game List</h1>
 
-        {progressSections.map((progress) => {
+        {statusSections.map((status) => {
           return (
-            <section key={progress}>
-              <h2>{progress}</h2>
-              <GameList progressLabel={progress} games={games} />
-              {!isSectionEmpty(progress) && (
+            <section key={status}>
+              <h2>{status}</h2>
+              <GameList statusLabel={status} games={games} />
+              {!isSectionEmpty(status) && (
                 <p>No games at the moment, please add one!</p>
               )}
             </section>

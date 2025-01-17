@@ -13,7 +13,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
     if (formMode === "edit") {
       data = {
         id: selectedGame.id,
-        progress: selectedGame.progress,
+        status: selectedGame.status,
         color: selectedGame.color,
         ...data,
       };
@@ -52,6 +52,7 @@ export default function GameForm({ onSubmit, selectedGame, formMode }) {
         required
         defaultValue={formMode === "edit" ? selectedGame.summary : ""}
       />
+
       <StyledButtonWrapper>
         <StyledLinkButton
           href={formMode === "edit" ? `/${selectedGame.id}` : "/"}
