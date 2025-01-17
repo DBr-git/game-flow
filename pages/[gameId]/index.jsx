@@ -13,19 +13,17 @@ import CommentSection from "@/components/CommentSection";
 export default function GameDetails({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
   const { gameId } = router.query;
-
   const [buttonMode, setButtonMode] = useState("default");
-
   let selectedGame = games.find((game) => game.id === gameId);
 
   if (!selectedGame) {
     return <div>Game not found!</div>;
   }
-
   function handleChange(event) {
     selectedGame = { ...selectedGame, progress: event.target.value };
     onEditGame(selectedGame);
   }
+
   return (
     <>
       <StyledDiv $color={selectedGame.color}>
@@ -43,9 +41,8 @@ export default function GameDetails({ games, onDeleteGame, onEditGame }) {
           <option value="Completed">Completed</option>
         </select>
         <p>Rating: {selectedGame.rating}</p>
-
         <StyledDescription>{selectedGame.description}</StyledDescription>
-        <CommentSection />
+        <CommentSection game={selectedGame} onEditGame={onEditGame} />
         {buttonMode === "default" && (
           <>
             <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>

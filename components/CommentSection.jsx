@@ -1,43 +1,35 @@
 import styled from "styled-components";
 import { StyledButton } from "@/components/buttons/DefaultButtons";
 import BackSvg from "./BackSvg";
-import useLocalStorageState from "use-local-storage-state";
-import { useRouter } from "next/router";
 
-export default function CommentSection() {
-  const router = useRouter();
-  const { gameId } = router.query;
-  const [comments, setComments] = useLocalStorageState("comments", {
-    defaultValue: {},
-  });
-
+export default function CommentSection({ game, onEditGame }) {
   const handleAddComment = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newComment = formData.get("comment").trim();
 
     if (newComment) {
-      const updatedComments = {
-        ...comments,
-        [gameId]: [
+      const updatedGame = {
+        ...game,
+        comments: [
           { id: Date.now(), text: newComment },
-          ...(comments[gameId] || []),
+          ...(game.comments || []),
         ],
       };
-      setComments(updatedComments);
+      onEditGame(updatedGame);
       event.target.reset();
     }
   };
 
   const handleDeleteComment = (id) => {
-    const updatedComments = {
-      ...comments,
-      [gameId]: comments[gameId].filter((comment) => comment.id !== id),
+    const updatedGame = {
+      ...game,
+      comments: game.comments.filter((comment) => comment.id !== id),
     };
-    setComments(updatedComments);
+    onEditGame(updatedGame);
   };
 
-  const gameComments = comments[gameId] || [];
+  const gameComments = game.comments || [];
 
   return (
     <section>
