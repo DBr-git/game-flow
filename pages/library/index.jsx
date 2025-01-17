@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import GameCard from "@/components/GameCard";
 import styled from "styled-components";
 import Pagination from "@/components/Pagination";
@@ -19,7 +19,7 @@ export default function Library({ menuMode, setMenuMode }) {
     setMenuMode("closed");
   }, [setMenuMode]);
 
-  async function searchGame(searchTerm, page) {
+  const searchGame = useCallback(async () => {
     setLoading(true);
     try {
       const searchResponse = await fetch(`api/${page}`, {
@@ -41,7 +41,7 @@ export default function Library({ menuMode, setMenuMode }) {
     } finally {
       setLoading(false);
     }
-  }
+  }, [page, searchTerm]);
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -54,15 +54,13 @@ export default function Library({ menuMode, setMenuMode }) {
 
   useEffect(() => {
     async function fetchData() {
-      if (searchTerm) {
-        const results = await searchGame(searchTerm, page);
-        setSearchResults(results);
-      }
+      const results = await searchGame();
+      setSearchResults(results);
     }
     if (searchTerm) {
       fetchData();
     }
-  }, [searchTerm, page]);
+  }, [searchTerm, page, searchGame]);
 
   const { data, error } = useSWR(searchTerm ? null : `/api/${page}`, fetcher);
 
@@ -94,7 +92,7 @@ export default function Library({ menuMode, setMenuMode }) {
           You searched for: <strong>{searchTerm}</strong>
         </StyledSearchTerm>
       )}
-      {displayData && displayData.length > 0 ? (
+      {displayData?.length > 0 ? (
         <>
           <StyledList>
             {displayData.map((game) => (

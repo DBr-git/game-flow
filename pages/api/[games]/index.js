@@ -32,7 +32,7 @@ export default async function handler(request, response) {
   }
   if (request.method === "POST") {
     try {
-      const searchTerm = request.body?.searchTerm || "";
+      const { searchTerm = "" } = request.body;
       const { games: offset } = request.query;
 
       if (!searchTerm) {
