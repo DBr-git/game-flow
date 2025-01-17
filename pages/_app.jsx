@@ -8,12 +8,19 @@ import { randomColor } from "@/utils/randomColor.js";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [games, setGames] = useState(initialGames);
+  const [menuMode, setMenuMode] = useState("closed");
 
   function handleCreateGame(newGame) {
     const id = uid();
     setGames([
       ...games,
-      { id: id, progress: "Planned", color: randomColor(), ...newGame },
+      {
+        id: id,
+        status: "Planned",
+        color: randomColor(),
+        progress: 0,
+        ...newGame,
+      },
     ]);
     router.push(`/${id}/`);
   }
@@ -29,7 +36,6 @@ export default function App({ Component, pageProps }) {
         return game;
       })
     );
-    router.push(`/${gameToEdit.id}`);
   }
 
   return (
@@ -41,6 +47,8 @@ export default function App({ Component, pageProps }) {
         onAddGame={handleCreateGame}
         onDeleteGame={handleDeleteGame}
         onEditGame={handleEditGame}
+        menuMode={menuMode}
+        setMenuMode={setMenuMode}
       />
     </>
   );
