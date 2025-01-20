@@ -3,6 +3,7 @@ import BackButton from "@/components/buttons/BackButton";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Image from "next/image";
+import { StyledButton } from "@/components/buttons/DefaultButtons";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
@@ -20,7 +21,7 @@ export default function LibraryGameDetails() {
 
   return (
     <>
-      <StyledContainer>
+      <StyledImageContainer>
         <StyledBackgroundImage
           src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${data[0].artworks[0].image_id}.jpg`}
           width={data[0].artworks[0].width}
@@ -31,11 +32,14 @@ export default function LibraryGameDetails() {
           <BackButton href="/library" />
           <h1>{data[0].name}</h1>
         </StyledContent>
-      </StyledContainer>
+      </StyledImageContainer>
 
-      <StyledArticle>
-        <StyledDescription>{data[0].summary}</StyledDescription>
-      </StyledArticle>
+      <StyledContainer>
+        <StyledArticle>
+          <StyledDescription>{data[0].summary}</StyledDescription>
+        </StyledArticle>
+        <StyledButton>Add game to personal list</StyledButton>
+      </StyledContainer>
     </>
   );
 }
@@ -54,11 +58,10 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: var(--mainContentPadding);
   color: var(--headingColor);
 `;
 
-const StyledContainer = styled.div`
+const StyledImageContainer = styled.div`
   position: relative;
   height: 150px;
   margin: -0.5em -1.75em 0 -1.75em;
@@ -90,4 +93,10 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 2;
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: var(--mainContentPadding);
 `;
