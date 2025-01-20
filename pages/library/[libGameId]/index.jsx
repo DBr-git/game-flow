@@ -74,7 +74,7 @@ export default function LibraryGameDetails({ setGames, games }) {
               <StyledButton
                 onClick={() => {
                   handleAddGameFromLib(data);
-                  setButtonMode("default");
+                  setButtonMode("success");
                 }}
               >
                 Add game
@@ -82,6 +82,10 @@ export default function LibraryGameDetails({ setGames, games }) {
             </StyledButtonWrapper>
           </>
         )}
+        {buttonMode === "success" && (
+          <p>Successfully added game to personal list!</p>
+        )}
+        {buttonMode === ""}
       </StyledContainer>
     </>
   );
