@@ -7,7 +7,7 @@ import { StyledButton } from "@/components/buttons/DefaultButtons";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function LibraryGameDetails() {
+export default function LibraryGameDetails({ setGames, games }) {
   const router = useRouter();
 
   const { data, error, isLoading } = useSWR(
@@ -18,6 +18,22 @@ export default function LibraryGameDetails() {
   if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error.message}</div>;
+  console.log(data);
+
+  function handleAddGameFromLib(newGame) {
+    setGames([
+      ...games,
+      {
+        id: newGame[0].id,
+        artworks: newGame[0].artworks[0],
+        name: newGame[0].name,
+        summary: newGame[0].summary,
+        status: "Planned",
+        rating: "-",
+        progress: 0,
+      },
+    ]);
+  }
 
   return (
     <>
@@ -38,7 +54,9 @@ export default function LibraryGameDetails() {
         <StyledArticle>
           <StyledDescription>{data[0].summary}</StyledDescription>
         </StyledArticle>
-        <StyledButton>Add game to personal list</StyledButton>
+        <StyledButton onClick={() => handleAddGameFromLib(data)}>
+          Add game to personal list
+        </StyledButton>
       </StyledContainer>
     </>
   );
