@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
   const [menuMode, setMenuMode] = useState("closed");
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
 
-  function handleSortingOrder(order) {
+  function handleChangeSortingOrder(order) {
     setSortingOrder(order);
   }
 
@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }) {
         onEditGame={handleEditGame}
         menuMode={menuMode}
         setMenuMode={setMenuMode}
-        setSortingOrder={handleSortingOrder}
+        handleChangeSortingOrder={handleChangeSortingOrder}
         sortingOrder={sortingOrder}
       />
     </>

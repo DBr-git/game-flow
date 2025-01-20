@@ -8,7 +8,7 @@ export default function HomePage({
   games,
   menuMode,
   setMenuMode,
-  setSortingOrder,
+  handleChangeSortingOrder,
   sortingOrder,
 }) {
   const statusSections = ["In Progress", "Planned", "Completed"];
@@ -25,7 +25,7 @@ export default function HomePage({
     <>
       <main>
         <h1>Game List</h1>
-        <SortingSelector setSortingOrder={setSortingOrder} />
+        <SortingSelector onChangeSortingOrder={handleChangeSortingOrder} />
 
         {statusSections.map((status) => {
           return (

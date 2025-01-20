@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function SortingSelector({ setSortingOrder }) {
+export default function SortingSelector({ onChangeSortingOrder }) {
   function handleSortingOrder(event) {
-    setSortingOrder(event.target.value);
+    onChangeSortingOrder(event.target.value);
   }
 
   return (
@@ -40,3 +40,7 @@ const StyledDiv = styled.div`
     box-shadow: var(--boxShadow);
   }
 `;
+
+// const StyledArrowDown = styled(arrowDown01)`
+//   color: white;
+// `;
