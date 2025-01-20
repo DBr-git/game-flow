@@ -15,9 +15,6 @@ export default function SortingSelector({
         defaultValue={sortingOrder}
         onChange={handleSortingOrder}
       >
-        <option value="" disabled>
-          -- Choose your sorting option --
-        </option>
         <option value="alphabetically-A-to-Z">by name: from A - Z</option>
         <option value="alphabetically-Z-to-A">by name: from Z - A</option>
         <option value="byRating-1-to-10">by rating: from 1 - 10</option>
