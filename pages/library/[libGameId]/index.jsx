@@ -3,12 +3,17 @@ import BackButton from "@/components/buttons/BackButton";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Image from "next/image";
-import { StyledButton } from "@/components/buttons/DefaultButtons";
+import {
+  StyledButton,
+  StyledButtonWrapper,
+} from "@/components/buttons/DefaultButtons";
+import { useState } from "react";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 export default function LibraryGameDetails({ setGames, games }) {
   const router = useRouter();
+  const [buttonMode, setButtonMode] = useState("default");
 
   const { data, error, isLoading } = useSWR(
     `/api/details/${router.query.libGameId}`,
@@ -54,9 +59,29 @@ export default function LibraryGameDetails({ setGames, games }) {
         <StyledArticle>
           <StyledDescription>{data[0].summary}</StyledDescription>
         </StyledArticle>
-        <StyledButton onClick={() => handleAddGameFromLib(data)}>
-          Add game to personal list
-        </StyledButton>
+        {buttonMode === "default" && (
+          <StyledButton onClick={() => setButtonMode("add")}>
+            Add game to personal list
+          </StyledButton>
+        )}
+        {buttonMode === "add" && (
+          <>
+            <p>Do you really want to add this Game?</p>
+            <StyledButtonWrapper>
+              <StyledButton onClick={() => setButtonMode("default")}>
+                Cancel
+              </StyledButton>
+              <StyledButton
+                onClick={() => {
+                  handleAddGameFromLib(data);
+                  setButtonMode("default");
+                }}
+              >
+                Add game
+              </StyledButton>
+            </StyledButtonWrapper>
+          </>
+        )}
       </StyledContainer>
     </>
   );
@@ -116,5 +141,6 @@ const StyledContent = styled.div`
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   padding: var(--mainContentPadding);
 `;
