@@ -8,6 +8,7 @@ import {
   StyledButtonWrapper,
   StyledDeleteButton,
 } from "@/components/buttons/DefaultButtons";
+import CommentSection from "./CommentSection";
 
 export default function GameDetailsView({
   selectedGame,
@@ -80,7 +81,7 @@ export default function GameDetailsView({
             </StyledOptionsParagraph>
           )}
         </StyledValueParagraph>
-
+        <CommentSection game={selectedGame} onEditGame={onEditGame} />
         {buttonMode === "default" && (
           <>
             <StyledLinkButton href={`/${gameId}/edit`}>Edit</StyledLinkButton>
@@ -165,7 +166,8 @@ const StyledDiv = styled.div`
 `;
 
 const StyledRange = styled.input`
-  -webkit-appearance: none; /* Entfernt das Standard-Aussehen */
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 0.5em;
   border-radius: 5px;
@@ -190,6 +192,7 @@ const StyledRange = styled.input`
 
   &[type="range"]::-moz-range-thumb {
     -webkit-appearance: none;
+    appearance: none;
     width: 10px;
     height: 25px;
     border-radius: 20%;
