@@ -23,21 +23,25 @@ export default function LibraryGameDetails({ setGames, games }) {
   if (isLoading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
 
   function handleAddGameFromLib(newGame) {
-    setGames([
-      ...games,
-      {
-        id: newGame[0].id,
-        artworks: newGame[0].artworks[0],
-        name: newGame[0].name,
-        summary: newGame[0].summary,
-        status: "Planned",
-        rating: "-",
-        progress: 0,
-      },
-    ]);
+    if (games.some((game) => Number(game.id) === newGame[0].id)) {
+      setButtonMode("failure");
+    } else {
+      setGames([
+        ...games,
+        {
+          id: newGame[0].id,
+          artworks: newGame[0].artworks[0],
+          name: newGame[0].name,
+          summary: newGame[0].summary,
+          status: "Planned",
+          rating: "-",
+          progress: 0,
+        },
+      ]);
+      setButtonMode("success");
+    }
   }
 
   return (
@@ -74,7 +78,6 @@ export default function LibraryGameDetails({ setGames, games }) {
               <StyledButton
                 onClick={() => {
                   handleAddGameFromLib(data);
-                  setButtonMode("success");
                 }}
               >
                 Add game
@@ -85,7 +88,9 @@ export default function LibraryGameDetails({ setGames, games }) {
         {buttonMode === "success" && (
           <p>Successfully added game to personal list!</p>
         )}
-        {buttonMode === ""}
+        {buttonMode === "failure" && (
+          <p>This game already exists in your personal list!</p>
+        )}
       </StyledContainer>
     </>
   );

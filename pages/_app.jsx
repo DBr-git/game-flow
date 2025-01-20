@@ -15,19 +15,6 @@ export default function App({ Component, pageProps }) {
     setSortingOrder(order);
   }
 
-  // function handleAddGameFromLib(newGame) {
-  //   setGames([
-  //     ...games,
-  //     {
-  //       id: data[0].id,
-  //       artworks: data[0].artworks[0].image_id,
-  //       name: data[0].name,
-  //       summary: data[0].summary,
-  //     },
-  //   ]);
-  // }
-  console.log(games);
-
   function handleCreateGame(newGame) {
     const id = uid();
     setGames([
