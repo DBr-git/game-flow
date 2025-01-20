@@ -1,13 +1,20 @@
 import styled from "styled-components";
 
-export default function SortingSelector({ onChangeSortingOrder }) {
+export default function SortingSelector({
+  onChangeSortingOrder,
+  sortingOrder,
+}) {
   function handleSortingOrder(event) {
     onChangeSortingOrder(event.target.value);
   }
 
   return (
     <StyledDiv>
-      <select name="sortingOrder" defaultValue="" onChange={handleSortingOrder}>
+      <select
+        name="sortingOrder"
+        defaultValue={sortingOrder}
+        onChange={handleSortingOrder}
+      >
         <option value="" disabled>
           -- Choose your sorting option --
         </option>
@@ -40,7 +47,3 @@ const StyledDiv = styled.div`
     box-shadow: var(--boxShadow);
   }
 `;
-
-// const StyledArrowDown = styled(arrowDown01)`
-//   color: white;
-// `;

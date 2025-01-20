@@ -1,6 +1,6 @@
 import GameList from "@/components/GameList";
 import MenuButton from "@/components/buttons/MenuButton";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
 import SortingSelector from "@/components/SortingSelector";
 
@@ -25,7 +25,10 @@ export default function HomePage({
     <>
       <main>
         <h1>Game List</h1>
-        <SortingSelector onChangeSortingOrder={handleChangeSortingOrder} />
+        <SortingSelector
+          onChangeSortingOrder={handleChangeSortingOrder}
+          sortingOrder={sortingOrder}
+        />
 
         {statusSections.map((status) => {
           return (
