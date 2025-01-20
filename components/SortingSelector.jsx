@@ -40,7 +40,3 @@ const StyledDiv = styled.div`
     box-shadow: var(--boxShadow);
   }
 `;
-
-// const StyledArrowDown = styled(arrowDown01)`
-//   color: white;
-// `;
