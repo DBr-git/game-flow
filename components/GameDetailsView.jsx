@@ -8,6 +8,7 @@ import {
   StyledButtonWrapper,
   StyledDeleteButton,
 } from "@/components/buttons/DefaultButtons";
+import Header from "./Header";
 import CommentSection from "./CommentSection";
 
 export default function GameDetailsView({
@@ -39,6 +40,7 @@ export default function GameDetailsView({
 
   return (
     <>
+      <Header />
       <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
         <h1>{selectedGame.name}</h1>

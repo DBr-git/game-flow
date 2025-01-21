@@ -1,5 +1,11 @@
 import GameForm from "@/components/GameForm";
+import Header from "@/components/Header";
 
 export default function AddGame({ onAddGame }) {
-  return <GameForm onSubmit={onAddGame} formMode={"add"} />;
+  return (
+    <>
+      <Header />
+      <GameForm onSubmit={onAddGame} formMode={"add"} />;
+    </>
+  );
 }

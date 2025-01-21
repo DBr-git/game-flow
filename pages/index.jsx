@@ -1,7 +1,8 @@
 import GameList from "@/components/GameList";
 import MenuButton from "@/components/buttons/MenuButton";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
+import Header from "@/components/Header";
 
 export default function HomePage({ games, menuMode, setMenuMode }) {
   const statusSections = ["In Progress", "Planned", "Completed"];
@@ -16,6 +17,7 @@ export default function HomePage({ games, menuMode, setMenuMode }) {
 
   return (
     <>
+      <Header />
       <main>
         <h1>Game List</h1>
 

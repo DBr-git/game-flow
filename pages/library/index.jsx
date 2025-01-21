@@ -1,11 +1,12 @@
 import useSWR from "swr";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import GameCard from "@/components/GameCard";
 import styled from "styled-components";
 import Pagination from "@/components/Pagination";
 import MenuButton from "@/components/buttons/MenuButton";
 import MenuOption from "@/components/MenuOption";
 import SearchSvg from "@/public/search.svg";
+import Header from "@/components/Header";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
@@ -69,6 +70,7 @@ export default function Library({ menuMode, setMenuMode }) {
 
   return (
     <>
+      <Header />
       <h1>Library</h1>
       <StyledForm onSubmit={handleSearch}>
         <StyledSearchInput
