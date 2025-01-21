@@ -72,11 +72,16 @@ const StyledForm = styled.form`
   flex-direction: column;
   padding: var(--mainContentPadding);
   gap: 0.5rem;
+  margin: 0 auto;
   label {
     font-family: var(--titleFont);
     font-size: 1em;
     font-weight: 700;
     color: var(--subHeadingColor);
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1144px;
   }
 `;
 
