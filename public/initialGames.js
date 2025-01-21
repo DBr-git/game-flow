@@ -61,9 +61,9 @@ const initialGames = [
     name: "The Legend of Zelda: A Link to the Past",
     summary:
       "The Legend of Zelda: A Link to the Past is a top-down action game with puzzle-solving elements similar to the original The Legend of Zelda. After the side-scrolling and RPG-like gameplay of Zelda II: The Adventure of Link, the game is a return to the top-down view and gameplay style of the first installment. It introduces major new items to the series such as the Master Sword and the concept of two different worlds, which was revisited to some extent in Ocarina of Time with two distinct time periods rather than dark and light worlds.",
-    status: "Planned",
+    status: "Completed",
     rating: "-",
-    progress: 0,
+    progress: 100,
   },
   {
     id: 1103,
@@ -105,9 +105,9 @@ const initialGames = [
     name: "Baldur's Gate 3",
     summary:
       "An ancient evil has returned to Baldur's Gate, intent on devouring it from the inside out. The fate of Faerun lies in your hands. Alone, you may resist. But together, you can overcome.",
-    status: "Planned",
+    status: "In Progress",
     rating: "-",
-    progress: 0,
+    progress: 50,
   },
   {
     id: 19560,
@@ -149,9 +149,15 @@ const initialGames = [
     name: "The Last of Us Part II",
     summary:
       "The Last of Us Part II is an action-adventure game set five years after the events of The Last of Us. The player traverses post-apocalyptic environments such as buildings and forests to advance the story. They can use firearms, improvised weapons, and stealth to defend against hostile humans and cannibalistic creatures infected by a mutated strain of the Cordyceps fungus. The game intermittently switches control between Ellie and Abby, and also briefly Joel in the opening sequence. The nimble nature of the player character introduces platforming elements, allowing the player to jump and climb to traverse environments and gain advantages during combat.",
-    status: "Planned",
+    status: "Completed",
     rating: "-",
-    progress: 0,
+    progress: 100,
+    comments: [
+      {
+        id: 1737473462887,
+        text: "Awsome Game!",
+      },
+    ],
   },
   {
     id: 113112,
