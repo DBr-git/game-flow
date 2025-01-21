@@ -59,8 +59,6 @@ const StyledImage = styled(Image)`
 `;
 
 const StyledApiLink = styled(Link)`
-  overflow: hidden;
-  display: box;
   color: var(--subHeadingColor);
   &:hover {
     color: var(--alertColor);
