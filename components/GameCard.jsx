@@ -5,21 +5,21 @@ import Image from "next/image";
 export default function GameCard({ game, source }) {
   return (
     <>
-      {source === "api" ? (
-        <StyledApiLink href={`/library/${game.id}`}>
-          <StyledImage
-            alt={`cover of ${game.name}`}
-            src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-            width={game.cover.width}
-            height={game.cover.height}
-          ></StyledImage>
-        </StyledApiLink>
-      ) : (
-        <StyledLink href={game.id.toString()} $color={game.color}>
-          <h3>{game.name}</h3>
-          <p>Rating: {game.rating}</p>
-        </StyledLink>
-      )}
+      {/* {source === "api" ? ( */}
+      <StyledApiLink href={`/library/${game.id}`}>
+        <StyledImage
+          alt={`cover of ${game.name}`}
+          src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+          width={game.cover.width}
+          height={game.cover.height}
+        ></StyledImage>
+      </StyledApiLink>
+      {/* // ) : (
+      //   <StyledLink href={game.id.toString()} $color={game.color}>
+      //     <h3>{game.name}</h3>
+      //     <p>Rating: {game.rating}</p>
+      //   </StyledLink>
+      // )} */}
     </>
   );
 }

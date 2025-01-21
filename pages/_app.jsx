@@ -7,7 +7,7 @@ import { randomColor } from "@/utils/randomColor.js";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const [games, setGames] = useState(initialGames);
+  const [games, setGames] = useState(null);
   const [menuMode, setMenuMode] = useState("closed");
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
 
