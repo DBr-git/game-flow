@@ -31,8 +31,9 @@ export default function LibraryGameDetails({ setGames, games }) {
       setGames([
         ...games,
         {
-          id: newGame[0].id,
+          id: newGame[0].id.toString(),
           artworks: newGame[0].artworks[0],
+          color: "#29b968",
           name: newGame[0].name,
           summary: newGame[0].summary,
           status: "Planned",
