@@ -9,6 +9,7 @@ import {
   StyledDeleteButton,
 } from "@/components/buttons/DefaultButtons";
 import CommentSection from "./CommentSection";
+import ConfettiAnimation from "./Animation";
 
 export default function GameDetailsView({
   selectedGame,
@@ -19,6 +20,7 @@ export default function GameDetailsView({
   const { gameId } = router.query;
   const [buttonMode, setButtonMode] = useState("default");
   const [sliderValue, setSliderValue] = useState(selectedGame.progress);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   function handleStatusChange(event) {
     selectedGame = { ...selectedGame, status: event.target.value };
@@ -35,10 +37,16 @@ export default function GameDetailsView({
       progress: newValue,
     };
     onEditGame(updatedGame);
+
+    if (newValue === 100) {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
+    }
   }
 
   return (
     <>
+      <ConfettiAnimation isActive={showConfetti} />
       <StyledDiv $color={selectedGame.color}>
         <BackButton href="/" />
         <h1>{selectedGame.name}</h1>
