@@ -49,9 +49,13 @@ const StyledLink = styled(Link)`
 const StyledImage = styled(Image)`
   object-fit: cover;
   height: 100%;
-  width: 100%;
+  width: 139px;
   box-shadow: 1px 1px 0.2em 0.1px black;
   border-radius: var(--borderRadius);
+
+  @media screen and (min-width: 1024px) {
+    width: 170px;
+  }
 `;
 
 const StyledApiLink = styled(Link)`

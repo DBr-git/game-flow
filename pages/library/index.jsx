@@ -111,10 +111,18 @@ export default function Library({ menuMode, setMenuMode }) {
 
 const StyledList = styled.ul`
   padding: var(--mainContentPadding);
+  margin: 0 auto;
+  width: auto;
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1em;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1144px;
+    margin: 0 auto;
+  }
 `;
 
 const StyledSearchInput = styled.input`
