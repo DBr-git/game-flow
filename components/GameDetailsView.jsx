@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import BackButton from "@/components/buttons/BackButton";
 import styled from "styled-components";
+import Image from "next/image";
 import {
   StyledButton,
   StyledLinkButton,
@@ -39,10 +40,21 @@ export default function GameDetailsView({
 
   return (
     <>
-      <StyledDiv $color={selectedGame.color}>
-        <BackButton href="/" />
-        <h1>{selectedGame.name}</h1>
-      </StyledDiv>
+      <StyledImageContainer>
+        {selectedGame.cover && (
+          <StyledBackgroundImage
+            src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${selectedGame.artworks.image_id}.jpg`}
+            width={selectedGame.artworks.width}
+            height={selectedGame.artworks.height}
+            alt={`artwork of ${selectedGame.name}`}
+          />
+        )}
+        <StyledContent>
+          <BackButton href="/" />
+          <h1>{selectedGame.name}</h1>
+        </StyledContent>
+      </StyledImageContainer>
+
       <StyledArticle>
         <select
           name="status"
@@ -156,14 +168,14 @@ const StyledSummary = styled.p`
   flex-basis: 100%;
   margin-bottom: 1em;
 `;
-const StyledDiv = styled.div`
-  background-color: ${(props) => props.$color};
-  height: 150px;
-  margin: -0.5em -1.75em 0 -1.75em;
-  display: flex;
-  flex-direction: column;
-  padding: 0.5em 1.75em;
-`;
+// const StyledDiv = styled.div`
+//   background-color: ${(props) => props.$color};
+//   height: 150px;
+//   margin: -0.5em -1.75em 0 -1.75em;
+//   display: flex;
+//   flex-direction: column;
+//   padding: 0.5em 1.75em;
+// `;
 
 const StyledRange = styled.input`
   -webkit-appearance: none;
@@ -212,4 +224,39 @@ const StyledOptionsParagraph = styled.p`
   display: inline-block;
   box-shadow: none;
   background: none;
+`;
+
+const StyledImageContainer = styled.div`
+  background-color: ${(props) => props.$color};
+  position: relative;
+  height: 150px;
+  margin: -0.5em -1.75em 0 -1.75em;
+  padding: 0.5em 1.75em;
+`;
+
+const StyledBackgroundImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: none;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  mask: linear-gradient(
+    330deg,
+    var(--primaryBackground),
+    20%,
+    rgba(255, 255, 255, 0)
+  );
+  z-index: 1;
+`;
+
+const StyledContent = styled.div`
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
 `;

@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import Router, { useRouter } from "next/router";
 
 export default function GameCard({ game, source }) {
+  const router = useRouter();
+  console.log("router", router);
   return (
     <>
-      {/* {source === "api" ? ( */}
-      <StyledApiLink href={`/library/${game.id}`}>
+      <StyledApiLink
+        href={
+          router.pathname === "/" ? game.id.toString() : `/library/${game.id}`
+        }
+      >
         <StyledImage
           alt={`cover of ${game.name}`}
           src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}

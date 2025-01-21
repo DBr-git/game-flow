@@ -4,7 +4,8 @@ import GameDetailsView from "@/components/GameDetailsView";
 export default function GameDetailsPage({ games, onDeleteGame, onEditGame }) {
   const router = useRouter();
   const { gameId } = router.query;
-  let selectedGame = games.find((game) => game.id === gameId);
+  let selectedGame = games?.find((game) => game.id === Number(gameId));
+
   if (selectedGame) {
     return (
       <GameDetailsView
