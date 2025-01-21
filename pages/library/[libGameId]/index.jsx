@@ -14,6 +14,10 @@ export default function LibraryGameDetails({ setGames, games }) {
   const router = useRouter();
   const [buttonMode, setButtonMode] = useState("default");
 
+  function gameExists(newGame) {
+    return games?.some((game) => Number(game.id) === newGame[0].id);
+  }
+
   const { data, error, isLoading } = useSWR(
     `/api/details/${router.query.libGameId}`,
     fetcher
@@ -63,7 +67,10 @@ export default function LibraryGameDetails({ setGames, games }) {
         <StyledArticle>
           <StyledDescription>{data[0].summary}</StyledDescription>
         </StyledArticle>
-        {buttonMode === "default" && (
+        {gameExists(data) && buttonMode !== "success" && (
+          <p>This game already exists in your personal list!</p>
+        )}
+        {!gameExists(data) && (
           <StyledButton onClick={() => setButtonMode("add")}>
             Add game to personal list
           </StyledButton>
@@ -87,9 +94,6 @@ export default function LibraryGameDetails({ setGames, games }) {
         )}
         {buttonMode === "success" && (
           <p>Successfully added game to personal list!</p>
-        )}
-        {buttonMode === "failure" && (
-          <p>This game already exists in your personal list!</p>
         )}
       </StyledContainer>
     </>
