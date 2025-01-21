@@ -121,7 +121,6 @@ const StyledList = styled.ul`
 
   @media screen and (min-width: 1024px) {
     max-width: 1144px;
-    margin: 0 auto;
   }
 `;
 
@@ -136,6 +135,7 @@ const StyledSearchInput = styled.input`
   padding: 0.3em;
   outline: none;
   flex: 1;
+  max-width: 450px;
   &:focus {
     border: 2px solid var(--menuColor);
   }
@@ -143,9 +143,13 @@ const StyledSearchInput = styled.input`
 
 const StyledForm = styled.form`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.5em;
   padding: var(--mainContentPadding);
+
+  @media screen and (min-width: 1024px) {
+    justify-content: center;
+  }
 `;
 
 const StyledSubmitButton = styled.button`
@@ -167,6 +171,10 @@ const StyledSearchTerm = styled.p`
   padding: var(--mainContentPadding);
   padding-top: 0;
   font-size: 0.9em;
+
+  @media screen and (min-width: 1024px) {
+    text-align: center;
+  }
 `;
 
 const StyledErrorMessage = styled.div`
