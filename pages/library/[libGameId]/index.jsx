@@ -23,7 +23,6 @@ export default function LibraryGameDetails({ setGames, games }) {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  console.log("data", data);
   function handleAddGameFromLib(newGame) {
     if (games?.some((game) => Number(game.id) === newGame[0].id)) {
       setButtonMode("failure");
@@ -45,7 +44,6 @@ export default function LibraryGameDetails({ setGames, games }) {
       setButtonMode("success");
     }
   }
-  console.log("data", data);
   return (
     <>
       <StyledImageContainer>

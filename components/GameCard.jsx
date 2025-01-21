@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-export default function GameCard({ game, source }) {
+export default function GameCard({ game }) {
   const router = useRouter();
-  console.log("router", router);
   return (
     <>
       {game.cover ? (
@@ -23,9 +22,8 @@ export default function GameCard({ game, source }) {
         </StyledApiLink>
       ) : (
         <StyledLink href={game.id.toString()} $color={game.color}>
-          {/* <StyledColorDiv></StyledColorDiv> */}
-          {/* <h3>{game.name}</h3>
-          <p>Rating: {game.rating}</p> */}
+          <h3>{game.name}</h3>
+          <p>Rating: {game.rating}</p>
         </StyledLink>
       )}
     </>
@@ -33,8 +31,8 @@ export default function GameCard({ game, source }) {
 }
 
 const StyledLink = styled(Link)`
-  height: 10rem;
-  min-width: 100px;
+  height: 100%;
+  min-width: 100%;
   background-color: ${(props) => props.$color};
   box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
@@ -55,13 +53,6 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledImage = styled(Image)`
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-  box-shadow: 1px 1px 0.2em 0.1px black;
-  border-radius: var(--borderRadius);
-`;
-const StyledColorDiv = styled.div`
   object-fit: cover;
   height: 100%;
   width: 100%;

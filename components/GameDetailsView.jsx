@@ -170,14 +170,6 @@ const StyledSummary = styled.p`
   flex-basis: 100%;
   margin-bottom: 1em;
 `;
-// const StyledDiv = styled.div`
-//   background-color: ${(props) => props.$color};
-//   height: 150px;
-//   margin: -0.5em -1.75em 0 -1.75em;
-//   display: flex;
-//   flex-direction: column;
-//   padding: 0.5em 1.75em;
-// `;
 
 const StyledRange = styled.input`
   -webkit-appearance: none;
@@ -254,7 +246,6 @@ const StyledBackgroundImage = styled(Image)`
   );
   z-index: 1;
 `;
-const StyledColorDiv = styled.div``;
 
 const StyledContent = styled.div`
   position: relative;

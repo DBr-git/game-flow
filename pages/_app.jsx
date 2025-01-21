@@ -11,7 +11,6 @@ export default function App({ Component, pageProps }) {
   const [menuMode, setMenuMode] = useState("closed");
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
 
-  console.log("games", games);
   function handleChangeSortingOrder(order) {
     setSortingOrder(order);
   }
