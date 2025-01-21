@@ -8,24 +8,26 @@ export default function GameCard({ game, source }) {
   console.log("router", router);
   return (
     <>
-      <StyledApiLink
-        href={
-          router.pathname === "/" ? game.id.toString() : `/library/${game.id}`
-        }
-      >
-        <StyledImage
-          alt={`cover of ${game.name}`}
-          src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-          width={game.cover.width}
-          height={game.cover.height}
-        ></StyledImage>
-      </StyledApiLink>
-      {/* // ) : (
-      //   <StyledLink href={game.id.toString()} $color={game.color}>
-      //     <h3>{game.name}</h3>
-      //     <p>Rating: {game.rating}</p>
-      //   </StyledLink>
-      // )} */}
+      {game.cover ? (
+        <StyledApiLink
+          href={
+            router.pathname === "/" ? game.id.toString() : `/library/${game.id}`
+          }
+        >
+          <StyledImage
+            alt={`cover of ${game.name}`}
+            src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+            width={game.cover.width}
+            height={game.cover.height}
+          ></StyledImage>
+        </StyledApiLink>
+      ) : (
+        <StyledLink href={game.id.toString()} $color={game.color}>
+          {/* <StyledColorDiv></StyledColorDiv> */}
+          {/* <h3>{game.name}</h3>
+          <p>Rating: {game.rating}</p> */}
+        </StyledLink>
+      )}
     </>
   );
 }
@@ -53,6 +55,13 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledImage = styled(Image)`
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  box-shadow: 1px 1px 0.2em 0.1px black;
+  border-radius: var(--borderRadius);
+`;
+const StyledColorDiv = styled.div`
   object-fit: cover;
   height: 100%;
   width: 100%;

@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
   function handleCreateGame(newGame) {
     const id = uid();
     setGames([
-      ...games,
+      ...(games ? games : []),
       {
         id: id,
         status: "Planned",

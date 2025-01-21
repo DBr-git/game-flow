@@ -40,7 +40,9 @@ export default function GameDetailsView({
 
   return (
     <>
-      <StyledImageContainer>
+      <StyledImageContainer
+        $color={!selectedGame.cover ? selectedGame.color : null}
+      >
         {selectedGame.cover && (
           <StyledBackgroundImage
             src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${selectedGame.artworks.image_id}.jpg`}
@@ -252,6 +254,7 @@ const StyledBackgroundImage = styled(Image)`
   );
   z-index: 1;
 `;
+const StyledColorDiv = styled.div``;
 
 const StyledContent = styled.div`
   position: relative;
