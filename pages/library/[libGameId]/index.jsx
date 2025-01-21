@@ -44,7 +44,7 @@ export default function LibraryGameDetails({ setGames, games }) {
       setButtonMode("success");
     }
   }
-
+  console.log("data", data);
   return (
     <>
       <StyledImageContainer>
