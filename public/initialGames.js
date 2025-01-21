@@ -40,8 +40,8 @@ const initialGames = [
     summary:
       "America, 1899. The end of the Wild West era has begun. After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal divisions threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang who raised him. Includes Red Dead Redemption II: Story Mode and Red Dead Online.",
     status: "Planned",
-    rating: "-",
-    progress: 0,
+    rating: "7",
+    progress: 34,
   },
   {
     id: 1026,
@@ -104,9 +104,9 @@ const initialGames = [
     color: "#29b968",
     name: "Baldur's Gate 3",
     summary:
-      "An ancient evil has returned to Baldur's Gate, intent on devouring it from the inside out. The fate of Faerun lies in your hands. Alone, you may resist. But together, you can overcome.",
+      "An ancient evil has returned to Baldur's Gate, intent on devouring it from the inside out. The fate of Faerun lies in your hands. Alone, you may resist. But together, you can overcome. TEST!",
     status: "In Progress",
-    rating: "-",
+    rating: "9",
     progress: 50,
   },
   {
@@ -127,8 +127,8 @@ const initialGames = [
     name: "God of War",
     summary:
       "God of War is the sequel to God of War III as well as a continuation of the canon God of War chronology. Unlike previous installments, this game focuses on Norse mythology and follows an older and more seasoned Kratos and his son Atreus in the years since the third game. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
-    status: "Planned",
-    rating: "-",
+    status: "Completed",
+    rating: "9",
     progress: 0,
   },
   {
@@ -177,9 +177,9 @@ const initialGames = [
     name: "Hades",
     summary:
       "A rogue-lite hack and slash dungeon crawler in which Zagreus, son of Hades the Greek god of the dead, attempts to escape his home and his oppressive father by fighting the souls of the dead through the various layers of the ever-shifting underworld, while getting to know and forging relationships with its inhabitants.",
-    status: "Planned",
-    rating: "-",
-    progress: 0,
+    status: "In Progress",
+    rating: "8",
+    progress: 73,
   },
 ];
 

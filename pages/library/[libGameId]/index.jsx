@@ -7,10 +7,17 @@ import {
   StyledButton,
   StyledButtonWrapper,
 } from "@/components/buttons/DefaultButtons";
+import MenuButton from "@/components/buttons/MenuButton";
 import { useState } from "react";
+import MenuOption from "@/components/MenuOption";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
-export default function LibraryGameDetails({ setGames, games }) {
+export default function LibraryGameDetails({
+  setGames,
+  games,
+  setMenuMode,
+  menuMode,
+}) {
   const router = useRouter();
   const [buttonMode, setButtonMode] = useState("default");
 
@@ -96,6 +103,8 @@ export default function LibraryGameDetails({ setGames, games }) {
           <p>Successfully added game to personal list!</p>
         )}
       </StyledContainer>
+      <MenuButton setMenuMode={setMenuMode} />
+      {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
     </>
   );
 }
