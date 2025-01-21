@@ -10,7 +10,6 @@ import {
 import { useState } from "react";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
-
 export default function LibraryGameDetails({ setGames, games }) {
   const router = useRouter();
   const [buttonMode, setButtonMode] = useState("default");
@@ -24,15 +23,17 @@ export default function LibraryGameDetails({ setGames, games }) {
 
   if (error) return <div>Error: {error.message}</div>;
 
+  console.log("data", data);
   function handleAddGameFromLib(newGame) {
-    if (games.some((game) => Number(game.id) === newGame[0].id)) {
+    if (games?.some((game) => Number(game.id) === newGame[0].id)) {
       setButtonMode("failure");
     } else {
       setGames([
-        ...games,
+        ...(games ? games : []),
         {
-          id: newGame[0].id.toString(),
+          id: newGame[0].id,
           artworks: newGame[0].artworks[0],
+          cover: newGame[0].cover,
           color: "#29b968",
           name: newGame[0].name,
           summary: newGame[0].summary,
