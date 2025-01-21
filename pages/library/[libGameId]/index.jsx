@@ -44,7 +44,6 @@ export default function LibraryGameDetails({
           id: newGame[0].id,
           artworks: newGame[0].artworks[0],
           cover: newGame[0].cover,
-          color: "#29b968",
           name: newGame[0].name,
           summary: newGame[0].summary,
           status: "Planned",
@@ -77,10 +76,10 @@ export default function LibraryGameDetails({
         {gameExists(data) && buttonMode !== "success" && (
           <p>This game already exists in your personal list!</p>
         )}
-        {!gameExists(data) && (
-          <StyledButton onClick={() => setButtonMode("add")}>
+        {!gameExists(data) && buttonMode !== "add" && (
+          <StyledAddButton onClick={() => setButtonMode("add")}>
             Add game to personal list
-          </StyledButton>
+          </StyledAddButton>
         )}
         {buttonMode === "add" && (
           <>
@@ -116,7 +115,6 @@ const StyledDescription = styled.p`
   padding: 0.5em 1em;
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
-  z-index: 1;
 `;
 
 const StyledArticle = styled.article`
@@ -165,4 +163,8 @@ const StyledContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: var(--mainContentPadding);
+`;
+
+const StyledAddButton = styled(StyledButton)`
+  margin-bottom: 6em;
 `;
