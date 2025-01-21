@@ -32,7 +32,7 @@ export default function GameList({ statusLabel, games, sortingOrder }) {
     <StyledList>
       {sortedGames?.map((game) => (
         <li key={game.id}>
-          <GameCard game={game} source={"personalList"} />
+          <GameCard game={game} />
         </li>
       ))}
     </StyledList>

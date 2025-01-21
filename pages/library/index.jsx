@@ -92,7 +92,7 @@ export default function Library({ menuMode, setMenuMode }) {
           <StyledList>
             {displayData.map((game) => (
               <li key={game.id}>
-                <GameCard game={game} source={"api"} />
+                <GameCard game={game} />
               </li>
             ))}
           </StyledList>
