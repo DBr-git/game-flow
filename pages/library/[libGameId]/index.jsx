@@ -8,7 +8,7 @@ import {
   StyledButtonWrapper,
 } from "@/components/buttons/DefaultButtons";
 import MenuButton from "@/components/buttons/MenuButton";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import MenuOption from "@/components/MenuOption";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
@@ -20,10 +20,22 @@ export default function LibraryGameDetails({
 }) {
   const router = useRouter();
   const [buttonMode, setButtonMode] = useState("default");
+  const dialogRef = useRef(null);
 
   function gameExists(newGame) {
     return games?.some((game) => Number(game.id) === newGame[0].id);
   }
+
+  useEffect(() => {
+    if (buttonMode === "add") {
+      setTimeout(() => {
+        dialogRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 50);
+    }
+  }, [buttonMode]);
 
   const { data, error, isLoading } = useSWR(
     `/api/details/${router.query.libGameId}`,
@@ -54,6 +66,7 @@ export default function LibraryGameDetails({
       setButtonMode("success");
     }
   }
+
   return (
     <>
       <StyledImageContainer>
@@ -81,26 +94,28 @@ export default function LibraryGameDetails({
             Add game to personal list
           </StyledAddButton>
         )}
-        {buttonMode === "add" && (
-          <>
-            <p>Do you really want to add this Game?</p>
-            <StyledButtonWrapper>
-              <StyledButton onClick={() => setButtonMode("default")}>
-                Cancel
-              </StyledButton>
-              <StyledButton
-                onClick={() => {
-                  handleAddGameFromLib(data);
-                }}
-              >
-                Add game
-              </StyledButton>
-            </StyledButtonWrapper>
-          </>
-        )}
-        {buttonMode === "success" && (
-          <p>Successfully added game to personal list!</p>
-        )}
+        <div ref={dialogRef}>
+          {buttonMode === "add" && (
+            <>
+              <p>Do you really want to add this Game?</p>
+              <StyledButtonWrapper>
+                <StyledButton onClick={() => setButtonMode("default")}>
+                  Cancel
+                </StyledButton>
+                <StyledButton
+                  onClick={() => {
+                    handleAddGameFromLib(data);
+                  }}
+                >
+                  Add game
+                </StyledButton>
+              </StyledButtonWrapper>
+            </>
+          )}
+          {buttonMode === "success" && (
+            <p>Successfully added game to personal list!</p>
+          )}
+        </div>
       </StyledContainer>
       <MenuButton setMenuMode={setMenuMode} />
       {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
