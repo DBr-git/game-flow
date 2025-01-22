@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-export default function GameCard({ game, source }) {
+export default function GameCard({ game }) {
+  const router = useRouter();
   return (
     <>
-      {source === "api" ? (
-        <StyledApiLink href={`/library/${game.id}`}>
+      {game.cover ? (
+        <StyledApiLink
+          href={
+            router.pathname === "/" ? game.id.toString() : `/library/${game.id}`
+          }
+        >
           <StyledImage
             alt={`cover of ${game.name}`}
             src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
@@ -25,8 +31,8 @@ export default function GameCard({ game, source }) {
 }
 
 const StyledLink = styled(Link)`
-  height: 10rem;
-  min-width: 100px;
+  height: 100%;
+  min-width: 100%;
   background-color: ${(props) => props.$color};
   box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;

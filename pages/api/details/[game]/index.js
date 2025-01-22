@@ -13,7 +13,7 @@ export default async function handler(request, response) {
           "Client-ID": CLIENT_ID,
           Authorization: `Bearer ${API_KEY}`,
         },
-        body: `fields name, summary, artworks.image_id, artworks.height, artworks.width; where id=${id};`,
+        body: `fields name, summary, artworks.image_id, artworks.height, artworks.width, cover.image_id, cover.width, cover.height; where id=${id};`,
       });
 
       if (!fetchedGames.ok) {

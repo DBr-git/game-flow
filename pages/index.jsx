@@ -18,7 +18,7 @@ export default function HomePage({
   }, [setMenuMode]);
 
   function isSectionEmpty(status) {
-    return games.some((game) => game.status === status);
+    return games?.some((game) => game.status === status);
   }
 
   return (
