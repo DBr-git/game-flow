@@ -49,7 +49,7 @@ const StyledLink = styled(Link)`
   border: ${(props) => (props.$progress === 100 ? "3px solid gold" : "none")};
   box-shadow: ${(props) =>
     props.$progress === 100
-      ? "inset 0 0 0.6em 0.2em gold, 0 0 0.6em 0.2em gold"
+      ? "inset 0 -3em 3em gold, 0 0 0.6em 0.2em gold"
       : "none"};
   h3 {
     overflow-wrap: anywhere;
