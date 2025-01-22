@@ -14,7 +14,9 @@
     "eslint-config-next": "13.4.8",
     "next": "13.4.8",
     "react": "18.2.0",
+    "react-confetti": "^6.2.2",
     "react-dom": "18.2.0",
+    "react-use": "^17.6.0",
     "styled-components": "^6.0.2",
     "swr": "^2.3.0",
     "uid": "^2.0.2"
