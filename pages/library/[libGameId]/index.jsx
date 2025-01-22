@@ -22,18 +22,16 @@ export default function LibraryGameDetails({
   const [buttonMode, setButtonMode] = useState("default");
   const dialogRef = useRef(null);
 
-  function gameExists(newGame) {
-    return games?.some((game) => Number(game.id) === newGame[0].id);
-  }
-
   useEffect(() => {
     if (buttonMode === "add") {
-      setTimeout(() => {
+      const timeOutId = setTimeout(() => {
         dialogRef.current?.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
       }, 50);
+
+      return () => clearTimeout(timeOutId);
     }
   }, [buttonMode]);
 
@@ -46,50 +44,54 @@ export default function LibraryGameDetails({
 
   if (error) return <div>Error: {error.message}</div>;
 
-  function handleAddGameFromLib(newGame) {
-    if (games?.some((game) => Number(game.id) === newGame[0].id)) {
-      setButtonMode("failure");
-    } else {
-      setGames([
-        ...(games ? games : []),
-        {
-          id: newGame[0].id,
-          artworks: newGame[0].artworks[0],
-          cover: newGame[0].cover,
-          name: newGame[0].name,
-          summary: newGame[0].summary,
-          status: "Planned",
-          rating: "-",
-          progress: 0,
-        },
-      ]);
-      setButtonMode("success");
-    }
+  if (!data) return <div>Could not find game</div>;
+
+  const singleGame = data[0];
+
+  function gameExists() {
+    return games?.some((game) => Number(game.id) === singleGame.id);
+  }
+
+  function handleAddGameFromLib(singleGame) {
+    setGames([
+      ...(games ? games : []),
+      {
+        id: singleGame.id,
+        artworks: singleGame.artworks[0],
+        cover: singleGame.cover,
+        name: singleGame.name,
+        summary: singleGame.summary,
+        status: "Planned",
+        rating: "-",
+        progress: 0,
+      },
+    ]);
+    setButtonMode("success");
   }
 
   return (
     <>
       <StyledImageContainer>
         <StyledBackgroundImage
-          src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${data[0].artworks[0].image_id}.jpg`}
-          width={data[0].artworks[0].width}
-          height={data[0].artworks[0].height}
-          alt={`artwork of ${data[0].name}`}
+          src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${singleGame.artworks[0].image_id}.jpg`}
+          width={singleGame.artworks[0].width}
+          height={singleGame.artworks[0].height}
+          alt={`artwork of ${singleGame.name}`}
         />
         <StyledContent>
           <BackButton href="/library" />
-          <h1>{data[0].name}</h1>
+          <h1>{singleGame.name}</h1>
         </StyledContent>
       </StyledImageContainer>
 
       <StyledContainer>
         <StyledArticle>
-          <StyledDescription>{data[0].summary}</StyledDescription>
+          <StyledDescription>{singleGame.summary}</StyledDescription>
         </StyledArticle>
-        {gameExists(data) && buttonMode !== "success" && (
+        {gameExists() && buttonMode !== "success" && (
           <p>This game already exists in your personal list!</p>
         )}
-        {!gameExists(data) && buttonMode !== "add" && (
+        {!gameExists() && buttonMode !== "add" && (
           <StyledAddButton onClick={() => setButtonMode("add")}>
             Add game to personal list
           </StyledAddButton>
@@ -104,7 +106,7 @@ export default function LibraryGameDetails({
                 </StyledButton>
                 <StyledButton
                   onClick={() => {
-                    handleAddGameFromLib(data);
+                    handleAddGameFromLib(singleGame);
                   }}
                 >
                   Add game

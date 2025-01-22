@@ -13,11 +13,11 @@ export default function App({ Component, pageProps }) {
   function handleChangeSortingOrder(order) {
     setSortingOrder(order);
   }
-
+  console.log(games);
   function handleCreateGame(newGame) {
     const id = uid();
     setGames([
-      ...(games ? games : []),
+      ...(games || []),
       {
         id: id,
         status: "Planned",
