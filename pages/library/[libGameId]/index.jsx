@@ -54,7 +54,7 @@ export default function LibraryGameDetails({
 
   function handleAddGameFromLib(singleGame) {
     setGames([
-      ...(games ? games : []),
+      ...(games || []),
       {
         id: singleGame.id,
         artworks: singleGame.artworks[0],
