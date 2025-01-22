@@ -2,9 +2,15 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-export default function GameCard({ game }) {
+export default function GameCard({ game, setScrollPosition }) {
   const router = useRouter();
+
+  // useEffect(() => {
+  //   setScrollPosition(window.scrollY);
+  // }, [setScrollPosition]);
+
   return (
     <>
       {game.cover ? (
@@ -12,6 +18,7 @@ export default function GameCard({ game }) {
           href={
             router.pathname === "/" ? game.id.toString() : `/library/${game.id}`
           }
+          onClick={() => setScrollPosition(window.scrollY)}
         >
           <StyledImage
             alt={`cover of ${game.name}`}

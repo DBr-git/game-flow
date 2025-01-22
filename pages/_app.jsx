@@ -4,12 +4,20 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { uid } from "uid";
 import { randomColor } from "@/utils/randomColor.js";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [games, setGames] = useState(initialGames);
   const [menuMode, setMenuMode] = useState("closed");
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    setScrollPosition(window.scrollY);
+  }, []);
+  console.log(scrollPosition);
+
   function handleChangeSortingOrder(order) {
     setSortingOrder(order);
   }
@@ -55,6 +63,8 @@ export default function App({ Component, pageProps }) {
         handleChangeSortingOrder={handleChangeSortingOrder}
         sortingOrder={sortingOrder}
         setGames={setGames}
+        scrollPosition={scrollPosition}
+        setScrollPosition={setScrollPosition}
       />
     </>
   );

@@ -1,3 +1,4 @@
+// "use client";
 import useSWR from "swr";
 import { useState, useEffect, useCallback } from "react";
 import GameCard from "@/components/GameCard";
@@ -6,14 +7,31 @@ import Pagination from "@/components/Pagination";
 import MenuButton from "@/components/buttons/MenuButton";
 import MenuOption from "@/components/MenuOption";
 import SearchSvg from "@/public/search.svg";
+import { useRouter } from "next/router";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function Library({ menuMode, setMenuMode }) {
+export default function Library({
+  menuMode,
+  setMenuMode,
+  scrollPosition,
+  setScrollPosition,
+}) {
+  const router = useRouter();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const savedScrollPosition = scrollPosition;
+    if (savedScrollPosition) {
+      window.scrollTo({
+        top: savedScrollPosition,
+        behavior: "instant",
+      });
+    }
+  }, [router.asPath]);
 
   useEffect(() => {
     setMenuMode("closed");
@@ -92,7 +110,7 @@ export default function Library({ menuMode, setMenuMode }) {
           <StyledList>
             {displayData.map((game) => (
               <li key={game.id}>
-                <GameCard game={game} />
+                <GameCard game={game} setScrollPosition={setScrollPosition} />
               </li>
             ))}
           </StyledList>
