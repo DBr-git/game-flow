@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BackButton from "@/components/buttons/BackButton";
 import styled from "styled-components";
 import {
@@ -43,6 +43,12 @@ export default function GameDetailsView({
       setTimeout(() => setShowConfetti(false), 5000);
     }
   }
+  useEffect(() => {
+    if (showConfetti) {
+      const timeOutId = setTimeout(() => setShowConfetti(false), 5000);
+      return () => clearTimeout(timeOutId);
+    }
+  }, [showConfetti]);
 
   return (
     <>
