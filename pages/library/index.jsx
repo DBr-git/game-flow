@@ -118,7 +118,7 @@ const StyledList = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1em;
 
   @media screen and (min-width: 1024px) {

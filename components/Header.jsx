@@ -5,10 +5,6 @@ import ListSvg from "@/public/list.svg";
 import PlusSvg from "./PlusSvg";
 import { useRouter } from "next/router";
 
-// import PlusButton from "./buttons/PlusButton";
-// import LibraryButton from "./buttons/LibraryButton";
-// import PersonalListButton from "./buttons/PersonalListButton";
-
 export default function Header() {
   const router = useRouter();
   console.log(router.pathname);
@@ -69,6 +65,7 @@ const StyledList = styled.ul`
   display: flex;
   justify-content: flex-end;
   gap: 3em;
+  margin-right: calc((100% - 1144px) / 2);
 `;
 
 const StyledNavLink = styled(Link)`
