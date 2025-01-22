@@ -2,11 +2,8 @@ import GameList from "@/components/GameList";
 import MenuButton from "@/components/buttons/MenuButton";
 import { useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
-<<<<<<< HEAD
 import Header from "@/components/Header";
-=======
 import SortingSelector from "@/components/SortingSelector";
->>>>>>> main
 
 export default function HomePage({
   games,
