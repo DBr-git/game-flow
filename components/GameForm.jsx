@@ -79,10 +79,7 @@ const StyledForm = styled.form`
     font-weight: 700;
     color: var(--subHeadingColor);
   }
-
-  @media screen and (min-width: 1024px) {
-    max-width: 1144px;
-  }
+  max-width: 1144px;
 `;
 
 const StyledTitleInput = styled.input`

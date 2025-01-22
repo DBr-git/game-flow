@@ -170,10 +170,7 @@ const StyledArticle = styled.article`
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
   }
-
-  @media screen and (min-width: 1024px) {
-    max-width: 1144px;
-  }
+  max-width: 1144px;
 `;
 const StyledParagraph = styled.p`
   background-color: var(--backgroundSubSection);

@@ -182,11 +182,8 @@ const StyledContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: var(--mainContentPadding);
-
-  @media screen and (min-width: 1024px) {
-    max-width: 1144px;
-    margin: 0 auto;
-  }
+  max-width: 1144px;
+  margin: 0 auto;
 `;
 
 const StyledAddButton = styled(StyledButton)`

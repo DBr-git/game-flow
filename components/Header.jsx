@@ -53,9 +53,10 @@ const StyledNavigation = styled.nav`
   width: 100%;
   padding: 0.5em;
   background-color: var(--backgroundSubSection);
+  display: none;
 
-  @media screen and (max-width: 1024px) {
-    display: none;
+  @media screen and (min-width: 1024px) {
+    display: block;
   }
 `;
 
