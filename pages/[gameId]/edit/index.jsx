@@ -1,5 +1,6 @@
 import GameForm from "@/components/GameForm";
 import { useRouter } from "next/router";
+import Header from "@/components/Header";
 
 export default function EditGame({ onEditGame, games }) {
   const router = useRouter();
@@ -12,13 +13,16 @@ export default function EditGame({ onEditGame, games }) {
   }
 
   return (
-    <GameForm
-      onSubmit={(updatedGame) => {
-        onEditGame({ ...selectedGame, ...updatedGame });
-        router.push(`/${selectedGame.id}`);
-      }}
-      selectedGame={selectedGame}
-      formMode="edit"
-    />
+    <>
+      <Header />
+      <GameForm
+        onSubmit={(updatedGame) => {
+          onEditGame({ ...selectedGame, ...updatedGame });
+          router.push(`/${selectedGame.id}`);
+        }}
+        selectedGame={selectedGame}
+        formMode="edit"
+      />
+    </>
   );
 }

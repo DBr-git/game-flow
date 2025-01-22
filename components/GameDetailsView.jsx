@@ -129,7 +129,7 @@ const StyledArticle = styled.article`
   gap: 1rem;
   padding: var(--mainContentPadding);
   overflow-wrap: anywhere;
-
+  margin: 0 auto;
   color: var(--headingColor);
 
   select {
@@ -142,6 +142,10 @@ const StyledArticle = styled.article`
     font-size: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1144px;
   }
 `;
 const StyledParagraph = styled.p`

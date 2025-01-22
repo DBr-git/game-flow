@@ -3,6 +3,7 @@ import BackButton from "@/components/buttons/BackButton";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Image from "next/image";
+import Header from "@/components/Header";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
@@ -20,6 +21,7 @@ export default function LibraryGameDetails() {
 
   return (
     <>
+      <Header />
       <StyledContainer>
         <StyledBackgroundImage
           src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${data[0].artworks[0].image_id}.jpg`}
@@ -56,6 +58,11 @@ const StyledArticle = styled.article`
   gap: 1rem;
   padding: var(--mainContentPadding);
   color: var(--headingColor);
+  margin: 0 auto;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1144px;
+  }
 `;
 
 const StyledContainer = styled.div`
