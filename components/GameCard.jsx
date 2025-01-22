@@ -46,8 +46,11 @@ const StyledLink = styled(Link)`
   color: var(--subHeadingColor);
   border-radius: var(--borderRadius);
   padding: 1em;
-  border: ${(props) => (props.$progress === 100 ? "3px dotted gold" : "none")};
-
+  border: ${(props) => (props.$progress === 100 ? "3px solid gold" : "none")};
+  box-shadow: ${(props) =>
+    props.$progress === 100
+      ? "inset 0 0 0.6em 0.2em gold, 0 0 0.6em 0.2em gold"
+      : "none"};
   h3 {
     overflow-wrap: anywhere;
     overflow: auto;
