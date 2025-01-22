@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BackButton from "@/components/buttons/BackButton";
 import styled from "styled-components";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import {
   StyledDeleteButton,
 } from "@/components/buttons/DefaultButtons";
 import CommentSection from "./CommentSection";
+import ConfettiAnimation from "./Animation";
 
 export default function GameDetailsView({
   selectedGame,
@@ -20,6 +21,7 @@ export default function GameDetailsView({
   const { gameId } = router.query;
   const [buttonMode, setButtonMode] = useState("default");
   const [sliderValue, setSliderValue] = useState(selectedGame.progress);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   function handleStatusChange(event) {
     selectedGame = { ...selectedGame, status: event.target.value };
@@ -36,10 +38,22 @@ export default function GameDetailsView({
       progress: newValue,
     };
     onEditGame(updatedGame);
+
+    if (newValue === 100) {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
+    }
   }
+  useEffect(() => {
+    if (showConfetti) {
+      const timeOutId = setTimeout(() => setShowConfetti(false), 5000);
+      return () => clearTimeout(timeOutId);
+    }
+  }, [showConfetti]);
 
   return (
     <>
+      <ConfettiAnimation isActive={showConfetti} />
       <StyledImageContainer
         $color={!selectedGame.cover ? selectedGame.color : null}
       >
