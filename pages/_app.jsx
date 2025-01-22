@@ -9,11 +9,14 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [games, setGames] = useState(initialGames);
   const [menuMode, setMenuMode] = useState("closed");
-
+  const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
+  function handleChangeSortingOrder(order) {
+    setSortingOrder(order);
+  }
   function handleCreateGame(newGame) {
     const id = uid();
     setGames([
-      ...games,
+      ...(games || []),
       {
         id: id,
         status: "Planned",
@@ -49,6 +52,9 @@ export default function App({ Component, pageProps }) {
         onEditGame={handleEditGame}
         menuMode={menuMode}
         setMenuMode={setMenuMode}
+        handleChangeSortingOrder={handleChangeSortingOrder}
+        sortingOrder={sortingOrder}
+        setGames={setGames}
       />
     </>
   );
