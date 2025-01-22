@@ -3,6 +3,7 @@ import MenuButton from "@/components/buttons/MenuButton";
 import { useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
 import SortingSelector from "@/components/SortingSelector";
+import { useRouter } from "next/router";
 
 export default function HomePage({
   games,
@@ -10,8 +11,22 @@ export default function HomePage({
   setMenuMode,
   handleChangeSortingOrder,
   sortingOrder,
+  setScrollPosition,
+  scrollPosition,
 }) {
   const statusSections = ["In Progress", "Planned", "Completed"];
+  const router = useRouter();
+
+  useEffect(() => {
+    const savedScrollPosition = scrollPosition;
+    if (savedScrollPosition) {
+      window.scrollTo({
+        top: savedScrollPosition,
+        behavior: "instant",
+      });
+    }
+    setScrollPosition(0);
+  }, [router.asPath]);
 
   useEffect(() => {
     setMenuMode("closed");
@@ -38,6 +53,7 @@ export default function HomePage({
                 statusLabel={status}
                 games={games}
                 sortingOrder={sortingOrder}
+                setScrollPosition={setScrollPosition}
               />
               {!isSectionEmpty(status) && (
                 <p>No games at the moment, please add one!</p>

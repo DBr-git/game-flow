@@ -13,10 +13,16 @@ export default function App({ Component, pageProps }) {
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-    setScrollPosition(window.scrollY);
-  }, []);
-  console.log(scrollPosition);
+  // useEffect(() => {
+  //   const savedScrollPosition = scrollPosition;
+  //   if (savedScrollPosition) {
+  //     window.scrollTo({
+  //       top: savedScrollPosition,
+  //       behavior: "instant",
+  //     });
+  //   }
+  //   setScrollPosition(0);
+  // }, [router.asPath]);
 
   function handleChangeSortingOrder(order) {
     setSortingOrder(order);

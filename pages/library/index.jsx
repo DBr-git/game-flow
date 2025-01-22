@@ -1,4 +1,3 @@
-// "use client";
 import useSWR from "swr";
 import { useState, useEffect, useCallback } from "react";
 import GameCard from "@/components/GameCard";
@@ -14,8 +13,8 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json());
 export default function Library({
   menuMode,
   setMenuMode,
-  scrollPosition,
   setScrollPosition,
+  scrollPosition,
 }) {
   const router = useRouter();
   const [page, setPage] = useState(1);
@@ -31,6 +30,7 @@ export default function Library({
         behavior: "instant",
       });
     }
+    setScrollPosition(0);
   }, [router.asPath]);
 
   useEffect(() => {
