@@ -58,7 +58,9 @@ export default function HomePage({
 const StyledMain = styled.main`
   @media screen and (min-width: 1024px) {
     max-width: 1144px;
-    margin: 0 auto;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
 
     h1 {
       display: none;

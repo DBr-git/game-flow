@@ -71,7 +71,7 @@ export default function Library({ menuMode, setMenuMode }) {
   return (
     <>
       <Header />
-      <h1>Library</h1>
+      <StyledHeading>Library</StyledHeading>
       <StyledForm onSubmit={handleSearch}>
         <StyledSearchInput
           type="text"
@@ -110,6 +110,12 @@ export default function Library({ menuMode, setMenuMode }) {
     </>
   );
 }
+
+const StyledHeading = styled.h1`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
 
 const StyledList = styled.ul`
   padding: var(--mainContentPadding);
@@ -151,6 +157,7 @@ const StyledForm = styled.form`
 
   @media screen and (min-width: 1024px) {
     justify-content: center;
+    margin: 1em auto;
   }
 `;
 
