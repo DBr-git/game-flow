@@ -3,9 +3,7 @@ import BackButton from "@/components/buttons/BackButton";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Image from "next/image";
-<<<<<<< HEAD
 import Header from "@/components/Header";
-=======
 import {
   StyledButton,
   StyledButtonWrapper,
@@ -13,7 +11,6 @@ import {
 import MenuButton from "@/components/buttons/MenuButton";
 import { useState, useEffect, useRef } from "react";
 import MenuOption from "@/components/MenuOption";
->>>>>>> main
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 export default function LibraryGameDetails({
@@ -75,12 +72,8 @@ export default function LibraryGameDetails({
 
   return (
     <>
-<<<<<<< HEAD
       <Header />
-      <StyledContainer>
-=======
       <StyledImageContainer>
->>>>>>> main
         <StyledBackgroundImage
           src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${singleGame.artworks[0].image_id}.jpg`}
           width={singleGame.artworks[0].width}
@@ -148,11 +141,6 @@ const StyledArticle = styled.article`
   flex-direction: column;
   gap: 1rem;
   color: var(--headingColor);
-  margin: 0 auto;
-
-  @media screen and (min-width: 1024px) {
-    max-width: 1144px;
-  }
 `;
 
 const StyledImageContainer = styled.div`
@@ -194,6 +182,11 @@ const StyledContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: var(--mainContentPadding);
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1144px;
+    margin: 0 auto;
+  }
 `;
 
 const StyledAddButton = styled(StyledButton)`

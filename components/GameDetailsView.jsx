@@ -54,13 +54,7 @@ export default function GameDetailsView({
 
   return (
     <>
-<<<<<<< HEAD
       <Header />
-      <StyledDiv $color={selectedGame.color}>
-        <BackButton href="/" />
-        <h1>{selectedGame.name}</h1>
-      </StyledDiv>
-=======
       <ConfettiAnimation isActive={showConfetti} />
       <StyledImageContainer
         $color={!selectedGame.cover ? selectedGame.color : null}
@@ -78,8 +72,6 @@ export default function GameDetailsView({
           <h1>{selectedGame.name}</h1>
         </StyledContent>
       </StyledImageContainer>
-
->>>>>>> main
       <StyledArticle>
         <select
           name="status"
