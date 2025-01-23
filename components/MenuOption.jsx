@@ -4,12 +4,12 @@ import BackSvg from "./BackSvg";
 import LibraryButton from "./buttons/LibraryButton";
 import PersonalListButton from "./buttons/PersonalListButton";
 
-export default function MenuOption({ setMenuMode }) {
+export default function MenuOption({ setMenuMode, setScrollPosition }) {
   return (
     <StyledMenuOptionContainer>
-      <LibraryButton />
-      <PlusButton />
-      <PersonalListButton />
+      <LibraryButton onSetScrollPosition={setScrollPosition} />
+      <PlusButton onSetScrollPosition={setScrollPosition} />
+      <PersonalListButton onSetScrollPosition={setScrollPosition} />
       <StyledCloseMenuButton
         type="button"
         aria-label="close menu"

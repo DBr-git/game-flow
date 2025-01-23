@@ -64,7 +64,12 @@ export default function HomePage({
           );
         })}
         <MenuButton setMenuMode={setMenuMode} />
-        {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
+        {menuMode === "opened" && (
+          <MenuOption
+            setMenuMode={setMenuMode}
+            setScrollPosition={setScrollPosition}
+          />
+        )}
       </main>
     </>
   );

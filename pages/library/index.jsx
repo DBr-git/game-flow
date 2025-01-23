@@ -19,7 +19,6 @@ export default function Library({
   setPage,
 }) {
   const router = useRouter();
-  // const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -118,7 +117,12 @@ export default function Library({
           </StyledList>
           <Pagination page={page} setPage={setPage} />
           <MenuButton setMenuMode={setMenuMode} />
-          {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
+          {menuMode === "opened" && (
+            <MenuOption
+              setMenuMode={setMenuMode}
+              setScrollPosition={setScrollPosition}
+            />
+          )}
         </>
       ) : (
         <StyledErrorMessage>

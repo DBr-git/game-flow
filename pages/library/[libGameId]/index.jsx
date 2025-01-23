@@ -17,6 +17,7 @@ export default function LibraryGameDetails({
   games,
   setMenuMode,
   menuMode,
+  setScrollPosition,
 }) {
   const router = useRouter();
   const [buttonMode, setButtonMode] = useState("default");
@@ -120,7 +121,12 @@ export default function LibraryGameDetails({
         </div>
       </StyledContainer>
       <MenuButton setMenuMode={setMenuMode} />
-      {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
+      {menuMode === "opened" && (
+        <MenuOption
+          setMenuMode={setMenuMode}
+          setScrollPosition={setScrollPosition}
+        />
+      )}
     </>
   );
 }
