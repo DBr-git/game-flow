@@ -15,9 +15,11 @@ export default function Library({
   setMenuMode,
   setScrollPosition,
   scrollPosition,
+  page,
+  setPage,
 }) {
   const router = useRouter();
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);

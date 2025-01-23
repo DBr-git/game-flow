@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }) {
   const [menuMode, setMenuMode] = useState("closed");
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [page, setPage] = useState(1);
 
   // useEffect(() => {
   //   const savedScrollPosition = scrollPosition;
@@ -71,6 +72,8 @@ export default function App({ Component, pageProps }) {
         setGames={setGames}
         scrollPosition={scrollPosition}
         setScrollPosition={setScrollPosition}
+        page={page}
+        setPage={setPage}
       />
     </>
   );
