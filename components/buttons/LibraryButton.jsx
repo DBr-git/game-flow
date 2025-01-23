@@ -6,7 +6,7 @@ export default function LibraryButton({ onSetScrollPosition }) {
     <StyledMenuLink
       href="/library"
       aria-label="view library"
-      onClick={onSetScrollPosition(0)}
+      onClick={() => onSetScrollPosition(0)}
     >
       <LibrarySvg />
       <p>Library</p>

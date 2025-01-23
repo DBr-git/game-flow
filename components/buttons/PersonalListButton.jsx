@@ -6,7 +6,7 @@ export default function PersonalListButton({ onSetScrollPosition }) {
     <StyledMenuLink
       href="/"
       aria-label="view personal list"
-      onClick={onSetScrollPosition(0)}
+      onClick={() => onSetScrollPosition(0)}
     >
       <ListSvg />
       <p>Your List</p>

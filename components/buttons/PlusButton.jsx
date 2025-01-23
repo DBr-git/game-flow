@@ -6,7 +6,7 @@ export default function PlusButton({ onSetScrollPosition }) {
     <StyledMenuLink
       href="/add-game"
       aria-label="add game"
-      onClick={onSetScrollPosition(0)}
+      onClick={() => onSetScrollPosition(0)}
     >
       <PlusSvg width="50" height="50" />
       <p>Add Game</p>
