@@ -2,14 +2,9 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export default function GameCard({ game, setScrollPosition }) {
   const router = useRouter();
-
-  // useEffect(() => {
-  //   setScrollPosition(window.scrollY);
-  // }, [setScrollPosition]);
 
   return (
     <>

@@ -18,10 +18,9 @@ export default function HomePage({
   const router = useRouter();
 
   useEffect(() => {
-    const savedScrollPosition = scrollPosition;
-    if (savedScrollPosition) {
+    if (scrollPosition) {
       window.scrollTo({
-        top: savedScrollPosition,
+        top: scrollPosition,
         behavior: "instant",
       });
     }
