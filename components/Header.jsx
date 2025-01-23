@@ -18,7 +18,7 @@ export default function Header() {
             $active={router.pathname === "/library"}
           >
             <LibrarySvg />
-            <p>Library</p>
+            Library
           </StyledNavLink>
         </li>
         <li>
@@ -28,7 +28,7 @@ export default function Header() {
             $active={router.pathname === "/add-game"}
           >
             <PlusSvg width="50" height="50" />
-            <p>Add Game</p>
+            Add Game
           </StyledNavLink>
         </li>
         <li>
@@ -38,7 +38,7 @@ export default function Header() {
             $active={router.pathname === "/"}
           >
             <ListSvg />
-            <p>List</p>
+            List
           </StyledNavLink>
         </li>
       </StyledList>
@@ -66,6 +66,10 @@ const StyledList = styled.ul`
   justify-content: flex-end;
   gap: 3em;
   margin-right: calc((100% - 1144px) / 2);
+
+  @media screen and (min-width: 1024px) and (max-width: 1200px) {
+    margin-right: calc((100% - 900px) / 2);
+  }
 `;
 
 const StyledNavLink = styled(Link)`
