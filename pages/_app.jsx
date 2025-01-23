@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { uid } from "uid";
 import { randomColor } from "@/utils/randomColor.js";
-import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();

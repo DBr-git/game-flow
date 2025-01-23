@@ -13,8 +13,6 @@ export default function HomePage({
   sortingOrder,
   setScrollPosition,
   scrollPosition,
-  page,
-  setPage,
 }) {
   const statusSections = ["In Progress", "Planned", "Completed"];
   const router = useRouter();
