@@ -269,4 +269,8 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 2;
+  h1 {
+    overflow-wrap: anywhere;
+    overflow: auto;
+  }
 `;
