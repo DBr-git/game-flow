@@ -32,6 +32,10 @@ const StyledMenuOptionContainer = styled.div`
   box-shadow: var(--boxShadow);
   display: flex;
   gap: 1em;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `;
 
 const StyledCloseMenuButton = styled.button`

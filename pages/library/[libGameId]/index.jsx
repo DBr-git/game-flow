@@ -3,6 +3,7 @@ import BackButton from "@/components/buttons/BackButton";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Image from "next/image";
+import Header from "@/components/Header";
 import {
   StyledButton,
   StyledButtonWrapper,
@@ -71,6 +72,7 @@ export default function LibraryGameDetails({
 
   return (
     <>
+      <Header />
       <StyledImageContainer>
         <StyledBackgroundImage
           src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${singleGame.artworks[0].image_id}.jpg`}
@@ -173,6 +175,11 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 2;
+
+  h1 {
+    overflow-wrap: anywhere;
+    overflow: auto;
+  }
 `;
 
 const StyledContainer = styled.div`
@@ -180,6 +187,8 @@ const StyledContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: var(--mainContentPadding);
+  max-width: 1144px;
+  margin: 0 auto;
 `;
 
 const StyledAddButton = styled(StyledButton)`

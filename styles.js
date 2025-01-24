@@ -46,6 +46,10 @@ export default createGlobalStyle`
     font-family: var(--titleFont);
     color: var(--headingColor);
     background-color: var(--primaryBackground);
+
+    @media screen and (min-width: 1024px){
+      margin-top: 88px;      
+    }
   }
 
   h1 {

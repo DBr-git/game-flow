@@ -2,7 +2,9 @@ import GameList from "@/components/GameList";
 import MenuButton from "@/components/buttons/MenuButton";
 import { useEffect } from "react";
 import MenuOption from "@/components/MenuOption";
+import Header from "@/components/Header";
 import SortingSelector from "@/components/SortingSelector";
+import styled from "styled-components";
 
 export default function HomePage({
   games,
@@ -23,7 +25,8 @@ export default function HomePage({
 
   return (
     <>
-      <main>
+      <Header />
+      <StyledMain>
         <h1>Game List</h1>
         <SortingSelector
           onChangeSortingOrder={handleChangeSortingOrder}
@@ -47,7 +50,20 @@ export default function HomePage({
         })}
         <MenuButton setMenuMode={setMenuMode} />
         {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
-      </main>
+      </StyledMain>
     </>
   );
 }
+
+const StyledMain = styled.main`
+  max-width: 1144px;
+  @media screen and (min-width: 1024px) {
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      display: none;
+    }
+  }
+`;

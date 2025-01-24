@@ -31,8 +31,8 @@ export default function GameCard({ game }) {
 }
 
 const StyledLink = styled(Link)`
-  height: 100%;
-  min-width: 100%;
+  height: 189.33px;
+  width: 139px;
   background-color: ${(props) => props.$color};
   box-shadow: 1px 1px 0.2em 0.1px black;
   display: flex;
@@ -50,19 +50,26 @@ const StyledLink = styled(Link)`
   &:hover {
     color: var(--alertColor);
   }
+
+  @media screen and (min-width: 1024px) {
+    height: 230.66px;
+    width: 170px;
+  }
 `;
 
 const StyledImage = styled(Image)`
   object-fit: cover;
   height: 100%;
-  width: 100%;
+  width: 139px;
   box-shadow: 1px 1px 0.2em 0.1px black;
   border-radius: var(--borderRadius);
+
+  @media screen and (min-width: 1024px) {
+    width: 170px;
+  }
 `;
 
 const StyledApiLink = styled(Link)`
-  overflow: hidden;
-  display: box;
   color: var(--subHeadingColor);
   &:hover {
     color: var(--alertColor);
