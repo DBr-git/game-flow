@@ -9,6 +9,7 @@ import {
   StyledButtonWrapper,
   StyledDeleteButton,
 } from "@/components/buttons/DefaultButtons";
+import Header from "./Header";
 import CommentSection from "./CommentSection";
 import ConfettiAnimation from "./Animation";
 
@@ -53,6 +54,7 @@ export default function GameDetailsView({
 
   return (
     <>
+      <Header />
       <ConfettiAnimation isActive={showConfetti} />
       <StyledImageContainer
         $color={!selectedGame.cover ? selectedGame.color : null}
@@ -70,7 +72,6 @@ export default function GameDetailsView({
           <h1>{selectedGame.name}</h1>
         </StyledContent>
       </StyledImageContainer>
-
       <StyledArticle>
         <select
           name="status"
@@ -155,7 +156,7 @@ const StyledArticle = styled.article`
   gap: 1rem;
   padding: var(--mainContentPadding);
   overflow-wrap: anywhere;
-
+  margin: 0 auto;
   color: var(--headingColor);
 
   select {
@@ -169,6 +170,7 @@ const StyledArticle = styled.article`
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
   }
+  max-width: 1144px;
 `;
 const StyledParagraph = styled.p`
   background-color: var(--backgroundSubSection);
@@ -267,4 +269,8 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 2;
+  h1 {
+    overflow-wrap: anywhere;
+    overflow: auto;
+  }
 `;

@@ -24,4 +24,8 @@ const StyledMenuButton = styled.button`
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
   cursor: pointer;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `;

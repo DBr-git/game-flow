@@ -47,7 +47,8 @@ export default function GameList({
 const StyledList = styled.ul`
   padding: var(--mainContentPadding);
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1em;
 `;
