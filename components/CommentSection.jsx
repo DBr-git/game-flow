@@ -73,7 +73,7 @@ const StyledTextareaInput = styled.textarea`
   box-shadow: var(--boxShadow);
   font-family: var(--textFont);
   font-size: 1rem;
-  padding: 0.3em;
+  padding: 0.5em;
   resize: none;
   outline: none;
 `;
@@ -81,7 +81,6 @@ const StyledTextareaInput = styled.textarea`
 const CommentList = styled.ul`
   list-style: none;
   margin: 1rem 0 2rem 0;
-  padding: 0;
 `;
 
 const CommentItem = styled.li`
@@ -93,7 +92,7 @@ const CommentItem = styled.li`
   margin-bottom: 8px;
   p {
     flex: 1;
-    margin: 0;
+    padding-left: 0.5em;
     background-color: none;
     border: none;
   }
