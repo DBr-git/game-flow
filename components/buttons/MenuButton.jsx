@@ -14,6 +14,7 @@ export default function MenuButton({ setMenuMode }) {
 }
 
 const StyledMenuButton = styled.button`
+  z-index: 1000;
   display: flex;
   position: fixed;
   right: 15px;

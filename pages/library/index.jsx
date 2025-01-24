@@ -6,15 +6,34 @@ import Pagination from "@/components/Pagination";
 import MenuButton from "@/components/buttons/MenuButton";
 import MenuOption from "@/components/MenuOption";
 import SearchSvg from "@/public/search.svg";
+import { useRouter } from "next/router";
 import Header from "@/components/Header";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
-export default function Library({ menuMode, setMenuMode }) {
-  const [page, setPage] = useState(1);
+export default function Library({
+  menuMode,
+  setMenuMode,
+  setScrollPosition,
+  scrollPosition,
+  page,
+  setPage,
+}) {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const savedScrollPosition = scrollPosition;
+    if (savedScrollPosition) {
+      window.scrollTo({
+        top: savedScrollPosition,
+        behavior: "instant",
+      });
+    }
+    setScrollPosition(0);
+  }, [router.asPath]);
 
   useEffect(() => {
     setMenuMode("closed");
@@ -94,13 +113,18 @@ export default function Library({ menuMode, setMenuMode }) {
           <StyledList>
             {displayData.map((game) => (
               <li key={game.id}>
-                <GameCard game={game} />
+                <GameCard game={game} setScrollPosition={setScrollPosition} />
               </li>
             ))}
           </StyledList>
           <Pagination page={page} setPage={setPage} />
           <MenuButton setMenuMode={setMenuMode} />
-          {menuMode === "opened" && <MenuOption setMenuMode={setMenuMode} />}
+          {menuMode === "opened" && (
+            <MenuOption
+              setMenuMode={setMenuMode}
+              setScrollPosition={setScrollPosition}
+            />
+          )}
         </>
       ) : (
         <StyledErrorMessage>

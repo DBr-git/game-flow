@@ -5,7 +5,12 @@ import {
   sortedGamesByRating,
 } from "@/utils/sortingGames";
 
-export default function GameList({ statusLabel, games, sortingOrder }) {
+export default function GameList({
+  statusLabel,
+  games,
+  sortingOrder,
+  setScrollPosition,
+}) {
   const filteredGames = games?.filter((game) => game.status === statusLabel);
 
   let sortedGames = filteredGames;
@@ -32,7 +37,7 @@ export default function GameList({ statusLabel, games, sortingOrder }) {
     <StyledList>
       {sortedGames?.map((game) => (
         <li key={game.id}>
-          <GameCard game={game} />
+          <GameCard game={game} setScrollPosition={setScrollPosition} />
         </li>
       ))}
     </StyledList>
