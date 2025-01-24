@@ -27,14 +27,12 @@ export default function GameCard({ game, setScrollPosition }) {
               $progress={game.progress}
             ></StyledImage>
             {router.pathname !== "/library" && (
-              // <StyledRatingBg>
               <StyledProgressDiv>
                 <p>Rating: {game.rating}</p>
                 <StyledProgressFill $progress={game.progress}>
                   <ProgressText>Progress: {game.progress}%</ProgressText>
                 </StyledProgressFill>
               </StyledProgressDiv>
-              // </StyledRatingBg>
             )}
           </StyledApiButton>
         </StyledShadowDiv>
@@ -52,7 +50,6 @@ export default function GameCard({ game, setScrollPosition }) {
             }}
           >
             <h3>{game.name}</h3>
-            {/* <p>Rating: {game.rating}</p> */}
             <StyledProgressDiv>
               <p>Rating: {game.rating}</p>
               <StyledProgressFill $progress={game.progress}>
@@ -162,11 +159,4 @@ const StyledShadowDiv = styled.div`
   &:hover {
     cursor: pointer;
   }
-`;
-
-const StyledRatingBg = styled.div`
-  position: absolute;
-  bottom: 0;
-  background-color: gray;
-  border: 3px solid red;
 `;
