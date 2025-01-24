@@ -15,5 +15,5 @@ const StyledLink = styled(Link)`
   background-color: var(--backgroundSubSection);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
-  margin: 1em;
+  margin-top: 0.5em;
 `;
