@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 export default function GameCard({ game, setScrollPosition }) {
   const router = useRouter();
-  console.log(router);
   return (
     <>
       {game.cover ? (
