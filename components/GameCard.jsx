@@ -148,4 +148,7 @@ const StyledShadowDiv = styled.div`
   border-radius: var(--borderRadius);
   border-radius: 8px;
   height: 189.33px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
