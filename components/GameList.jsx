@@ -6,7 +6,7 @@ import {
 } from "@/utils/sortingGames";
 
 export default function GameList({ statusLabel, games, sortingOrder }) {
-  const filteredGames = games.filter((game) => game.status === statusLabel);
+  const filteredGames = games?.filter((game) => game.status === statusLabel);
 
   let sortedGames = filteredGames;
 
@@ -30,9 +30,9 @@ export default function GameList({ statusLabel, games, sortingOrder }) {
 
   return (
     <StyledList>
-      {sortedGames.map((game) => (
+      {sortedGames?.map((game) => (
         <li key={game.id}>
-          <GameCard game={game} source={"personalList"} />
+          <GameCard game={game} />
         </li>
       ))}
     </StyledList>
@@ -42,7 +42,8 @@ export default function GameList({ statusLabel, games, sortingOrder }) {
 const StyledList = styled.ul`
   padding: var(--mainContentPadding);
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1em;
 `;

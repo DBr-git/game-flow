@@ -43,4 +43,9 @@ const StyledDiv = styled.div`
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
   }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 250px;
+    align-self: flex-end;
+  }
 `;

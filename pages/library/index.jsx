@@ -1,11 +1,12 @@
 import useSWR from "swr";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import GameCard from "@/components/GameCard";
 import styled from "styled-components";
 import Pagination from "@/components/Pagination";
 import MenuButton from "@/components/buttons/MenuButton";
 import MenuOption from "@/components/MenuOption";
 import SearchSvg from "@/public/search.svg";
+import Header from "@/components/Header";
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
@@ -69,7 +70,8 @@ export default function Library({ menuMode, setMenuMode }) {
 
   return (
     <>
-      <h1>Library</h1>
+      <Header />
+      <StyledHeading>Library</StyledHeading>
       <StyledForm onSubmit={handleSearch}>
         <StyledSearchInput
           type="text"
@@ -92,7 +94,7 @@ export default function Library({ menuMode, setMenuMode }) {
           <StyledList>
             {displayData.map((game) => (
               <li key={game.id}>
-                <GameCard game={game} source={"api"} />
+                <GameCard game={game} />
               </li>
             ))}
           </StyledList>
@@ -109,12 +111,25 @@ export default function Library({ menuMode, setMenuMode }) {
   );
 }
 
+const StyledHeading = styled.h1`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
+
 const StyledList = styled.ul`
   padding: var(--mainContentPadding);
+  margin: 0 auto;
+  width: auto;
   list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1em;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1144px;
+  }
 `;
 
 const StyledSearchInput = styled.input`
@@ -128,6 +143,7 @@ const StyledSearchInput = styled.input`
   padding: 0.3em;
   outline: none;
   flex: 1;
+  max-width: 450px;
   &:focus {
     border: 2px solid var(--menuColor);
   }
@@ -135,9 +151,14 @@ const StyledSearchInput = styled.input`
 
 const StyledForm = styled.form`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.5em;
   padding: var(--mainContentPadding);
+
+  @media screen and (min-width: 1024px) {
+    justify-content: center;
+    margin: 1em auto;
+  }
 `;
 
 const StyledSubmitButton = styled.button`
@@ -159,6 +180,10 @@ const StyledSearchTerm = styled.p`
   padding: var(--mainContentPadding);
   padding-top: 0;
   font-size: 0.9em;
+
+  @media screen and (min-width: 1024px) {
+    text-align: center;
+  }
 `;
 
 const StyledErrorMessage = styled.div`
