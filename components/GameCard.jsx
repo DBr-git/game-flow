@@ -27,11 +27,14 @@ export default function GameCard({ game, setScrollPosition }) {
               $progress={game.progress}
             ></StyledImage>
             {router.pathname !== "/library" && (
+              // <StyledRatingBg>
               <StyledProgressDiv>
+                <p>Rating: {game.rating}</p>
                 <StyledProgressFill $progress={game.progress}>
                   <ProgressText>Progress: {game.progress}%</ProgressText>
                 </StyledProgressFill>
               </StyledProgressDiv>
+              // </StyledRatingBg>
             )}
           </StyledApiButton>
         </StyledShadowDiv>
@@ -111,17 +114,29 @@ const StyledApiButton = styled.button`
 `;
 
 const StyledProgressDiv = styled.div`
+  background-color: #808080b5;
+  border-radius: var(--borderRadius);
   position: absolute;
+  padding-top: 0.3em;
   width: 132px;
-  height: 24px;
+  height: 50px;
   bottom: 0;
   left: 0;
+  p {
+    padding-left: 0.4em;
+    font-size: 0.8rem;
+    color: var(--subHeadingColor);
+    font-family: var(--titleFont);
+    font-weight: 300;
+  }
 `;
 
 const StyledProgressFill = styled.div`
   display: flex;
+  position: absolute;
+  bottom: 0;
   width: ${({ $progress }) => `${$progress}%`};
-  height: 100%;
+  height: 24px;
   border-bottom-left-radius: var(--borderRadius);
   border-bottom-right-radius: ${(props) =>
     props.$progress === 100 && "var(--borderRadius)"};
@@ -133,6 +148,8 @@ const ProgressText = styled.span`
   padding: 0.5em 0 0 0.5em;
   font-size: 0.8rem;
   color: var(--subHeadingColor);
+  font-family: var(--titleFont);
+  font-weight: 300;
 `;
 
 const StyledShadowDiv = styled.div`
@@ -145,4 +162,11 @@ const StyledShadowDiv = styled.div`
   border-radius: var(--borderRadius);
   border-radius: 8px;
   height: 189.33px;
+`;
+
+const StyledRatingBg = styled.div`
+  position: absolute;
+  bottom: 0;
+  background-color: gray;
+  border: 3px solid red;
 `;
