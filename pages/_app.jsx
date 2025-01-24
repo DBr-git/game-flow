@@ -4,10 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { uid } from "uid";
 import { randomColor } from "@/utils/randomColor.js";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const [games, setGames] = useState(initialGames);
+  const [games, setGames] = useLocalStorageState("games", {
+    defaultValue: initialGames,
+  });
   const [menuMode, setMenuMode] = useState("closed");
   const [sortingOrder, setSortingOrder] = useState("alphabetically-A-to-Z");
   const [scrollPosition, setScrollPosition] = useState(0);
