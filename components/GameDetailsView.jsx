@@ -176,13 +176,11 @@ const StyledParagraph = styled.p`
   background-color: var(--backgroundSubSection);
   padding: 0.5em 1em;
   border-radius: var(--borderRadius);
-  box-shadow: var(--boxShadow);
 `;
 const StyledSummary = styled.p`
   background-color: var(--backgroundSubSection);
   padding: 0.5em 1em;
   border-radius: var(--borderRadius);
-  box-shadow: var(--boxShadow);
   flex-basis: 100%;
   margin-bottom: 1em;
 `;
