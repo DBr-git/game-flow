@@ -52,8 +52,9 @@ export default function GameCard({ game, setScrollPosition }) {
             }}
           >
             <h3>{game.name}</h3>
-            <p>Rating: {game.rating}</p>
+            {/* <p>Rating: {game.rating}</p> */}
             <StyledProgressDiv>
+              <p>Rating: {game.rating}</p>
               <StyledProgressFill $progress={game.progress}>
                 <ProgressText>Progress: {game.progress}%</ProgressText>
               </StyledProgressFill>
@@ -114,7 +115,7 @@ const StyledApiButton = styled.button`
 `;
 
 const StyledProgressDiv = styled.div`
-  background-color: #808080b5;
+  background-color: #808080de;
   border-radius: var(--borderRadius);
   position: absolute;
   padding-top: 0.3em;
@@ -128,6 +129,7 @@ const StyledProgressDiv = styled.div`
     color: var(--subHeadingColor);
     font-family: var(--titleFont);
     font-weight: 300;
+    text-align: left;
   }
 `;
 
