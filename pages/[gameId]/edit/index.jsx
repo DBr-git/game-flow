@@ -6,7 +6,9 @@ export default function EditGame({ onEditGame, games }) {
   const router = useRouter();
   const { gameId } = router.query;
 
-  const selectedGame = games.find((game) => game.id === Number(gameId));
+  const selectedGame = games.find(
+    (game) => game.id === gameId || game.id === Number(gameId)
+  );
 
   if (!selectedGame) {
     return <div>Game not found!</div>;
