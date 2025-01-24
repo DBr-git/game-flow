@@ -73,7 +73,7 @@ const StyledTextareaInput = styled.textarea`
   box-shadow: var(--boxShadow);
   font-family: var(--textFont);
   font-size: 1rem;
-  padding: 0.5em;
+  padding: 0.4em;
   resize: none;
   outline: none;
 `;
@@ -95,6 +95,7 @@ const CommentItem = styled.li`
     padding-left: 0.5em;
     background-color: none;
     border: none;
+    padding: 0.5em 0 0.4em 0.4em;
   }
 `;
 
@@ -102,7 +103,7 @@ const StyledDeleteButton = styled.button`
   display: flex;
   align-self: start;
   padding-top: 0.5em;
-  padding-right: 0.3em;
+  padding-right: 0.4em;
   border-radius: var(--borderRadius);
   background-color: var(--backgroundSubSection);
   color: var(--alertColor);
