@@ -5,55 +5,73 @@ import { useRouter } from "next/router";
 
 export default function GameCard({ game, setScrollPosition }) {
   const router = useRouter();
-
+  console.log(router);
   return (
     <>
       {game.cover ? (
-        <StyledApiLink
-          href={
-            router.pathname === "/" ? game.id.toString() : `/library/${game.id}`
-          }
-          onClick={() => setScrollPosition(window.scrollY)}
-          $progress={game.progress}
-        >
-          <StyledImage
-            alt={`cover of ${game.name}`}
-            src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-            width={game.cover.width}
-            height={game.cover.height}
+        <StyledShadowDiv $progress={game.progress}>
+          <StyledApiButton
+            onClick={() => {
+              setScrollPosition(window.scrollY);
+              router.push(
+                router.pathname === "/"
+                  ? game.id.toString()
+                  : `/library/${game.id}`
+              );
+            }}
             $progress={game.progress}
-          ></StyledImage>
-          <StyledProgressDiv>
-            <StyledProgressFill $progress={game.progress}>
-              <ProgressText>Progress: {game.progress}%</ProgressText>
-            </StyledProgressFill>
-          </StyledProgressDiv>
-        </StyledApiLink>
+          >
+            <StyledImage
+              alt={`cover of ${game.name}`}
+              src={`http://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+              width={game.cover.width}
+              height={game.cover.height}
+              $progress={game.progress}
+            ></StyledImage>
+            {router.pathname !== "/library" && (
+              <StyledProgressDiv>
+                <StyledProgressFill $progress={game.progress}>
+                  <ProgressText>Progress: {game.progress}%</ProgressText>
+                </StyledProgressFill>
+              </StyledProgressDiv>
+            )}
+          </StyledApiButton>
+        </StyledShadowDiv>
       ) : (
-        <StyledLink
-          href={game.id.toString()}
-          $color={game.color}
-          $progress={game.progress}
-        >
-          <h3>{game.name}</h3>
-          <p>Rating: {game.rating}</p>
-          <StyledProgressDiv>
-            <StyledProgressFill $progress={game.progress}>
-              <ProgressText>Progress: {game.progress}%</ProgressText>
-            </StyledProgressFill>
-          </StyledProgressDiv>
-        </StyledLink>
+        <StyledShadowDiv $progress={game.progress}>
+          <StyledButton
+            $color={game.color}
+            onClick={() => {
+              setScrollPosition(window.scrollY);
+              router.push(
+                router.pathname === "/"
+                  ? game.id.toString()
+                  : `/library/${game.id}`
+              );
+            }}
+          >
+            <h3>{game.name}</h3>
+            <p>Rating: {game.rating}</p>
+            <StyledProgressDiv>
+              <StyledProgressFill $progress={game.progress}>
+                <ProgressText>Progress: {game.progress}%</ProgressText>
+              </StyledProgressFill>
+            </StyledProgressDiv>
+          </StyledButton>
+        </StyledShadowDiv>
       )}
     </>
   );
 }
 
-const StyledLink = styled(Link)`
+const StyledButton = styled.button`
+  /* all: unset; */
+  border: none;
   position: relative;
   height: 189.33px;
-  width: 139px;
+  width: 132px;
   background-color: ${(props) => props.$color};
-  box-shadow: 1px 1px 0.2em 0.1px black;
+  /* box-shadow: 1px 1px 0.2em 0.1px black; */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -61,11 +79,7 @@ const StyledLink = styled(Link)`
   color: var(--subHeadingColor);
   border-radius: var(--borderRadius);
   padding: 1em;
-  border: ${(props) => (props.$progress === 100 ? "3px solid gold" : "none")};
-  box-shadow: ${(props) =>
-    props.$progress === 100
-      ? "inset 0 -3em 3em gold, 0 0 0.6em 0.2em gold"
-      : "none"};
+
   h3 {
     overflow-wrap: anywhere;
     overflow: auto;
@@ -83,25 +97,21 @@ const StyledLink = styled(Link)`
 
 const StyledImage = styled(Image)`
   object-fit: cover;
-  height: 100%;
-  width: 139px;
-  box-shadow: 1px 1px 0.2em 0.1px black;
+  height: 189.33px;
+  width: 132px;
   border-radius: var(--borderRadius);
-  border: ${(props) => (props.$progress === 100 ? "3px solid gold" : "none")};
-  box-shadow: ${(props) =>
-    props.$progress === 100
-      ? "inset 0 -3em 3em gold, 0 0 0.6em 0.2em gold"
-      : "none"};
   @media screen and (min-width: 1024px) {
     width: 170px;
   }
 `;
 
-const StyledApiLink = styled(Link)`
+const StyledApiButton = styled.button`
+  all: unset;
   position: relative;
   z-index: 20;
   color: var(--subHeadingColor);
-
+  height: 189.33px;
+  width: 132px;
   &:hover {
     color: var(--alertColor);
   }
@@ -109,9 +119,9 @@ const StyledApiLink = styled(Link)`
 
 const StyledProgressDiv = styled.div`
   position: absolute;
-  width: 100%;
-  height: 1.5em;
-  bottom: 0.25em;
+  width: 132px;
+  height: 24px;
+  bottom: 0;
   left: 0;
 `;
 
@@ -130,4 +140,16 @@ const ProgressText = styled.span`
   padding: 0.5em 0 0 0.5em;
   font-size: 0.8rem;
   color: var(--subHeadingColor);
+`;
+
+const StyledShadowDiv = styled.div`
+  box-sizing: content-box;
+  border: ${(props) => (props.$progress === 100 ? "3px solid gold" : "none")};
+  box-shadow: ${(props) =>
+    props.$progress === 100
+      ? " 0 0 0.6em 0.2em gold"
+      : "1px 1px 0.2em 0.1px black"};
+  border-radius: var(--borderRadius);
+  border-radius: 8px;
+  height: 189.33px;
 `;

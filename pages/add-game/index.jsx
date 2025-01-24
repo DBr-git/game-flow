@@ -5,7 +5,7 @@ export default function AddGame({ onAddGame }) {
   return (
     <>
       <Header />
-      <GameForm onSubmit={onAddGame} formMode={"add"} />;
+      <GameForm onSubmit={onAddGame} formMode={"add"} />
     </>
   );
 }

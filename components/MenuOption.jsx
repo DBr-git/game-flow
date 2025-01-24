@@ -24,6 +24,7 @@ export default function MenuOption({ setMenuMode, setScrollPosition }) {
 const StyledMenuOptionContainer = styled.div`
   background-color: var(--primaryBackground2);
   position: fixed;
+  z-index: 1000;
   right: 15px;
   bottom: 25px;
   padding: 1rem;
