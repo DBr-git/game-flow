@@ -21,28 +21,7 @@ const initialGames = [
     rating: "-",
     progress: 0,
   },
-  {
-    id: 103206,
-    artworks: {
-      id: 46945,
-      height: 2160,
-      image_id: "ar1081",
-      width: 3840,
-    },
-    cover: {
-      id: 214443,
-      height: 667,
-      image_id: "co4lgr",
-      width: 500,
-    },
-    color: "#29b968",
-    name: "Red Dead Redemption II: Ultimate Edition",
-    summary:
-      "America, 1899. The end of the Wild West era has begun. After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal divisions threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang who raised him. Includes Red Dead Redemption II: Story Mode and Red Dead Online.",
-    status: "Planned",
-    rating: "7",
-    progress: 34,
-  },
+
   {
     id: 1026,
     artworks: {

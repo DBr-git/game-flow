@@ -139,7 +139,6 @@ const StyledDescription = styled.p`
   background-color: var(--backgroundSubSection);
   padding: 0.5em 1em;
   border-radius: var(--borderRadius);
-  box-shadow: var(--boxShadow);
 `;
 
 const StyledArticle = styled.article`

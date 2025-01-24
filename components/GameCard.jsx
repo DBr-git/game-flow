@@ -28,6 +28,7 @@ export default function GameCard({ game, setScrollPosition }) {
             ></StyledImage>
             {router.pathname !== "/library" && (
               <StyledProgressDiv>
+                <p>Rating: {game.rating}</p>
                 <StyledProgressFill $progress={game.progress}>
                   <ProgressText>Progress: {game.progress}%</ProgressText>
                 </StyledProgressFill>
@@ -49,8 +50,8 @@ export default function GameCard({ game, setScrollPosition }) {
             }}
           >
             <h3>{game.name}</h3>
-            <p>Rating: {game.rating}</p>
             <StyledProgressDiv>
+              <p>Rating: {game.rating}</p>
               <StyledProgressFill $progress={game.progress}>
                 <ProgressText>Progress: {game.progress}%</ProgressText>
               </StyledProgressFill>
@@ -84,11 +85,6 @@ const StyledButton = styled.button`
   &:hover {
     color: var(--alertColor);
   }
-
-  @media screen and (min-width: 1024px) {
-    height: 230.66px;
-    width: 170px;
-  }
 `;
 
 const StyledImage = styled(Image)`
@@ -96,9 +92,6 @@ const StyledImage = styled(Image)`
   height: 189.33px;
   width: 132px;
   border-radius: var(--borderRadius);
-  @media screen and (min-width: 1024px) {
-    width: 170px;
-  }
 `;
 
 const StyledApiButton = styled.button`
@@ -114,17 +107,30 @@ const StyledApiButton = styled.button`
 `;
 
 const StyledProgressDiv = styled.div`
+  background-color: #808080de;
+  border-radius: var(--borderRadius);
   position: absolute;
+  padding-top: 0.3em;
   width: 132px;
-  height: 24px;
+  height: 50px;
   bottom: 0;
   left: 0;
+  p {
+    padding-left: 0.4em;
+    font-size: 0.8rem;
+    color: var(--subHeadingColor);
+    font-family: var(--titleFont);
+    font-weight: 300;
+    text-align: left;
+  }
 `;
 
 const StyledProgressFill = styled.div`
   display: flex;
+  position: absolute;
+  bottom: 0;
   width: ${({ $progress }) => `${$progress}%`};
-  height: 100%;
+  height: 24px;
   border-bottom-left-radius: var(--borderRadius);
   border-bottom-right-radius: ${(props) =>
     props.$progress === 100 && "var(--borderRadius)"};
@@ -136,6 +142,8 @@ const ProgressText = styled.span`
   padding: 0.5em 0 0 0.5em;
   font-size: 0.8rem;
   color: var(--subHeadingColor);
+  font-family: var(--titleFont);
+  font-weight: 300;
 `;
 
 const StyledShadowDiv = styled.div`

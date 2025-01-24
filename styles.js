@@ -3,7 +3,7 @@ import { Roboto, Proza_Libre } from "next/font/google";
 
 export const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["700", "400"],
+  weight: ["700", "400", "300"],
 });
 
 export const prozaLibre = Proza_Libre({

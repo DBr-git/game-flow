@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function BackButton({ href }) {
   return (
     <StyledLink href={href}>
-      <BackSvg width="24" height="24" />
+      <BackSvg width="32" height="32" />
     </StyledLink>
   );
 }
@@ -15,4 +15,5 @@ const StyledLink = styled(Link)`
   background-color: var(--backgroundSubSection);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadow);
+  margin-top: 0.5em;
 `;
