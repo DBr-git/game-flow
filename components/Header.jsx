@@ -54,7 +54,7 @@ const StyledNavigation = styled.nav`
   padding: 0.5em;
   background-color: var(--backgroundSubSection);
   display: none;
-
+  z-index: 1000;
   @media screen and (min-width: 1024px) {
     display: block;
   }
