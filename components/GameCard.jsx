@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -65,13 +64,11 @@ export default function GameCard({ game, setScrollPosition }) {
 }
 
 const StyledButton = styled.button`
-  /* all: unset; */
   border: none;
   position: relative;
   height: 189.33px;
   width: 132px;
   background-color: ${(props) => props.$color};
-  /* box-shadow: 1px 1px 0.2em 0.1px black; */
   display: flex;
   flex-direction: column;
   text-align: center;
