@@ -96,9 +96,6 @@ const StyledImage = styled(Image)`
   height: 189.33px;
   width: 132px;
   border-radius: var(--borderRadius);
-  @media screen and (min-width: 1024px) {
-    width: 170px;
-  }
 `;
 
 const StyledApiButton = styled.button`
