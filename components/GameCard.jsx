@@ -88,11 +88,6 @@ const StyledButton = styled.button`
   &:hover {
     color: var(--alertColor);
   }
-
-  @media screen and (min-width: 1024px) {
-    height: 230.66px;
-    width: 170px;
-  }
 `;
 
 const StyledImage = styled(Image)`
