@@ -95,21 +95,20 @@ export default function GameDetailsView({
           value={sliderValue}
           onChange={handleProgressChange}
         ></StyledRange>
-        <StyledValueParagraph>
-          Progress: {sliderValue}%
+        <StyledContainer>
+          <StyledValueParagraph>Progress: {sliderValue}%</StyledValueParagraph>
           {sliderValue === 0 && (
             <StyledOptionsParagraph>
-              {" "}
               - No progress made yet.
             </StyledOptionsParagraph>
           )}
           {sliderValue === 100 && (
             <StyledOptionsParagraph>
-              {" "}
               complete – Congratulations!
             </StyledOptionsParagraph>
           )}
-        </StyledValueParagraph>
+        </StyledContainer>
+
         <CommentSection game={selectedGame} onEditGame={onEditGame} />
         {buttonMode === "default" && (
           <>
@@ -221,13 +220,13 @@ const StyledRange = styled.input`
 `;
 
 const StyledValueParagraph = styled.p`
-  padding: 0.5em;
+  padding-right: 0.3em;
+
   display: inline-block;
   box-shadow: none;
   background: none;
 `;
 const StyledOptionsParagraph = styled.p`
-  padding-left: 0.3em;
   display: inline-block;
   box-shadow: none;
   background: none;
@@ -270,4 +269,8 @@ const StyledContent = styled.div`
     overflow-wrap: anywhere;
     overflow: auto;
   }
+`;
+const StyledContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
