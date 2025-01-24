@@ -208,7 +208,6 @@ const StyledRange = styled.input`
   }
 
   &[type="range"]:hover {
-    height: 0.6em;
     background: #224466;
   }
 
